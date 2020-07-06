@@ -1,0 +1,109 @@
+
+.landing-page {
+    background-color: white;
+    .img-carousel {
+        height: 616px;
+    }
+    .carousel-background {
+        height: 616px;
+        width: 100%;
+        background-size: 100% 100%;
+        h1 { font-size: 44px; }
+        p { font-size: 24px;}
+        button { border-radius: 10px;}
+    }
+    .card-carousel {
+        .carousel-control-prev {
+            width: 40px;
+            left: -40px;
+        }
+        .carousel-control-next {
+            width: 40px;
+            right: -40px;
+        }
+        .carousel-inner {
+            overflow: visible;
+        }
+    }
+    
+    .fit-card {
+        width: 404px;
+        border-radius: 20px;
+        border-color: #CFCFCF !important;
+        padding: 20px 15px 10px 15px;
+        .fit-type {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .fit-title { font-size: 14px;}
+        .c-avatar-img {
+            width: 93px !important;
+            height: 93px !important;
+        }
+        .user-name {
+            font-size: 20px;
+            font-family: PoorRichard;
+        }
+        button { border-radius: 10px; }
+        .book-button {
+            top: -25px;
+            left: 0;
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+            button {
+                height: 50px;
+                font-size: 18px;
+            }
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            li {
+                .detail-list {
+                    min-height: 34px;
+                    margin: 2px;
+                    width: 100%;
+                    .icon {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #F7F6F9;
+                        border-top-left-radius: 10px;
+                        border-bottom-left-radius: 10px;
+                        margin-right: 2px;
+                        width: 50px;
+                    }
+                    .content {
+                        display: flex;
+                        align-items: center;
+                        font-size: 15px;
+                        padding: 5px;
+                        width: 100%;
+                        background-color: #F7F6F9;
+                        border-top-right-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        min-height: 34px;
+                    }
+                }
+            }
+        }
+    }
+
+    .vertical-divider {
+        width: 1px;
+        background-color: #707070;
+    }
+
+    .ex-card {
+        p { font-size: 20px; }
+        img {
+            width: 100%;
+            max-width: 492px;
+        }
+        a {
+            text-decoration: underline;
+        }
+    }
+}

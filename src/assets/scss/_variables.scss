@@ -1,0 +1,33 @@
+// Variable overrides
+
+@font-face {
+    font-family: CenturyGothic;
+    src: url('../fonts/century-gothic/CenturyGothic.ttf');
+}
+
+@font-face {
+    font-family: PoorRichard;
+    src: url('../fonts/poor-richard/POORICH.TTF');
+}
+
+$font-family-base: CenturyGothic !important;
+
+$white:  #fff !default;
+$black:  #000015 !default;
+
+$primary-dark:  #2B3664 !default;
+$primary:       #5063EE !default;
+$primary-light: #6078FD !default;
+
+$secondary-dark:  #64686B !default;
+$secondary:       #3c4b64 !default;
+
+$bg-blue-light: #D0E8F4 !default;
+$bg-pink-light: #FEEAE3 !default;
+
+$text-dark: #404040;
+$text-grey: #5B5B5B;
+
+
+
+

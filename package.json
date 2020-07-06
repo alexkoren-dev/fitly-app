@@ -1,7 +1,7 @@
 {
-  "name": "@coreui/coreui-free-react-admin-template",
+  "name": "fitnezz-guru",
   "version": "3.0.0",
-  "description": "CoreUI React Open Source Bootstrap 4 Admin Template",
+  "description": "Fitnezz Guru",
   "author": {
     "name": "CoreUI",
     "url": "https://coreui.io",
@@ -50,6 +50,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\"",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand",
     "eject": "react-scripts eject"
