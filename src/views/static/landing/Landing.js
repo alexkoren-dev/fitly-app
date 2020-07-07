@@ -104,7 +104,7 @@ const Landing = () => {
   return (
     <div className="landing-page pb-5">
       <section className="w-100" style={{ marginTop: -89 }}>
-        <CCarousel animate autoSlide={3000} className="img-carousel">
+        <CCarousel animate autoSlide={10000} className="img-carousel">
           <CCarouselInner>
             <CCarouselItem>
               <CarouselItem />
@@ -123,7 +123,7 @@ const Landing = () => {
         <h2 className="text-dark mb-4">
           <b>Upcoming Session</b>
         </h2>
-        <CCarousel animate autoSlide={3000} className="card-carousel">
+        <CCarousel animate autoSlide={10000} className="card-carousel">
           <CCarouselInner>
             <CCarouselItem>
               <div className="d-flex justify-content-center">
