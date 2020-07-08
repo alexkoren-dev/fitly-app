@@ -10,7 +10,6 @@
         background-size: 100% 100%;
         h1 { font-size: 44px; }
         p { font-size: 24px;}
-        button { border-radius: 10px;}
     }
     .card-carousel {
         .carousel-control-prev {
@@ -31,6 +30,12 @@
         border-radius: 20px;
         border-color: #CFCFCF !important;
         padding: 20px 15px 10px 15px;
+        .thumbsup-yellow {
+            path {
+                fill: #FED32C;
+                stroke: #FED32C;
+            }
+        }
         .fit-type {
             position: absolute;
             right: 10px;
@@ -41,11 +46,10 @@
             width: 93px !important;
             height: 93px !important;
         }
-        .user-name {
-            font-size: 20px;
-            font-family: PoorRichard;
+        .user-name { 
+            font-size: 20px; 
+            font-weight: bold;
         }
-        button { border-radius: 10px; }
         .book-button {
             top: -25px;
             left: 0;
@@ -97,13 +101,18 @@
     }
 
     .ex-card {
+        margin-top: 10%;
+        max-width: 850px;
+        padding: 50px !important;
         p { font-size: 20px; }
         img {
             width: 100%;
-            max-width: 492px;
+            max-width: 305px;
+            margin-top: -35%;
+            border-radius: 30px;
         }
-        a {
-            text-decoration: underline;
-        }
+        button { border-width: 2px;}
+        button:hover { background-color: transparent; }
+        a { text-decoration: underline; }
     }
 }

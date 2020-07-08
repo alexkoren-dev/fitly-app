@@ -12,6 +12,11 @@ import { cuSearch } from "./custom/search"
 import { cuMoney } from "./custom/money"
 import { cuThumbsUp } from "./custom/thumbs-up"
 import { cuDance } from "./custom/dance"
+import { cuTwitter } from "./custom/twitter"
+import { cuYoutube } from "./custom/youtube"
+import { cuLoom } from "./custom/loom"
+import { cuLinkdln } from "./custom/linkdln"
+import { cuFacebook } from "./custom/facebook"
 
 import {
   cibSkype,
@@ -148,6 +153,11 @@ export const icons = Object.assign(
     cuMoney,
     cuThumbsUp,
     cuDance,
+    cuTwitter,
+    cuYoutube,
+    cuFacebook,
+    cuLinkdln,
+    cuLoom,
   },
   {
     cilAlignCenter,

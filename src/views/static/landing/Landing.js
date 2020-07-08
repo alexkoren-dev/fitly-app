@@ -16,15 +16,24 @@ import {
 import CIcon from "@coreui/icons-react"
 import "./style.scss"
 
-import CarouselBackground from "assets/img/carousel-background3@2x.png"
-import UserAvatar from "assets/img/user-avatar.png"
-import Image2 from "assets/img/image-2.png"
-import Image4 from "assets/img/image-4.png"
+import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
+import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
+import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
 
-const CarouselItem = () => (
+import UserAvatar from "assets/img/user-avatar.png"
+import UserCard from "assets/img/LEVEL-3-USER-CARD.svg"
+import PersonalTrainer from "assets/img/PERSONAL-TRAINER.svg"
+
+const CarouselBackgrounds = [
+  CarouselBackground1,
+  CarouselBackground2,
+  CarouselBackground3,
+]
+
+const CarouselItem = ({ index }) => (
   <div
     className="justify-content-center carousel-background"
-    style={{ backgroundImage: "url(" + CarouselBackground + ")" }}
+    style={{ backgroundImage: "url(" + CarouselBackgrounds[index] + ")" }}
   >
     <CRow className="h-100">
       <CCol lg={7} className="h-100">
@@ -32,7 +41,7 @@ const CarouselItem = () => (
           <div className="text-right">
             <h1 className="text-dark">Reach your Fitness Goals Anywhere !!!</h1>
             <p className="text-grey">- Rohit Bahl - Fitness Guru</p>
-            <CButton color="primary" className="px-5 py-3">
+            <CButton color="primary" className="px-5 py-3 btn-pill">
               Loreum Ipsum
             </CButton>
           </div>
@@ -50,12 +59,38 @@ const CardItem = () => (
         <p className="fit-title text-grey">Dance</p>
       </div>
       <div className="position-absolute book-button">
-        <CButton color="primary px-4">FULLY BOOKED</CButton>
+        <CButton color="danger px-4 btn-pill">FULLY BOOKED</CButton>
       </div>
       <div className="text-center card-content">
         <img src={UserAvatar} className="c-avatar-img" width="93" height="93" />
         <p className="user-name mb-1">Joshua Wilson</p>
-        <CIcon name="cuThumbsUp" width="100" />
+        <div className="d-flex justify-content-center">
+          <CIcon
+            name="cuThumbsUp"
+            className="thumbsup-yellow"
+            width="27"
+            height="31"
+          />
+          <CIcon
+            name="cuThumbsUp"
+            className="thumbsup-yellow"
+            width="27"
+            height="31"
+          />
+          <CIcon
+            name="cuThumbsUp"
+            className="thumbsup-yellow"
+            width="27"
+            height="31"
+          />
+          <CIcon
+            name="cuThumbsUp"
+            className="thumbsup-yellow"
+            width="27"
+            height="31"
+          />
+          <CIcon name="cuThumbsUp" className="thumbsup" width="27" height="31" />
+        </div>
         <p className="session mt-1">225K Sessions</p>
         <ul>
           <li>
@@ -93,8 +128,8 @@ const CardItem = () => (
         </ul>
       </div>
       <div className="d-flex flex-wrap justify-content-center mt-4">
-        <CButton className="button-bg-light m-1 px-4">COUNT ME IN</CButton>
-        <CButton className="button-bg-dark m-1 px-4">LEARN MORE</CButton>
+        <CButton className="button-bg-light btn-pill m-1 px-4">COUNT ME IN</CButton>
+        <CButton className="button-bg-dark btn-pill m-1 px-4">LEARN MORE</CButton>
       </div>
     </CCardBody>
   </CCard>
@@ -107,13 +142,13 @@ const Landing = () => {
         <CCarousel animate autoSlide={3000} className="img-carousel">
           <CCarouselInner>
             <CCarouselItem>
-              <CarouselItem />
+              <CarouselItem index={0} />
             </CCarouselItem>
             <CCarouselItem>
-              <CarouselItem />
+              <CarouselItem index={1} />
             </CCarouselItem>
             <CCarouselItem>
-              <CarouselItem />
+              <CarouselItem index={2} />
             </CCarouselItem>
           </CCarouselInner>
           <CCarouselIndicators />
@@ -121,7 +156,7 @@ const Landing = () => {
       </section>
       <section className="p-5 mt-3">
         <h2 className="text-dark mb-4">
-          <b>Upcoming Session</b>
+          <strong>UPCOMING SESSIONS</strong>
         </h2>
         <CCarousel animate autoSlide={3000} className="card-carousel">
           <CCarouselInner>
@@ -163,38 +198,52 @@ const Landing = () => {
         </CCarousel>
       </section>
 
-      <section className="p-5">
+      <section className="p-5" style={{ marginTop: "8%" }}>
         <div className="d-flex justify-content-center">
-          <div className="bg-blue-light px-5 py-4 my-4 w-100 ex-card text-center">
-            <img src={Image2} />
+          <div className="bg-dark-grey px-5 py-4 my-4 w-100 ex-card text-center">
+            <img src={PersonalTrainer} />
             <div className="text-left mt-4">
-              <h1 className="text-grey">LOREUM IPSUM LOREM IPSUM</h1>
-              <p className="text-grey">
+              <h1 className="text-white text-bold mt-2 mb-5">
+                LOREUM IPSUM LOREM IPSUM
+              </h1>
+              <p className="text-white">
                 Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
                 Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
               </p>
-              <CButton color="primary" size="lg" className="btn-pill px-5 mt-3">
+              <CButton
+                color="secondary"
+                variant="outline"
+                size="lg"
+                className="btn-pill px-5 mt-3 text-white border-white text-bold"
+              >
                 SIGN UP
               </CButton>
-              <p className="mt-3 text-grey">
-                <CLink className="text-grey">Learn more about Lorem Ipsum</CLink>
+              <p className="mt-3 text-white">
+                <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
               </p>
             </div>
           </div>
           <div className="vertical-divider mx-5" />
-          <div className="bg-pink-light px-5 py-4 my-4 w-100 ex-card text-center">
-            <img src={Image4} />
+          <div className="bg-blue-custom px-5 py-4 my-4 w-100 ex-card text-center">
+            <img src={UserCard} />
             <div className="text-left mt-4">
-              <h1 className="text-grey">LOREUM IPSUM LOREM IPSUM</h1>
-              <p className="text-grey">
+              <h1 className="text-white text-bold mt-2 mb-5">
+                LOREUM IPSUM LOREM IPSUM
+              </h1>
+              <p className="text-white">
                 Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
                 Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
               </p>
-              <CButton color="primary" size="lg" className="btn-pill px-5 mt-3">
+              <CButton
+                color="primary"
+                variant="outline"
+                size="lg"
+                className="btn-pill px-5 mt-3 text-white border-white text-bold"
+              >
                 SIGN UP
               </CButton>
-              <p className="mt-3 text-grey">
-                <CLink className="text-grey">Learn more about Lorem Ipsum</CLink>
+              <p className="mt-3 text-white">
+                <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
               </p>
             </div>
           </div>

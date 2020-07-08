@@ -4,12 +4,8 @@ import CIcon from "@coreui/icons-react"
 
 const TheFooter = () => {
   return (
-    <CFooter
-      fixed={false}
-      className="static-footer pt-5 pr-5 pb-3"
-      style={{ paddingLeft: "5%" }}
-    >
-      <div className="d-flex flex-wrap">
+    <CFooter fixed={false} className="static-footer py-5 px-5">
+      <div className="d-flex flex-wrap pl-3">
         <div className="menu">
           <p className="menu-title">Link Header</p>
           <ul>
@@ -57,20 +53,36 @@ const TheFooter = () => {
           <CIcon name="logo" height="89" alt="Logo" />
           <p className="">Company Tagline Comes Here </p>
           <ul className="mt-4 d-flex justify-content-center c-header-nav">
-            <li className="mx-4">
-              <CLink>Link 1</CLink>
+            <li>
+              <CLink>
+                <CIcon name="cuFacebook" width="55" height="55" />
+              </CLink>
             </li>
-            <li className="mx-4">
-              <CLink>Link 2</CLink>
+            <li>
+              <CLink>
+                <CIcon name="cuYoutube" width="55" height="55" />
+              </CLink>
             </li>
-            <li className="mx-4">
-              <CLink>Link 3</CLink>
+            <li>
+              <CLink>
+                <CIcon name="cuLoom" width="55" height="55" />
+              </CLink>
+            </li>
+            <li>
+              <CLink>
+                <CIcon name="cuTwitter" width="55" height="55" />
+              </CLink>
+            </li>
+            <li>
+              <CLink>
+                <CIcon name="cuLinkdln" width="55" height="55" />
+              </CLink>
             </li>
           </ul>
         </div>
       </div>
 
-      <p>© 2020 Fitnezz Co. LLC . All rights reserved.</p>
+      <p className="mb-0">© 2020 Fitnezz Co. LLC . All rights reserved.</p>
     </CFooter>
   )
 }
