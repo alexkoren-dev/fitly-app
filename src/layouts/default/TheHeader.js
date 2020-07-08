@@ -24,7 +24,7 @@ const TheHeader = () => {
   return (
     <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 9999 }}>
       <CHeaderBrand className="mr-auto" to="/">
-        <CIcon name="logo" height="89" alt="Logo" />
+        <CIcon name="logo" width="163" height="89" alt="Logo" />
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
@@ -40,7 +40,7 @@ const TheHeader = () => {
               <CInputGroupAppend>
                 <CInputGroupText>
                   <span className="divider">
-                    <CIcon name="cuSearch" width="32" />
+                    <CIcon name="cuSearch" width="18" />
                   </span>
                 </CInputGroupText>
               </CInputGroupAppend>

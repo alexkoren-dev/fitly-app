@@ -1,4 +1,3 @@
-
 .landing-page {
     background-color: white;
     .img-carousel {
@@ -95,24 +94,28 @@
         }
     }
 
-    .vertical-divider {
-        width: 1px;
-        background-color: #707070;
+    .carousel-control-next {
+      width: 40px;
+      right: -40px;
     }
 
-    .ex-card {
-        margin-top: 10%;
-        max-width: 850px;
-        padding: 50px !important;
-        p { font-size: 20px; }
-        img {
-            width: 100%;
-            max-width: 305px;
-            margin-top: -35%;
-            border-radius: 30px;
-        }
-        button { border-width: 2px;}
-        button:hover { background-color: transparent; }
-        a { text-decoration: underline; }
+    .carousel-inner {
+      overflow: visible;
     }
+
+  .ex-card {
+      margin-top: 10%;
+      max-width: 850px;
+      padding: 50px !important;
+      p { font-size: 20px; }
+      img {
+          width: 100%;
+          max-width: 305px;
+          margin-top: -35%;
+          border-radius: 30px;
+      }
+      button { border-width: 2px;}
+      button:hover { background-color: transparent; }
+      a { text-decoration: underline; }
+  }
 }
