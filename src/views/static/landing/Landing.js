@@ -55,7 +55,7 @@ const CardItem = () => (
   <CCard className="fit-card m-2">
     <CCardBody>
       <div className="fit-type text-center">
-        <CIcon name="cuDance" width={40} height={50} />
+        <CIcon name="cuDance" width={30} height={40} />
         <p className="fit-title text-grey">Dance</p>
       </div>
       <div className="position-absolute book-button">
@@ -68,28 +68,28 @@ const CardItem = () => (
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="27"
-            height="31"
+            width="22"
+            height="16"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="27"
-            height="31"
+            width="22"
+            height="16"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="27"
-            height="31"
+            width="22"
+            height="16"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="27"
-            height="31"
+            width="22"
+            height="16"
           />
-          <CIcon name="cuThumbsUp" className="thumbsup" width="27" height="31" />
+          <CIcon name="cuThumbsUp" className="thumbsup" width="22" height="16" />
         </div>
         <p className="session mt-1">225K Sessions</p>
         <ul>

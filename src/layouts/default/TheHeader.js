@@ -24,7 +24,7 @@ const TheHeader = () => {
   return (
     <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 9999 }}>
       <CHeaderBrand className="mr-auto" to="/">
-        <CIcon name="logo" width="163" height="89" alt="Logo" />
+        <CIcon name="logo" width="125" height="68" alt="Logo" />
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
