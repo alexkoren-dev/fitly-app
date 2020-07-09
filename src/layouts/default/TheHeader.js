@@ -50,12 +50,14 @@ const TheHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <CButton block className="bg-dark-grey btn-pill">
+        <CButton block color="secondary" className="btn-pill">
           <CIcon name="cuUserFill" width="30" height="30" /> Sign In
         </CButton>
-        <CButton block color="primary" className="ml-3 mt-0 btn-pill">
-          Sign Up
-        </CButton>
+        <CLink href="/signup">
+          <CButton block color="primary" className="ml-3 mt-0 btn-pill">
+            Sign Up
+          </CButton>
+        </CLink>
       </CHeaderNav>
     </CHeader>
   )

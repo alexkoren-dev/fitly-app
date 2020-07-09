@@ -34,7 +34,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/register"
+              path="/member-signup"
               name="Register Page"
               render={(props) => <Register {...props} />}
             />

@@ -50,7 +50,9 @@ const TheFooter = () => {
         </div>
         <div style={{ flex: 1 }}></div>
         <div className="menu text-center">
-          <CIcon name="logo" height="89" alt="Logo" />
+          <CLink href="/">
+            <CIcon name="logo" height="89" alt="Logo" />
+          </CLink>
           <p className="">Company Tagline Comes Here </p>
           <ul className="mt-4 d-flex justify-content-center c-header-nav">
             <li>

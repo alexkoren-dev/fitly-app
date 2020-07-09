@@ -1,5 +1,13 @@
 // Here you can add other styles
 
+.bg-gradient {
+  background: linear-gradient(#ffffff, #C8C8C8);
+}
+
+.border-bottom {
+  border-bottom: 1px solid $secondary-dark !important;
+}
+
 .button-bg-light {
   background-color: $primary-light;
   color: white;
@@ -23,7 +31,6 @@ button:hover {
     background-color: $bg-blue;
 }
 
-
 .bg-dark-grey {
   background-color: $secondary-dark;
 }
@@ -38,6 +45,10 @@ button:hover {
 
 .text-bold {
     font-weight: bold;
+}
+
+.form-control.is-valid {
+  border-color: $primary;
 }
 
 .carousel-indicators {
