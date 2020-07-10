@@ -30,3 +30,12 @@ export const filterDataList = (filter, real_key, option, data) => {
   })
   return temp_list
 }
+
+export const filterErrorMsg = (errors) => {
+  let error_msg = ""
+  Object.keys(errors).map((error) => {
+    error_msg += `${error.toLocaleUpperCase()} ${errors[error]} \n`
+  })
+
+  return error_msg
+}

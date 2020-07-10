@@ -20,6 +20,7 @@ import { Formik } from "formik"
 
 import Loader from "components/loader"
 import { AuthActions } from "services/global"
+import { filterErrorMsg } from "utils/filter_factory"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
@@ -41,7 +42,7 @@ const initialValues = {
   confirm_password: "",
 }
 
-const Register = () => {
+const Register = (props) => {
   const dispatch = useDispatch()
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
@@ -66,16 +67,25 @@ const Register = () => {
 
   const handleSubmit = (values) => {
     setLoading(true)
-    dispatch(AuthActions.register(values))
+    dispatch(
+      AuthActions.register(
+        {
+          user: {
+            username: values.username,
+            email: values.email,
+            password: values.password,
+          },
+        },
+        props.location.state.type
+      )
+    )
       .then((res) => {
         setLoading(false)
-        toast.success("Success", {
-          position: toast.POSITION.TOP_RIGHT,
-        })
+        props.history.push("/")
       })
       .catch((err) => {
         setLoading(false)
-        toast.error("Error", {
+        toast.error(filterErrorMsg(err.data.errors), {
           position: toast.POSITION.TOP_RIGHT,
         })
       })
@@ -83,7 +93,6 @@ const Register = () => {
 
   return (
     <div className="register-page flex-row align-items-center">
-      <ToastContainer />
       <CRow className="justify-content-center w-100 m-0" style={{ height: "100vh" }}>
         <CCol md="12" className="p-0">
           <CCardGroup className="h-100">
@@ -104,8 +113,8 @@ const Register = () => {
                       <CLink href="/">
                         <CIcon name="logo" width="151" height="82" />
                       </CLink>
-                      <h2 className="text-darl text-bold mt-4">
-                        LOREM IPSUM LOREM IPSUM
+                      <h2 className="text-darl text-bold mt-4 text-capitalize">
+                        {props.location.state.type} Sign Up
                       </h2>
                       <p className="text-caption">
                         LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
@@ -217,7 +226,7 @@ const Register = () => {
                       </label>
                       <CRow>
                         <CCol xs="6">
-                          <CLink href="/signin">
+                          <CLink href="/auth/signin">
                             <CButton
                               color="secondary"
                               className="btn-pill text-bold d-flex align-items-center justify-content-center"

@@ -21,6 +21,12 @@ const AuthReducer = (state = initState, action) => {
         is_authed: false,
       }
 
+    case AUTH.USER_PROFILE:
+      return {
+        ...state,
+        profile: Object.assign({}, payload),
+      }
+
     default:
       return state
   }

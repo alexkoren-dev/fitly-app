@@ -51,6 +51,12 @@ button:hover {
   border-color: $primary;
 }
 
+.Toastify__toast-body {
+  white-space: pre;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
 .carousel-indicators {
   height: 40px;
   padding-top: 10px;

@@ -8,10 +8,13 @@ const SignUp = () => {
   return (
     <div className="signup-page bg-gradient pb-5 px-5">
       <div className="d-flex justify-content-between align-items-center h-100 px-5">
-        <CLink
+        <Link
           className="mx-5 pb-3 pl-5 border-bottom text-decoration-none"
           style={{ flex: 1 }}
-          href="/member-signup"
+          to={{
+            pathname: "/auth/user-signup",
+            state: { type: "user" },
+          }}
         >
           <div className="d-flex justify-content-between align-items-center">
             <h2 className="text-dark">
@@ -21,12 +24,15 @@ const SignUp = () => {
               <CIcon name="cil-arrow-right" className="text-dark" width="40" />
             </span>
           </div>
-        </CLink>
+        </Link>
         <span className="mx-5"></span>
-        <CLink
+        <Link
           className="mx-5 pb-3 pl-5 border-bottom text-decoration-none"
           style={{ flex: 1 }}
-          href="/member-signup"
+          to={{
+            pathname: "/auth/member-signup",
+            state: { type: "member" },
+          }}
         >
           <div className="d-flex justify-content-between align-items-center">
             <h2 className="text-dark">
@@ -36,7 +42,7 @@ const SignUp = () => {
               <CIcon name="cil-arrow-right" className="text-dark" width="40" />
             </span>
           </div>
-        </CLink>
+        </Link>
       </div>
     </div>
   )
