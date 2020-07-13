@@ -210,14 +210,16 @@ const Landing = () => {
                 Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
                 Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
               </p>
-              <CButton
-                color="secondary"
-                variant="outline"
-                size="lg"
-                className="btn-pill px-5 mt-3 text-white border-white text-bold"
-              >
-                SIGN UP
-              </CButton>
+              <CLink href="/signup">
+                <CButton
+                  color="secondary"
+                  variant="outline"
+                  size="lg"
+                  className="btn-pill px-5 mt-3 text-white border-white text-bold"
+                >
+                  SIGN UP
+                </CButton>
+              </CLink>
               <p className="mt-3 text-white">
                 <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
               </p>
@@ -234,14 +236,16 @@ const Landing = () => {
                 Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
                 Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
               </p>
-              <CButton
-                color="primary"
-                variant="outline"
-                size="lg"
-                className="btn-pill px-5 mt-3 text-white border-white text-bold"
-              >
-                SIGN UP
-              </CButton>
+              <CLink href="/signup">
+                <CButton
+                  color="primary"
+                  variant="outline"
+                  size="lg"
+                  className="btn-pill px-5 mt-3 text-white border-white text-bold"
+                >
+                  SIGN UP
+                </CButton>
+              </CLink>
               <p className="mt-3 text-white">
                 <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
               </p>

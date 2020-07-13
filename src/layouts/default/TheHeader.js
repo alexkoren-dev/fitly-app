@@ -6,10 +6,11 @@ import {
   CButton,
   CHeaderBrand,
   CHeaderNav,
-  CHeaderNavItem,
-  CHeaderNavLink,
-  CSubheader,
-  CBreadcrumbRouter,
+  CDropdownToggle,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdown,
+  CImg,
   CLink,
   CFormGroup,
   CInputGroup,
@@ -20,7 +21,7 @@ import {
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
-const TheHeader = () => {
+const TheHeader = ({ auth, logout }) => {
   return (
     <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 9999 }}>
       <CHeaderBrand className="mr-auto" to="/">
@@ -50,12 +51,40 @@ const TheHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <CButton block className="bg-dark-grey btn-pill">
-          <CIcon name="cuUserFill" width="30" height="30" /> Sign In
-        </CButton>
-        <CButton block color="primary" className="ml-3 mt-0 btn-pill">
-          Sign Up
-        </CButton>
+        {auth.is_authed ? (
+          <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
+            <CDropdownToggle className="c-header-nav-link p-0" caret={false}>
+              <div className="c-avatar">
+                <CImg
+                  src={
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU"
+                  }
+                  className="c-avatar-img"
+                  alt="admin@bootstrapmaster.com"
+                />
+              </div>
+            </CDropdownToggle>
+            <CDropdownMenu className="p-0" placement="bottom-end">
+              <CDropdownItem onClick={() => logout()}>
+                <CIcon name="cil-lock-locked" className="mfe-2" />
+                Log Out
+              </CDropdownItem>
+            </CDropdownMenu>
+          </CDropdown>
+        ) : (
+          <>
+            <CLink href="/auth/signin">
+              <CButton block color="secondary" className="btn-pill">
+                <CIcon name="cuUserFill" width="30" height="30" /> Sign In
+              </CButton>
+            </CLink>
+            <CLink href="/signup">
+              <CButton block color="primary" className="ml-3 mt-0 btn-pill">
+                Sign Up
+              </CButton>
+            </CLink>
+          </>
+        )}
       </CHeaderNav>
     </CHeader>
   )
