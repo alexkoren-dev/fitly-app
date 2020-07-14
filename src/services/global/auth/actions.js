@@ -76,3 +76,15 @@ export const logOut = () => {
     })
   }
 }
+
+export const openLoginModal = () => {
+  return (dispatch) => {
+    dispatch({ type: AUTH.OPEN_LOGIN_MODAL })
+  }
+}
+
+export const closeLoginModal = () => {
+  return (dispatch) => {
+    dispatch({ type: AUTH.CLOSE_LOGIN_MODAL })
+  }
+}

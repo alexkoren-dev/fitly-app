@@ -4,6 +4,9 @@ import { CFade } from "@coreui/react"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 
+// Login Modal
+import LoginModal from "views/auth/login/Login"
+
 // routes config
 import routes from "routes/auth"
 
@@ -38,6 +41,7 @@ const TheLayout = () => {
           })}
         </Switch>
       </Suspense>
+      <LoginModal />
     </div>
   )
 }

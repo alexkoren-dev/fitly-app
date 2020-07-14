@@ -15,10 +15,6 @@ const loading = (
 const StaticLayout = React.lazy(() => import("./layouts/default/TheLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/auth"))
 
-// Auth Pages
-const Login = React.lazy(() => import("./views/auth/login/Login"))
-const Register = React.lazy(() => import("./views/auth/register/Register"))
-
 class App extends Component {
   render() {
     return (

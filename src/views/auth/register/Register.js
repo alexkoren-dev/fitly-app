@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
@@ -44,26 +44,15 @@ const initialValues = {
 
 const Register = (props) => {
   const dispatch = useDispatch()
+
+  //States
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Please enter the valid email")
-      .required("Email is required"),
-    username: Yup.string()
-      .min(3, "Username must be at least 3 characters long")
-      .required("Username is required"),
-    password: Yup.string()
-      .min(8, "Password must be at least 8 characters long")
-      .required("Password is required"),
-    confirm_password: Yup.string()
-      .required("Confirm your password")
-      .when("password", {
-        is: (val) => val && val.length > 0,
-        then: Yup.string().oneOf([password], "Both password need to be the same"),
-      }),
-  })
+  // Callbacks
+  const openModal = () => {
+    dispatch(AuthActions.openLoginModal())
+  }
 
   const handleSubmit = (values) => {
     setLoading(true)
@@ -91,6 +80,24 @@ const Register = (props) => {
       })
   }
 
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Please enter the valid email")
+      .required("Email is required"),
+    username: Yup.string()
+      .min(3, "Username must be at least 3 characters long")
+      .required("Username is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .required("Password is required"),
+    confirm_password: Yup.string()
+      .required("Confirm your password")
+      .when("password", {
+        is: (val) => val && val.length > 0,
+        then: Yup.string().oneOf([password], "Both password need to be the same"),
+      }),
+  })
+
   return (
     <div className="register-page flex-row align-items-center">
       <CRow className="justify-content-center w-100 m-0" style={{ height: "100vh" }}>
@@ -111,7 +118,7 @@ const Register = (props) => {
                   {({ handleSubmit, handleChange, values, errors, touched }) => (
                     <CForm onSubmit={handleSubmit}>
                       <CLink href="/">
-                        <CIcon name="logo" width="151" height="82" />
+                        <CIcon name="logo" width="125" height="68" alt="Logo" />
                       </CLink>
                       <h2 className="text-darl text-bold mt-4 text-capitalize">
                         {props.location.state.type} Sign Up
@@ -226,15 +233,16 @@ const Register = (props) => {
                       </label>
                       <CRow>
                         <CCol xs="6">
-                          <CLink href="/auth/signin">
-                            <CButton
-                              color="secondary"
-                              className="btn-pill text-bold d-flex align-items-center justify-content-center"
-                            >
-                              <CIcon name="cuUserFill" width="30" height="30" />{" "}
-                              <span className="ml-1">SIGN IN</span>
-                            </CButton>
-                          </CLink>
+                          <CButton
+                            color="secondary"
+                            className="btn-pill text-bold d-flex align-items-center justify-content-center"
+                            onClick={() => {
+                              openModal()
+                            }}
+                          >
+                            <CIcon name="cuUserFill" width="30" height="30" />{" "}
+                            <span className="ml-1">SIGN IN</span>
+                          </CButton>
                         </CCol>
                       </CRow>
                       <p className="text-dark mt-4">

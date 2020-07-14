@@ -1,27 +1,44 @@
-.login-page {
-    background-color: #E8E9EB;
-    .background-grey {
-        background-color: #E8E9EB;
+.login-form {
+    max-width: 600px;
+    input, button { height: 45px; }
+    button { box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.2); }
+    .invalid-feedback { color: white; }
+    input#rememberMe {
+        width: 18px;
+        height: 18px;
+        margin-top: 0;
+        margin-left: -20px;
     }
-    .card {
-        border-radius: 0;
-        .text-caption { font-size: 14px; }
-        input { 
-            background-color: white;
-            border-width: 2px;
-            height: 50px; 
-        }
-        .invalid-feedback { font-size: 14px; }
-        button {
-            width: 160px;
-            font-size: 14px;
-            height: 45px;
-            box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.2);
-        }
-        label {
-            color: black;
-            font-size: 18px;
-        }
-        .text-decoration-underline { text-decoration: underline; }
-    }
+
+      input[type="checkbox"] {
+        visibility: hidden;
+      }
+
+      input[type="checkbox"] + label {
+          margin-left: -20px !important;
+      }
+
+      input[type="checkbox"] + label:before {
+        border: 0.08em solid white;
+        border-radius: 2px;
+        content: "\00a0";
+        display: inline-block;
+        font: 16px/1em sans-serif;
+        height: 18px;
+        margin-right: 0.5em;
+        vertical-align: top;
+        width: 18px;
+      }
+      input[type="checkbox"]:checked + label:before {
+        color: white;
+        content: "\2713";
+        text-align: center;
+      }
+      input[type="checkbox"]:checked + label:after {
+        font-weight: bold;
+      }
+      
+      input[type="checkbox"]:focus + label::before {
+          outline: rgb(59, 153, 252) auto 5px;
+      }
 }

@@ -20,10 +20,17 @@ import {
   CInput,
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
+import { AuthActions } from "services/global"
 
 const TheHeader = ({ auth, logout }) => {
+  const dispatch = useDispatch()
+
+  const openLoginModal = () => {
+    dispatch(AuthActions.openLoginModal())
+  }
+
   return (
-    <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 9999 }}>
+    <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 999 }}>
       <CHeaderBrand className="mr-auto" to="/">
         <CIcon name="logo" width="125" height="68" alt="Logo" />
       </CHeaderBrand>
@@ -73,11 +80,17 @@ const TheHeader = ({ auth, logout }) => {
           </CDropdown>
         ) : (
           <>
-            <CLink href="/auth/signin">
-              <CButton block color="secondary" className="btn-pill">
-                <CIcon name="cuUserFill" width="30" height="30" /> Sign In
-              </CButton>
-            </CLink>
+            <CButton
+              block
+              color="secondary"
+              className="btn-pill d-flex align-items-center justify-content-center"
+              onClick={() => {
+                openLoginModal()
+              }}
+            >
+              <CIcon name="cuUserFill" width="30" height="30" className="mr-1" />{" "}
+              Sign In
+            </CButton>
             <CLink href="/signup">
               <CButton block color="primary" className="ml-3 mt-0 btn-pill">
                 Sign Up

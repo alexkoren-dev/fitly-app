@@ -51,10 +51,26 @@ button:hover {
   border-color: $primary;
 }
 
+.border-white {
+  border-color: white !important;
+}
+
 .Toastify__toast-body {
   white-space: pre;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px 20px;
+}
+
+.modal-primary .modal-header {
+  border-color: $primary;
+  button {
+    color: white;
+    font-size: 25px;
+  };
+}
+
+.modal-primary .modal-content {
+  background-color: $primary;
 }
 
 .carousel-indicators {

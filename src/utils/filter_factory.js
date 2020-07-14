@@ -1,3 +1,8 @@
+import AES from "crypto-js/aes"
+import Utf8 from "crypto-js/enc-utf8"
+
+const passphrase = "random_string"
+
 export const compareString = (filter, value, option) => {
   if (filter === "") {
     return true
@@ -38,4 +43,14 @@ export const filterErrorMsg = (errors) => {
   })
 
   return error_msg
+}
+
+export const encryptWithAES = (text) => {
+  return AES.encrypt(text, passphrase).toString()
+}
+
+export const decryptWithAES = (ciphertext) => {
+  const bytes = AES.decrypt(ciphertext, passphrase)
+  const originalText = bytes.toString(Utf8)
+  return originalText
 }

@@ -1,8 +1,9 @@
 import { AUTH } from "constants/types"
 
 const initState = {
-  is_authed: false,
+  is_authed: window.localStorage.getItem("accessToken") ? true : false,
   profile: null,
+  toggleLoginModal: false,
 }
 
 const AuthReducer = (state = initState, action) => {
@@ -25,6 +26,18 @@ const AuthReducer = (state = initState, action) => {
       return {
         ...state,
         profile: Object.assign({}, payload),
+      }
+
+    case AUTH.OPEN_LOGIN_MODAL:
+      return {
+        ...state,
+        toggleLoginModal: true,
+      }
+
+    case AUTH.CLOSE_LOGIN_MODAL:
+      return {
+        ...state,
+        toggleLoginModal: false,
       }
 
     default:

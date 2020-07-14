@@ -1,6 +1,7 @@
 import { sygnet } from "./sygnet"
 import { logo } from "./logo"
 import { logoNegative } from "./logo-negative"
+import { logoWhite } from "./logo-white"
 
 // Custom Icons
 
@@ -145,6 +146,7 @@ export const icons = Object.assign(
     sygnet,
     logo,
     logoNegative,
+    logoWhite,
     cuClock,
     cuSearch,
     cuRegister,
