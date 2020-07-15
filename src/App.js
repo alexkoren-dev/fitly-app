@@ -16,6 +16,7 @@ const StaticLayout = React.lazy(() => import("./layouts/default/TheLayout"))
 const MainLayout = React.lazy(() => import("./layouts/default/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/auth"))
 
+
 class App extends Component {
   render() {
     return (
