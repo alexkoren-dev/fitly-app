@@ -18,6 +18,11 @@ import { cuYoutube } from "./custom/youtube"
 import { cuLoom } from "./custom/loom"
 import { cuLinkdln } from "./custom/linkdln"
 import { cuFacebook } from "./custom/facebook"
+import { cuCertificate } from "./custom/certificate"
+import { cuLocationPin } from "./custom/location"
+import { cuSports } from "./custom/sports"
+import { cuPencil } from "./custom/pencil"
+import { cuStar } from "./custom/star"
 
 import {
   cibSkype,
@@ -138,6 +143,7 @@ import {
   cilX,
   cilXCircle,
   cilWarning,
+  cilHeart
 } from "@coreui/icons"
 
 export const icons = Object.assign(
@@ -160,6 +166,11 @@ export const icons = Object.assign(
     cuFacebook,
     cuLinkdln,
     cuLoom,
+    cuStar,
+    cuSports,
+    cuLocationPin,
+    cuPencil,
+    cuCertificate
   },
   {
     cilAlignCenter,
@@ -203,6 +214,7 @@ export const icons = Object.assign(
     cilFullscreenExit,
     cilGraph,
     cilHome,
+    cilHeart,
     cilInbox,
     cilIndentDecrease,
     cilIndentIncrease,

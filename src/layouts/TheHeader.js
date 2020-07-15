@@ -21,8 +21,9 @@ import {
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import { AuthActions } from "services/global"
+import { Link } from "react-router-dom"
 
-const TheHeader = ({ auth, logout }) => {
+const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
   const dispatch = useDispatch()
 
   const openLoginModal = () => {
@@ -30,7 +31,7 @@ const TheHeader = ({ auth, logout }) => {
   }
 
   return (
-    <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 999 }}>
+    <CHeader className={`static-header px-3 ${shadow?'shadow':''}`} fixed={fixed || false} style={{ zIndex: 999, backgroundColor: bgColor || 'transparent' }}>
       <CHeaderBrand className="mr-auto" to="/">
         <CIcon name="logo" width="125" height="68" alt="Logo" />
       </CHeaderBrand>
@@ -48,7 +49,7 @@ const TheHeader = ({ auth, logout }) => {
               <CInputGroupAppend>
                 <CInputGroupText>
                   <span className="divider">
-                    <CIcon name="cuSearch" width="18" />
+                    <CIcon name="cuSearch" width="18" height="22" />
                   </span>
                 </CInputGroupText>
               </CInputGroupAppend>
@@ -70,8 +71,13 @@ const TheHeader = ({ auth, logout }) => {
                   alt="admin@bootstrapmaster.com"
                 />
               </div>
+              Joshua
             </CDropdownToggle>
             <CDropdownMenu className="p-0" placement="bottom-end">
+              <CDropdownItem href="/user/profile">
+                <CIcon name="cil-user" className="mfe-2" />
+                Profile
+              </CDropdownItem>
               <CDropdownItem onClick={() => logout()}>
                 <CIcon name="cil-lock-locked" className="mfe-2" />
                 Log Out

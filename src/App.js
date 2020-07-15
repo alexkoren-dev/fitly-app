@@ -13,6 +13,7 @@ const loading = (
 
 // Layouts
 const StaticLayout = React.lazy(() => import("./layouts/default/TheLayout"))
+const MainLayout = React.lazy(() => import("./layouts/default/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/auth"))
 
 class App extends Component {
@@ -25,6 +26,11 @@ class App extends Component {
               path="/auth"
               name="Static"
               render={(props) => <AuthLayout {...props} />}
+            />
+            <Route
+              path="/user"
+              name="main"
+              render={(props) => <MainLayout {...props} />}
             />
             <Route
               path="/"

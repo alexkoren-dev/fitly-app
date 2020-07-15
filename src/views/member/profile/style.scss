@@ -1,0 +1,38 @@
+.profile-page {
+    .profile-bar {
+        border-radius: 20px;
+        margin-top: 50px;
+
+        p {margin-bottom: 0;}
+        .v-divider {
+            border-right: 1px solid white;
+            height: 50px;
+            // background-color: white;
+            margin: 0 30px;
+        }
+    }
+
+    .plus-icon {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        background-color: #AAB3FB;
+        font-size: 50px;
+        font-weight: 100;
+        cursor: pointer;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .plus-icon:hover {
+        background-color: #939de9;
+    }
+
+    .gallery-card {
+        .heart-icon path{
+            stroke: red;
+        }
+    }
+}
