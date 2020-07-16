@@ -61,17 +61,11 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
       <CHeaderNav className="px-3">
         {auth.is_authed ? (
           <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
-            <CDropdownToggle className="c-header-nav-link p-0" caret={false}>
-              <div className="c-avatar">
-                <CImg
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU"
-                  }
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
+            <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
+              <div className="c-avatar mr-2">
+                <CIcon name="cuUserWhite" width="20"/>
               </div>
-              Joshua
+              {auth.userInfo && auth.userInfo.username}
             </CDropdownToggle>
             <CDropdownMenu className="p-0" placement="bottom-end">
               <CDropdownItem href="/user/profile">

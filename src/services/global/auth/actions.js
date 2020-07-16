@@ -14,8 +14,32 @@ export const getCurrentUser = () => {
             type: AUTH.SIGNED_IN,
           })
           dispatch({
+            type: AUTH.USER_INFO,
+            payload: res.user
+          })
+          return res
+        } else {
+          throw new Error("Auth Failed")
+        }
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+export const getUserProfile = () => {
+  return (dispatch) => {
+    let data = {
+      method: "get",
+      url: `/profiles`,
+    }
+    return authApi(data)
+      .then((res) => {
+        if (!res.error) {
+          dispatch({
             type: AUTH.USER_PROFILE,
-            payload: (res.data || {}).user || {},
+            payload: res.profile
           })
           return res
         } else {

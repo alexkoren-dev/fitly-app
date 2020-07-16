@@ -1,8 +1,10 @@
-import React, { lazy } from "react"
+import React, { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { CLink, CRow, CCol, CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import "./style.scss"
 import { Link } from "react-router-dom"
+import { AuthActions } from "services/global"
 
 import AvatarUploader from "./AvatarUploader"
 import SessionTable from "./SessionTable"
@@ -11,6 +13,13 @@ import Gallery from "./Gallery"
 
 
 const Profile = () => {
+  const dispatch = useDispatch()
+  const profile = useSelector((state) => state.auth.profile)
+
+  useEffect(() => {
+    dispatch(AuthActions.getUserProfile())
+  }, [])
+
   return (
     <div className="profile-page p-4">
       <CRow>
@@ -20,7 +29,7 @@ const Profile = () => {
               <CCol lg={2}>
                 <div className="text-center">
                   <div style={{marginTop: -80}}>
-                    <AvatarUploader/>
+                    <AvatarUploader avatar={profile.profileImage}/>
                   </div>
                   <div className="mt-2">
                     <h4><strong>Joshua Wilson</strong></h4>
