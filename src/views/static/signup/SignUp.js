@@ -1,8 +1,8 @@
 import React, { lazy } from "react"
 import { CLink } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import "./style.scss"
 import { Link } from "react-router-dom"
+import "./style.scss"
 
 const SignUp = () => {
   return (

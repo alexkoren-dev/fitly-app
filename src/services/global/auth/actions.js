@@ -1,5 +1,5 @@
 import { AUTH } from "constants/types"
-import { api, authApi } from "utils"
+import { api, authApi, formData } from "utils"
 
 export const getCurrentUser = () => {
   return (dispatch) => {
@@ -28,7 +28,51 @@ export const getCurrentUser = () => {
   }
 }
 
-export const getUserProfile = () => {
+
+export const createUserProfile = (profile) => {
+  return (dispatch) => {
+    let data = {
+      method: "post",
+      url: `/profiles`,
+      data: formData(profile)
+    }
+    return authApi(data)
+      .then((res) => {
+        dispatch({
+          type: AUTH.USER_PROFILE,
+          payload: res.profile
+        })
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+
+export const editUserProfile = (profile) => {
+  return (dispatch) => {
+    let data = {
+      method: "put",
+      url: `/profiles`,
+      data: formData(profile)
+    }
+    return authApi(data)
+      .then((res) => {
+        dispatch({
+          type: AUTH.USER_PROFILE,
+          payload: res.profile
+        })
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+export const getOwnerProfile = () => {
   return (dispatch) => {
     let data = {
       method: "get",
@@ -50,6 +94,20 @@ export const getUserProfile = () => {
         throw err
       })
   }
+}
+
+export const getUserProfile = (userId) => {
+  let data = {
+    method: "get",
+    url: `/profiles`,
+  }
+  return authApi(data)
+    .then((res) => {
+       return res
+    })
+    .catch((err) => {
+      throw err
+    })
 }
 
 export const login = (obj) => (dispatch) =>
@@ -94,6 +152,9 @@ export const register = (obj, type) => {
 
 export const logOut = () => {
   window.localStorage.removeItem("accessToken")
+  window.localStorage.removeItem("remember")
+  window.localStorage.removeItem("email")
+  window.localStorage.removeItem("password")
   return (dispatch) => {
     dispatch({
       type: AUTH.SIGNED_OUT,

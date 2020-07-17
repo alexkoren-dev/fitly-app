@@ -38,8 +38,48 @@
     }
 
     .gallery-card {
+        width: 100%;
+        max-width: 300px;
         .heart-icon path{
             stroke: red;
         }
+    }
+
+    .ant-upload-list-item-info {
+        display: none;
+    }
+
+    .session-table {
+        th {
+            font-weight: 600;
+            color: #707070;
+        }
+        td {
+            font-size: 12px;
+        }
+        tbody tr {
+            transition: 0.3s;
+        }
+        tbody tr:hover {
+            box-shadow: 0 0 10px 6px rgba(0,0,0,0.2);
+        }
+    }
+    .action-buttons {
+        button {
+            font-size: 13px;
+            width: 100px;
+        }
+    }
+}
+
+.profile-form {
+    .MuiTypography-body1,
+    label {
+        font-family: 'CenturyGothic' !important;
+        font-size: 14px;
+    }
+
+    .custom-control-inline {
+        margin-right: 0;
     }
 }

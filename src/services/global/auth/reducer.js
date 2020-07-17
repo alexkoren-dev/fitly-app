@@ -3,7 +3,7 @@ import { AUTH } from "constants/types"
 const initState = {
   is_authed: window.localStorage.getItem("accessToken") ? true : false,
   userInfo: null,
-  profile: {},
+  profile: null,
   toggleLoginModal: false,
 }
 

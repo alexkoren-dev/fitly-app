@@ -73,6 +73,7 @@ const Login = (props) => {
       .then((res) => {
         if (remember) rememberUser(values)
 
+        dispatch(AuthActions.getCurrentUser())
         setLoading(false)
         closeModal()
       })

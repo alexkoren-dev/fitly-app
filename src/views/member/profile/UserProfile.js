@@ -1,24 +1,43 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { CLink, CRow, CCol, CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import "./style.scss"
+
 import { Link } from "react-router-dom"
 import { AuthActions } from "services/global"
+import Loader from "components/loader"
 
 import AvatarUploader from "./AvatarUploader"
 import SessionTable from "./SessionTable"
 import SessionCalendar from "./SessionCalendar"
 import Gallery from "./Gallery"
+import ProfileModal from "./profileModal"
 
+import "./style.scss"
 
-const Profile = () => {
+const Profile = (props) => {
   const dispatch = useDispatch()
-  const profile = useSelector((state) => state.auth.profile)
+  const userId = props.match.params.id
+
+  const [toggleProfile, setToggleProfile] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [profile, setProfile] = useState(null)
 
   useEffect(() => {
-    dispatch(AuthActions.getUserProfile())
+    setLoading(true)
+    AuthActions.getUserProfile(userId).then((res) => {
+      setProfile(res.profile)
+      setLoading(false)
+    })
   }, [])
+
+
+  if(loading) 
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{height: 500}}>
+        <Loader color="#5063EE" width="50" height="50" type="TailSpin"/>
+      </div>
+    )
 
   return (
     <div className="profile-page p-4">
@@ -29,58 +48,41 @@ const Profile = () => {
               <CCol lg={2}>
                 <div className="text-center">
                   <div style={{marginTop: -80}}>
-                    <AvatarUploader avatar={profile.profileImage}/>
+                    <AvatarUploader avatar={profile && profile.profileImage} editable={false}/>
                   </div>
                   <div className="mt-2">
-                    <h4><strong>Joshua Wilson</strong></h4>
+                    <h4><strong>Add Your Name</strong></h4>
                     <p className="d-flex align-items-center justify-content-center">
-                      <CIcon name="cu-location-pin" width="15" className="mr-1"/> Manchester, UK </p>
+                      <CIcon name="cu-location-pin" width="15" className="mr-1"/> Add Your Location  </p>
                   </div>
                 </div>
               </CCol>
               <CCol lg={8}>
                 <div className="d-flex align-items-center">
                   <p className="d-flex align-items-center justify-content-center">
-                    <CIcon name="cu-sports" width="30" height="30" className="mr-2"/> 23 Sessions Hosted</p>
+                    <CIcon name="cu-sports" width="30" height="30" className="mr-2"/> {(profile && profile.totalSessionCompleted)?profile.totalSessionCompleted:0} Sessions Hosted</p>
                   <div className="v-divider"/>
                   <p className="d-flex align-items-center justify-content-center">
-                  <CIcon name="cu-star" width="30" height="25" className="mr-2"/><span className="pt-1">4.5 Stars</span></p>
+                  <CIcon name="cu-star" width="30" height="25" className="mr-2"/><span className="pt-1">{(profile && profile.overAllRating)?`${profile.overAllRating} Stars`:"No Ratings"}</span></p>
                   <div className="v-divider"/>
                   <p className="d-flex align-items-center justify-content-center">
                   <CIcon name="cu-certificate" width="25" height="25" className="mr-2"/>
                     <span className="pt-1">ACSM Certified Personal Trainer</span></p>
                 </div>
               </CCol>
-              <CCol lg={2} className="d-flex justify-content-end align-items-end">
-                <CButton
-                  color="primary"
-                  variant="outline"
-                  className="btn-pill px-3 mt-3 text-white border-white"
-                  style={{height: 40}}
-                >
-                  <CIcon name="cu-pencil" width="25" height="25" className="mr-1"/>  Edit Profile
-                </CButton>
-              </CCol>
             </CRow>
           </div>
         </CCol>
       </CRow>
-      <div className="p-5">
+      <div className="p-4 mt-3">
         <CRow>
-          <CCol lg={9}>
+          <CCol lg={12}>
             <SessionTable/>
-          </CCol>
-          <CCol lg={3}>
-            <div className="bg-primary text-white text-center p-4 mb-5" style={{borderRadius: 20}}>
-              <div className="plus-icon"><i className="fa fa-plus"/></div>
-              <h5 className="pt-3"><strong>ADD WORKOUT SESSION</strong></h5>
-            </div>
-            <SessionCalendar/>
           </CCol>
         </CRow>
         <CRow className="mt-5">
           <CCol lg={12}>
-            <Gallery/>
+            <Gallery gallery={profile && profile.gallery} owner={false}/>
           </CCol>
         </CRow>
       </div>

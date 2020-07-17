@@ -24,6 +24,8 @@ import { cuSports } from "./custom/sports"
 import { cuPencil } from "./custom/pencil"
 import { cuStar } from "./custom/star"
 import { cuUserWhite } from "./custom/user-white"
+import { cuCalendar } from "./custom/calendar"
+
 
 import {
   cibSkype,
@@ -172,7 +174,8 @@ export const icons = Object.assign(
     cuLocationPin,
     cuPencil,
     cuCertificate,
-    cuUserWhite
+    cuUserWhite,
+    cuCalendar
   },
   {
     cilAlignCenter,

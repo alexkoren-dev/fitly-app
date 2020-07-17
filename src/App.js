@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { createBrowserHistory } from "history"
 import { Router, Route, Switch } from "react-router-dom"
 import "./assets/scss/style.scss"
+import 'antd/dist/antd.css'
+
 
 const history = createBrowserHistory()
 
