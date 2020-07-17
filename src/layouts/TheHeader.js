@@ -31,7 +31,11 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
   }
 
   return (
-    <CHeader className={`static-header px-3 ${shadow?'shadow':''}`} fixed={fixed || false} style={{ zIndex: 999, backgroundColor: bgColor || 'transparent' }}>
+    <CHeader
+      className={`static-header px-3 ${shadow ? "shadow" : ""}`}
+      fixed={fixed || false}
+      style={{ zIndex: 999, backgroundColor: bgColor || "transparent" }}
+    >
       <CHeaderBrand className="mr-auto" to="/">
         <CIcon name="logo" width="125" height="68" alt="Logo" />
       </CHeaderBrand>
@@ -63,7 +67,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
           <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
             <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
               <div className="c-avatar mr-2">
-                <CIcon name="cuUserWhite" width="20"/>
+                <CIcon name="cuUserWhite" width="20" />
               </div>
               {auth.userInfo && auth.userInfo.username}
             </CDropdownToggle>

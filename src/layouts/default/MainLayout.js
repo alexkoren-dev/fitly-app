@@ -50,9 +50,15 @@ const MainLayout = (props) => {
     <div className="c-app c-default-layout">
       <div className="c-wrapper">
         <ToastContainer />
-        <TheHeader auth={auth} logout={logout} fixed={true} shadow={true} bgColor="white"/>
+        <TheHeader
+          auth={auth}
+          logout={logout}
+          fixed={true}
+          shadow={true}
+          bgColor="white"
+        />
         <div className="c-body">
-          <TheContent routes={routes}/>
+          <TheContent routes={routes} />
         </div>
         <TheFooter />
         <LoginModal />

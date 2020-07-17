@@ -26,7 +26,6 @@ import { cuStar } from "./custom/star"
 import { cuUserWhite } from "./custom/user-white"
 import { cuCalendar } from "./custom/calendar"
 
-
 import {
   cibSkype,
   cibFacebook,
@@ -146,7 +145,7 @@ import {
   cilX,
   cilXCircle,
   cilWarning,
-  cilHeart
+  cilHeart,
 } from "@coreui/icons"
 
 export const icons = Object.assign(
@@ -175,7 +174,7 @@ export const icons = Object.assign(
     cuPencil,
     cuCertificate,
     cuUserWhite,
-    cuCalendar
+    cuCalendar,
   },
   {
     cilAlignCenter,

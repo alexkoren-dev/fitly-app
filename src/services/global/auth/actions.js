@@ -15,7 +15,7 @@ export const getCurrentUser = () => {
           })
           dispatch({
             type: AUTH.USER_INFO,
-            payload: res.user
+            payload: res.user,
           })
           return res
         } else {
@@ -28,19 +28,18 @@ export const getCurrentUser = () => {
   }
 }
 
-
 export const createUserProfile = (profile) => {
   return (dispatch) => {
     let data = {
       method: "post",
       url: `/profiles`,
-      data: formData(profile)
+      data: formData(profile),
     }
     return authApi(data)
       .then((res) => {
         dispatch({
           type: AUTH.USER_PROFILE,
-          payload: res.profile
+          payload: res.profile,
         })
         return res
       })
@@ -50,19 +49,18 @@ export const createUserProfile = (profile) => {
   }
 }
 
-
 export const editUserProfile = (profile) => {
   return (dispatch) => {
     let data = {
       method: "put",
       url: `/profiles`,
-      data: formData(profile)
+      data: formData(profile),
     }
     return authApi(data)
       .then((res) => {
         dispatch({
           type: AUTH.USER_PROFILE,
-          payload: res.profile
+          payload: res.profile,
         })
         return res
       })
@@ -83,7 +81,7 @@ export const getOwnerProfile = () => {
         if (!res.error) {
           dispatch({
             type: AUTH.USER_PROFILE,
-            payload: res.profile
+            payload: res.profile,
           })
           return res
         } else {
@@ -103,7 +101,7 @@ export const getUserProfile = (userId) => {
   }
   return authApi(data)
     .then((res) => {
-       return res
+      return res
     })
     .catch((err) => {
       throw err

@@ -52,7 +52,7 @@ const TheLayout = (props) => {
         <ToastContainer />
         <TheHeader auth={auth} logout={logout} />
         <div className="c-body">
-          <TheContent routes={routes}/>
+          <TheContent routes={routes} />
         </div>
         <TheFooter />
         <LoginModal />

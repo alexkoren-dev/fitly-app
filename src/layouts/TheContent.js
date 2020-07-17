@@ -8,7 +8,7 @@ const loading = (
   </div>
 )
 
-const TheContent = ({routes}) => {
+const TheContent = ({ routes }) => {
   return (
     <main className="c-main pt-0">
       <CContainer fluid className="p-0">

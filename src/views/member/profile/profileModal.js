@@ -16,10 +16,10 @@ import {
   CModal,
   CModalBody,
   CModalHeader,
-  CInputRadio
+  CInputRadio,
 } from "@coreui/react"
-import Chip from '@material-ui/core/Chip';
-import MenuItem from '@material-ui/core/MenuItem';
+import Chip from "@material-ui/core/Chip"
+import MenuItem from "@material-ui/core/MenuItem"
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
@@ -51,15 +51,13 @@ const initialValues = {
   confirm_password: "",
 }
 
-
-const ProfileModal = ({openModal, closeModal, profile}) => {
+const ProfileModal = ({ openModal, closeModal, profile }) => {
   const dispatch = useDispatch()
 
   const [loading, setLoading] = useState(false)
   const [remember, setRememberMe] = useState(false)
   const [personName, setPersonName] = useState([])
-  const [gender, setGender] = useState('woman')
-
+  const [gender, setGender] = useState("woman")
 
   const rememberUser = (values) => {
     window.localStorage.setItem("email", values.email)
@@ -70,18 +68,23 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
   const handleSubmit = (values) => {
     setLoading(true)
     dispatch(
-      profile?AuthActions.editUserProfile(values):AuthActions.createUserProfile(values)
-    ).then((res) => {
-      setLoading(false)
-      toast.success(`Your profile is ${profile?'updated':'created'} successfully`)
-      closeModal()
-    })
-    .catch((err) => {
-      setLoading(false)
-      toast.error(filterErrorMsg(err.data.errors), {
-        position: toast.POSITION.TOP_RIGHT,
+      profile
+        ? AuthActions.editUserProfile(values)
+        : AuthActions.createUserProfile(values)
+    )
+      .then((res) => {
+        setLoading(false)
+        toast.success(
+          `Your profile is ${profile ? "updated" : "created"} successfully`
+        )
+        closeModal()
       })
-    })
+      .catch((err) => {
+        setLoading(false)
+        toast.error(filterErrorMsg(err.data.errors), {
+          position: toast.POSITION.TOP_RIGHT,
+        })
+      })
   }
 
   const validationSchema = Yup.object().shape({
@@ -111,32 +114,60 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
         >
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
-              <CLink
-                href="/"
-              >
+              <CLink href="/">
                 <img src={logoWhite} width="131" height="63" />
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol lg={5}>
-                  <MInput id="standard-basic" name="first_name" label="First Name" fullWidth onChange={handleChange}/>
+                  <MInput
+                    id="standard-basic"
+                    name="first_name"
+                    label="First Name"
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
-                <CCol lg={2}/>
+                <CCol lg={2} />
                 <CCol lg={5}>
-                  <MInput id="standard-basic" name="last_name" label="Last Name" fullWidth onChange={handleChange}/>
+                  <MInput
+                    id="standard-basic"
+                    name="last_name"
+                    label="Last Name"
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
               </CFormGroup>
               <CFormGroup row>
                 <CCol lg={5}>
-                  <MInput id="standard-basic" name="phone_number" label="Phone Number" fullWidth onChange={handleChange}/>
+                  <MInput
+                    id="standard-basic"
+                    name="phone_number"
+                    label="Phone Number"
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
               </CFormGroup>
               <CFormGroup row>
                 <CCol lg={5}>
-                  <MInput id="standard-basic" name="city" label="City" fullWidth onChange={handleChange}/>
+                  <MInput
+                    id="standard-basic"
+                    name="city"
+                    label="City"
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
-                <CCol lg={2}/>
+                <CCol lg={2} />
                 <CCol lg={5}>
-                  <MInput id="standard-basic" name="state" label="State" fullWidth onChange={handleChange}/>
+                  <MInput
+                    id="standard-basic"
+                    name="state"
+                    label="State"
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
               </CFormGroup>
               <CFormGroup row className="my-4 pt-1">
@@ -148,7 +179,7 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
                         <MRadio
                           value="woman"
                           label="Woman"
-                          checked={gender === 'woman'}
+                          checked={gender === "woman"}
                           onChange={(e) => setGender(e.target.value)}
                         />
                       </CFormGroup>
@@ -156,7 +187,7 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
                         <MRadio
                           value="man"
                           label="Man"
-                          checked={gender === 'man'}
+                          checked={gender === "man"}
                           onChange={(e) => setGender(e.target.value)}
                         />
                       </CFormGroup>
@@ -164,7 +195,7 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
                         <MRadio
                           value="non-binary"
                           label="Non-binary"
-                          checked={gender === 'non-binary'}
+                          checked={gender === "non-binary"}
                           onChange={(e) => setGender(e.target.value)}
                         />
                       </CFormGroup>
@@ -172,7 +203,7 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
                         <MRadio
                           value="transgender"
                           label="Transgender"
-                          checked={gender === 'transgender'}
+                          checked={gender === "transgender"}
                           onChange={(e) => setGender(e.target.value)}
                         />
                       </CFormGroup>
@@ -182,12 +213,22 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
               </CFormGroup>
               <CFormGroup row>
                 <CCol lg={12}>
-                  <MSelect options={CERTIFICATES} isMulti className="m-select mb-2" placeholder="Preferred Trainings "/>
+                  <MSelect
+                    options={CERTIFICATES}
+                    isMulti
+                    className="m-select mb-2"
+                    placeholder="Preferred Trainings "
+                  />
                 </CCol>
               </CFormGroup>
               <CFormGroup row>
                 <CCol lg={12}>
-                  <MSelect options={CERTIFICATES} isMulti className="m-select mb-2" placeholder="Select Certification "/>
+                  <MSelect
+                    options={CERTIFICATES}
+                    isMulti
+                    className="m-select mb-2"
+                    placeholder="Select Certification "
+                  />
                 </CCol>
               </CFormGroup>
               <div className="d-flex justify-content-end mt-5 mb-3">
@@ -198,9 +239,7 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
                   disabled={loading}
                   style={{ width: 130, height: 40 }}
                 >
-                  {loading ? (
-                    <Loader />
-                  ) : "SUBMIT"}
+                  {loading ? <Loader /> : "SUBMIT"}
                 </CButton>
 
                 <CButton
@@ -220,6 +259,6 @@ const ProfileModal = ({openModal, closeModal, profile}) => {
       </CModalBody>
     </CModal>
   )
-}    
+}
 
 export default ProfileModal

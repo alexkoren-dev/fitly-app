@@ -1,6 +1,6 @@
 export const cuCertificate = [
-    "21.475 23",
-    `<g id="contract" transform="translate(-16.964)">
+  "21.475 23",
+  `<g id="contract" transform="translate(-16.964)">
     <g id="Group_666" data-name="Group 666" transform="translate(16.964)">
       <g id="Group_665" data-name="Group 665">
         <path id="Path_1274" data-name="Path 1274" d="M307.1,170.854a.383.383,0,0,0,.383.383h3.835a.383.383,0,0,0,0-.767h-3.835A.383.383,0,0,0,307.1,170.854Z" transform="translate(-294.059 -162.81)" fill="#fff"/>
@@ -23,5 +23,4 @@ export const cuCertificate = [
     </g>
   </g>
   `,
-  ]
-  
+]
