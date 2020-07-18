@@ -4,7 +4,6 @@ import { CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
 const AvatarUploader = ({ avatar, editable }) => {
-  console.log(editable)
   return (
     <div className="cu-avatar-upload">
       {avatar && avatar.url ? (

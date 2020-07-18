@@ -1,13 +1,10 @@
 import React, { useState } from "react"
 import { CCard, CCardBody, CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import { Upload } from "antd"
-
-import Loader from "components/loader"
-import config from "constants/config"
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 
+import UploadModal from "./UploadModal"
 import image4 from "assets/img/Image4.png"
 
 const responsive = {
@@ -30,57 +27,26 @@ const CardItem = ({ onDragStart, data }) => (
 
 const Gallery = ({ gallery, owner }) => {
   const handleOnDragStart = (e) => e.preventDefault()
-
-  const [uploading, setUploading] = useState(false)
+  const [toggleUpload, setToggleUpload] = useState(false)
 
   const UploadButton = () => (
-    <Upload {...props}>
-      <CButton
-        color="primary"
-        className="shadow btn-pill text-bold px-4"
-        disabled={uploading}
-        style={{ height: 40 }}
-      >
-        {uploading ? <Loader /> : "Add Image"}
-      </CButton>
-    </Upload>
+    <CButton
+      color="primary"
+      className="shadow btn-pill text-bold px-4"
+      onClick={() => setToggleUpload(true)}
+      style={{ height: 40 }}
+    >
+      Add Image
+    </CButton>
   )
-
-  const getBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => resolve(reader.result)
-      reader.onerror = (error) => reject(error)
-    })
-  }
-
-  const props = {
-    name: "file",
-    action: `${config.API_ROOT_URL}/profiles`,
-    headers: {
-      authorization: `Token ${window.localStorage.getItem("accessToken")}`,
-    },
-    onChange(info) {
-      if (info.file.status === "uploading") {
-        // console.log(info.file, info.fileList);
-        const file = getBase64(info.file.originFileObj)
-        setUploading(true)
-      }
-      if (info.file.status !== "uploading") {
-        setUploading(false)
-      }
-      if (info.file.status === "done") {
-        setUploading(false)
-        console.log("done")
-      } else if (info.file.status === "error") {
-        setUploading(false)
-      }
-    },
-  }
 
   return (
     <CCard className="shadow">
+      <UploadModal
+        openModal={toggleUpload}
+        closeModal={() => setToggleUpload(false)}
+      />
+
       <CCardBody className="py-4 px-5">
         <div className="d-flex align-items-center justify-content-between mb-4">
           <h3 className="text-secondary">

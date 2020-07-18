@@ -18,8 +18,6 @@ import {
   CModalHeader,
   CInputRadio,
 } from "@coreui/react"
-import Chip from "@material-ui/core/Chip"
-import MenuItem from "@material-ui/core/MenuItem"
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
@@ -34,6 +32,7 @@ import { CERTIFICATES } from "constants/common"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
+import array from "yup/lib/array"
 
 import "./style.scss"
 import logoWhite from "assets/img/logo-white.svg"
@@ -41,36 +40,46 @@ import logoWhite from "assets/img/logo-white.svg"
 const Yup = {
   object,
   string,
+  array,
   ref: () => {},
 }
 
-const initialValues = {
-  email: "",
-  username: "",
-  password: "",
-  confirm_password: "",
+const validationSchema = Yup.object().shape({
+  firstName: Yup.string(),
+  lastName: Yup.string(),
+  phoneNumber: Yup.string(),
+  city: Yup.string(),
+  state: Yup.string(),
+  gender: Yup.string(),
+  trainingAccreditation: Yup.string(),
+  specialities: Yup.string(),
+})
+
+const getSelectedOptions = (options, values) => {
+  const valueArray = values.split(",")
+  const data = options.filter((opt) => valueArray.includes(opt.value))
+
+  return data
 }
 
 const ProfileModal = ({ openModal, closeModal, profile }) => {
   const dispatch = useDispatch()
 
   const [loading, setLoading] = useState(false)
-  const [remember, setRememberMe] = useState(false)
-  const [personName, setPersonName] = useState([])
   const [gender, setGender] = useState("woman")
-
-  const rememberUser = (values) => {
-    window.localStorage.setItem("email", values.email)
-    window.localStorage.setItem("password", encryptWithAES(values.password))
-    window.localStorage.setItem("remember", true)
-  }
+  const [certificates, setCertificates] = useState([])
+  const [trainings, setTrainings] = useState([])
 
   const handleSubmit = (values) => {
+    const data = {
+      ...values,
+    }
+
     setLoading(true)
     dispatch(
       profile
-        ? AuthActions.editUserProfile(values)
-        : AuthActions.createUserProfile(values)
+        ? AuthActions.editUserProfile(data)
+        : AuthActions.createUserProfile(data)
     )
       .then((res) => {
         setLoading(false)
@@ -87,15 +96,16 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
       })
   }
 
-  const validationSchema = Yup.object().shape({
-    first_name: Yup.string(),
-    last_name: Yup.string(),
-    phone_number: Yup.string(),
-    city: Yup.string(),
-    state: Yup.string(),
-    preferred_trainings: Yup.string(),
-    certifications: Yup.string(),
-  })
+  const initialValues = {
+    firstName: profile ? profile.firstName : "",
+    lastName: profile ? profile.lastName : "",
+    phoneNumber: profile ? profile.phoneNumber : "",
+    city: profile ? profile.city : "",
+    state: profile ? profile.state : "",
+    gender: profile ? profile.gender : "",
+    trainingAccreditation: profile ? profile.trainingAccreditation[0] : "",
+    specialities: profile ? profile.specialities[0] : "",
+  }
 
   return (
     <CModal
@@ -121,7 +131,8 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                 <CCol lg={5}>
                   <MInput
                     id="standard-basic"
-                    name="first_name"
+                    name="firstName"
+                    value={values.firstName}
                     label="First Name"
                     fullWidth
                     onChange={handleChange}
@@ -131,8 +142,9 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                 <CCol lg={5}>
                   <MInput
                     id="standard-basic"
-                    name="last_name"
+                    name="lastName"
                     label="Last Name"
+                    value={values.lastName}
                     fullWidth
                     onChange={handleChange}
                   />
@@ -142,8 +154,9 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                 <CCol lg={5}>
                   <MInput
                     id="standard-basic"
-                    name="phone_number"
+                    name="phoneNumber"
                     label="Phone Number"
+                    value={values.phoneNumber}
                     fullWidth
                     onChange={handleChange}
                   />
@@ -155,6 +168,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                     id="standard-basic"
                     name="city"
                     label="City"
+                    value={values.city}
                     fullWidth
                     onChange={handleChange}
                   />
@@ -165,6 +179,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                     id="standard-basic"
                     name="state"
                     label="State"
+                    value={values.state}
                     fullWidth
                     onChange={handleChange}
                   />
@@ -179,32 +194,40 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                         <MRadio
                           value="woman"
                           label="Woman"
-                          checked={gender === "woman"}
-                          onChange={(e) => setGender(e.target.value)}
+                          onChange={(e) => {
+                            handleChange("gender")(e.target.value)
+                          }}
+                          checked={values.gender === "woman"}
                         />
                       </CFormGroup>
                       <CFormGroup variant="custom-radio" inline>
                         <MRadio
                           value="man"
                           label="Man"
-                          checked={gender === "man"}
-                          onChange={(e) => setGender(e.target.value)}
+                          checked={values.gender === "man"}
+                          onChange={(e) => {
+                            handleChange("gender")(e.target.value)
+                          }}
                         />
                       </CFormGroup>
                       <CFormGroup variant="custom-radio" inline>
                         <MRadio
                           value="non-binary"
                           label="Non-binary"
-                          checked={gender === "non-binary"}
-                          onChange={(e) => setGender(e.target.value)}
+                          checked={values.gender === "non-binary"}
+                          onChange={(e) => {
+                            handleChange("gender")(e.target.value)
+                          }}
                         />
                       </CFormGroup>
                       <CFormGroup variant="custom-radio" inline>
                         <MRadio
                           value="transgender"
                           label="Transgender"
-                          checked={gender === "transgender"}
-                          onChange={(e) => setGender(e.target.value)}
+                          checked={values.gender === "transgender"}
+                          onChange={(e) => {
+                            handleChange("gender")(e.target.value)
+                          }}
                         />
                       </CFormGroup>
                     </div>
@@ -216,8 +239,14 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                   <MSelect
                     options={CERTIFICATES}
                     isMulti
+                    value={getSelectedOptions(CERTIFICATES, values.specialities)}
+                    onChange={(options) => {
+                      handleChange("specialities")(
+                        options.map((opt) => opt.value).join(",")
+                      )
+                    }}
                     className="m-select mb-2"
-                    placeholder="Preferred Trainings "
+                    placeholder="Preferred Trainings"
                   />
                 </CCol>
               </CFormGroup>
@@ -227,7 +256,16 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                     options={CERTIFICATES}
                     isMulti
                     className="m-select mb-2"
-                    placeholder="Select Certification "
+                    value={getSelectedOptions(
+                      CERTIFICATES,
+                      values.trainingAccreditation
+                    )}
+                    onChange={(options) => {
+                      handleChange("trainingAccreditation")(
+                        options.map((opt) => opt.value).join(",")
+                      )
+                    }}
+                    placeholder="Select Certification"
                   />
                 </CCol>
               </CFormGroup>
@@ -244,7 +282,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
 
                 <CButton
                   color="secondary"
-                  type="submit"
+                  type="button"
                   className="ml-2 px-4 btn-pill text-bold mt-3 d-flex align-items-center justify-content-center box-shadow"
                   disabled={loading}
                   onClick={() => closeModal()}

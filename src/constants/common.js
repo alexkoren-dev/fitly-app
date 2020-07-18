@@ -5,7 +5,7 @@ export const CERTIFICATES = [
     value: "NSCA",
     label: "National Strength and Conditioning Association (NSCA) Certified",
   },
-  { value: "NSCA", label: "National Academy of Sports Medicine (NASM) Certified" },
+  { value: "NASM", label: "National Academy of Sports Medicine (NASM) Certified" },
   {
     value: "ISSM",
     label: "International Sports Sciences Association (ISSM) Certified",

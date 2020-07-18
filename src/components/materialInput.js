@@ -5,7 +5,6 @@ import { withStyles } from "@material-ui/core/styles"
 const CssTextField = withStyles({
   root: {
     "& .MuiInputLabel-root": {
-      marginLeft: 10,
       color: "white",
     },
     "& .MuiInput-underline:hover:not(.Mui-disabled):before": {

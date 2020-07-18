@@ -26,6 +26,10 @@ const customStyles = {
     width: 15,
     height: 15,
   }),
+  valueContainer: (provided) => ({
+    ...provided,
+    marginLeft: 0,
+  }),
   control: (provided) => ({
     ...provided,
     backgroundColor: "transparent",

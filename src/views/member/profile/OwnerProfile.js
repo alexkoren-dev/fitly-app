@@ -6,6 +6,7 @@ import CIcon from "@coreui/icons-react"
 import { Link } from "react-router-dom"
 import { AuthActions } from "services/global"
 import Loader from "components/loader"
+import { CERTIFICATES } from "constants/common"
 
 import AvatarUploader from "./AvatarUploader"
 import SessionTable from "./SessionTable"
@@ -57,18 +58,24 @@ const Profile = ({ props }) => {
                   </div>
                   <div className="mt-2">
                     <h4 className="text-white">
-                      <strong>Add Your Name</strong>
+                      <strong>
+                        {profile
+                          ? `${profile.firstName} ${profile.lastName}`
+                          : "Add Your Name"}
+                      </strong>
                     </h4>
                     <p className="d-flex align-items-center justify-content-center">
-                      <CIcon name="cu-location-pin" width="15" className="mr-1" />{" "}
-                      Add Your Location{" "}
+                      <CIcon name="cu-location-pin" width="15" className="mr-1" />
+                      {profile
+                        ? `${profile.city}, ${profile.state}`
+                        : "Add Your Location"}
                     </p>
                   </div>
                 </div>
               </CCol>
               <CCol lg={8}>
                 <div className="d-flex align-items-center">
-                  <p className="d-flex align-items-center justify-content-center">
+                  <p className="d-flex align-items-center justify-content-center my-1">
                     <CIcon
                       name="cu-sports"
                       width="30"
@@ -81,7 +88,7 @@ const Profile = ({ props }) => {
                     Sessions Hosted
                   </p>
                   <div className="v-divider" />
-                  <p className="d-flex align-items-center justify-content-center">
+                  <p className="d-flex align-items-center justify-content-center my-1">
                     <CIcon name="cu-star" width="30" height="25" className="mr-2" />
                     <span className="pt-1">
                       {profile && profile.overAllRating
@@ -91,33 +98,36 @@ const Profile = ({ props }) => {
                   </p>
                   <div className="v-divider" />
                   <div>
-                    <p className="d-flex align-items-center justify-content-center mb-2">
-                      <CIcon
-                        name="cu-certificate"
-                        width="25"
-                        height="25"
-                        className="mr-2"
-                      />
-                      <span className="pt-1">ACSM Certified Personal Trainer</span>
-                    </p>
-                    <p className="d-flex align-items-center justify-content-center mb-2">
-                      <CIcon
-                        name="cu-certificate"
-                        width="25"
-                        height="25"
-                        className="mr-2"
-                      />
-                      <span className="pt-1">ACSM Certified Personal Trainer</span>
-                    </p>
-                    <p className="d-flex align-items-center justify-content-center">
-                      <CIcon
-                        name="cu-certificate"
-                        width="25"
-                        height="25"
-                        className="mr-2"
-                      />
-                      <span className="pt-1">ACSM Certified Personal Trainer</span>
-                    </p>
+                    {profile &&
+                    profile.trainingAccreditation[0] !== "" &&
+                    profile.trainingAccreditation[0].split(",").length > 0 ? (
+                      profile.trainingAccreditation[0].split(",").map((cer, key) => (
+                        <p
+                          key={key}
+                          className="d-flex align-items-center justify-content-start my-1"
+                        >
+                          <CIcon
+                            name="cu-certificate"
+                            width="25"
+                            height="25"
+                            className="mr-2"
+                          />
+                          <span className="pt-1">
+                            {CERTIFICATES.filter((c) => c.value === cer)[0].label}
+                          </span>
+                        </p>
+                      ))
+                    ) : (
+                      <p className="d-flex align-items-center justify-content-center mb-2">
+                        <CIcon
+                          name="cu-certificate"
+                          width="25"
+                          height="25"
+                          className="mr-2"
+                        />
+                        <span className="pt-1">No Certification</span>
+                      </p>
+                    )}
                   </div>
                 </div>
               </CCol>
