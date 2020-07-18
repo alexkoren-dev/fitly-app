@@ -18,8 +18,20 @@
   color: white;
 }
 
+.button-bg-dark:hover {
+  background-color: #242a43;
+}
+
+.button-bg-dark.disabled {
+  background-color: #363e7c;
+}
+
 button:hover {
   color: white !important;
+}
+
+.shadow {
+  box-shadow: 0 4px 10px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-lg {
@@ -51,10 +63,94 @@ button:hover {
   border-color: $primary;
 }
 
+.border-white {
+  border-color: white !important;
+}
+
 .Toastify__toast-body {
   white-space: pre;
-  font-size: 16px;
+  font-size: 14px;
   padding: 10px 20px;
+}
+
+.modal-primary .modal-header {
+  border-color: $primary;
+  button {
+    color: white;
+    font-size: 25px;
+  };
+}
+
+.ant-popover-inner {
+  border-radius: 15px !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.2) !important;
+
+  button {
+    font-size: 12px;
+    width: 150px;
+  }
+}
+
+.status-badge {
+  padding: 2px 5px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.status-badge.Upcoming {
+  background-color: #FFD565;
+}
+
+.status-badge.Completed {
+  background-color: #E6E6E6;
+}
+
+.card {
+  border-radius: 20px;
+}
+
+.modal-primary .modal-content {
+  background-color: $primary;
+}
+
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  .react-calendar__navigation button {
+    // border-radius: 50%;
+    color: #823838 !important;
+  }
+
+  .react-calendar__tile {
+    color: $secondary;
+  }
+
+  .react-calendar__month-view{
+    .react-calendar__tile {
+      padding: 0.4rem 0.3rem;
+      max-width: 10.4% !important;
+      font-size: 12px;
+      margin: 10px 1.9%;
+      color: $secondary;
+    }
+
+    .react-calendar__tile--hasActive,
+    .react-calendar__tile--hasActive:hover {
+      background: #FFD565 !important;
+      border-radius: 5px;
+      color: $secondary;
+      font-weight: bold;
+      font-size: 110%;
+    }
+    .react-calendar__tile--now,
+    .react-calendar__tile--now:hover {
+      background: $primary !important;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 110%;
+      color: white !important;
+    }
+  }
 }
 
 .carousel-indicators {
@@ -75,12 +171,40 @@ button:hover {
   }
 }
 
+
+.cu-avatar-upload {
+  position: relative;
+  max-width: 150px;
+  margin: 0 auto;
+
+  button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 0;
+    right: 15px;
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+.m-select {
+
+}
+
 // Static Layout Header
 
 .static-header {
   background-color: transparent;
   border-bottom: none;
   height: 85px;
+
+
+  .c-avatar {
+    min-width: 40px;
+    height: 40px;
+    background: #B1B1B1;
+  }
 
   button {
     width: 140px;

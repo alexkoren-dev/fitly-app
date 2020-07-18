@@ -2,16 +2,13 @@ import React, { Suspense } from "react"
 import { Redirect, Route, Switch } from "react-router-dom"
 import { CContainer, CFade } from "@coreui/react"
 
-// routes config
-import routes from "routes/static"
-
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
   </div>
 )
 
-const TheContent = () => {
+const TheContent = ({ routes }) => {
   return (
     <main className="c-main pt-0">
       <CContainer fluid className="p-0">

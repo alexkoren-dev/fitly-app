@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { createBrowserHistory } from "history"
 import { Router, Route, Switch } from "react-router-dom"
 import "./assets/scss/style.scss"
+import "antd/dist/antd.css"
 
 const history = createBrowserHistory()
 
@@ -13,11 +14,8 @@ const loading = (
 
 // Layouts
 const StaticLayout = React.lazy(() => import("./layouts/default/TheLayout"))
+const MainLayout = React.lazy(() => import("./layouts/default/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/auth"))
-
-// Auth Pages
-const Login = React.lazy(() => import("./views/auth/login/Login"))
-const Register = React.lazy(() => import("./views/auth/register/Register"))
 
 class App extends Component {
   render() {
@@ -29,6 +27,11 @@ class App extends Component {
               path="/auth"
               name="Static"
               render={(props) => <AuthLayout {...props} />}
+            />
+            <Route
+              path="/user"
+              name="main"
+              render={(props) => <MainLayout {...props} />}
             />
             <Route
               path="/"

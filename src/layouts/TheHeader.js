@@ -20,10 +20,22 @@ import {
   CInput,
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
+import { AuthActions } from "services/global"
+import { Link } from "react-router-dom"
 
-const TheHeader = ({ auth, logout }) => {
+const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
+  const dispatch = useDispatch()
+
+  const openLoginModal = () => {
+    dispatch(AuthActions.openLoginModal())
+  }
+
   return (
-    <CHeader className="static-header px-3" fixed={false} style={{ zIndex: 9999 }}>
+    <CHeader
+      className={`static-header px-3 ${shadow ? "shadow" : ""}`}
+      fixed={fixed || false}
+      style={{ zIndex: 999, backgroundColor: bgColor || "transparent" }}
+    >
       <CHeaderBrand className="mr-auto" to="/">
         <CIcon name="logo" width="125" height="68" alt="Logo" />
       </CHeaderBrand>
@@ -41,7 +53,7 @@ const TheHeader = ({ auth, logout }) => {
               <CInputGroupAppend>
                 <CInputGroupText>
                   <span className="divider">
-                    <CIcon name="cuSearch" width="18" />
+                    <CIcon name="cuSearch" width="18" height="22" />
                   </span>
                 </CInputGroupText>
               </CInputGroupAppend>
@@ -53,18 +65,17 @@ const TheHeader = ({ auth, logout }) => {
       <CHeaderNav className="px-3">
         {auth.is_authed ? (
           <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
-            <CDropdownToggle className="c-header-nav-link p-0" caret={false}>
-              <div className="c-avatar">
-                <CImg
-                  src={
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU"
-                  }
-                  className="c-avatar-img"
-                  alt="admin@bootstrapmaster.com"
-                />
+            <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
+              <div className="c-avatar mr-2">
+                <CIcon name="cuUserWhite" width="20" />
               </div>
+              {auth.userInfo && auth.userInfo.username}
             </CDropdownToggle>
             <CDropdownMenu className="p-0" placement="bottom-end">
+              <CDropdownItem href="/user/profile">
+                <CIcon name="cil-user" className="mfe-2" />
+                Profile
+              </CDropdownItem>
               <CDropdownItem onClick={() => logout()}>
                 <CIcon name="cil-lock-locked" className="mfe-2" />
                 Log Out
@@ -73,11 +84,17 @@ const TheHeader = ({ auth, logout }) => {
           </CDropdown>
         ) : (
           <>
-            <CLink href="/auth/signin">
-              <CButton block color="secondary" className="btn-pill">
-                <CIcon name="cuUserFill" width="30" height="30" /> Sign In
-              </CButton>
-            </CLink>
+            <CButton
+              block
+              color="secondary"
+              className="btn-pill d-flex align-items-center justify-content-center"
+              onClick={() => {
+                openLoginModal()
+              }}
+            >
+              <CIcon name="cuUserFill" width="30" height="30" className="mr-1" />{" "}
+              Sign In
+            </CButton>
             <CLink href="/signup">
               <CButton block color="primary" className="ml-3 mt-0 btn-pill">
                 Sign Up

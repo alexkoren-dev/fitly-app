@@ -9,9 +9,9 @@ import { decryptWithAES } from "utils/filter_factory"
 import LoginModal from "views/auth/login/Login"
 
 // routes config
-import routes from "routes/static"
+import routes from "routes/main"
 
-const TheLayout = (props) => {
+const MainLayout = (props) => {
   const dispatch = useDispatch()
   const auth = useSelector((state) => state.auth)
 
@@ -19,7 +19,7 @@ const TheLayout = (props) => {
     const token = window.localStorage.getItem("accessToken")
 
     if (!token) {
-      // props.history.push('/auth/signin')
+      // props.history.push('/')
       const remember = window.localStorage.getItem("remember")
 
       if (remember) {
@@ -50,7 +50,13 @@ const TheLayout = (props) => {
     <div className="c-app c-default-layout">
       <div className="c-wrapper">
         <ToastContainer />
-        <TheHeader auth={auth} logout={logout} />
+        <TheHeader
+          auth={auth}
+          logout={logout}
+          fixed={true}
+          shadow={true}
+          bgColor="white"
+        />
         <div className="c-body">
           <TheContent routes={routes} />
         </div>
@@ -61,4 +67,4 @@ const TheLayout = (props) => {
   )
 }
 
-export default TheLayout
+export default MainLayout

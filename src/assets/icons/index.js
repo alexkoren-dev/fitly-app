@@ -1,6 +1,7 @@
 import { sygnet } from "./sygnet"
 import { logo } from "./logo"
 import { logoNegative } from "./logo-negative"
+import { logoWhite } from "./logo-white"
 
 // Custom Icons
 
@@ -17,6 +18,13 @@ import { cuYoutube } from "./custom/youtube"
 import { cuLoom } from "./custom/loom"
 import { cuLinkdln } from "./custom/linkdln"
 import { cuFacebook } from "./custom/facebook"
+import { cuCertificate } from "./custom/certificate"
+import { cuLocationPin } from "./custom/location"
+import { cuSports } from "./custom/sports"
+import { cuPencil } from "./custom/pencil"
+import { cuStar } from "./custom/star"
+import { cuUserWhite } from "./custom/user-white"
+import { cuCalendar } from "./custom/calendar"
 
 import {
   cibSkype,
@@ -137,6 +145,7 @@ import {
   cilX,
   cilXCircle,
   cilWarning,
+  cilHeart,
 } from "@coreui/icons"
 
 export const icons = Object.assign(
@@ -145,6 +154,7 @@ export const icons = Object.assign(
     sygnet,
     logo,
     logoNegative,
+    logoWhite,
     cuClock,
     cuSearch,
     cuRegister,
@@ -158,6 +168,13 @@ export const icons = Object.assign(
     cuFacebook,
     cuLinkdln,
     cuLoom,
+    cuStar,
+    cuSports,
+    cuLocationPin,
+    cuPencil,
+    cuCertificate,
+    cuUserWhite,
+    cuCalendar,
   },
   {
     cilAlignCenter,
@@ -201,6 +218,7 @@ export const icons = Object.assign(
     cilFullscreenExit,
     cilGraph,
     cilHome,
+    cilHeart,
     cilInbox,
     cilIndentDecrease,
     cilIndentIncrease,
