@@ -1,5 +1,9 @@
 // Here you can add other styles
 
+.is-invalid {
+  border: 1px solid #e55353 !important;
+}
+
 .bg-gradient {
   background: linear-gradient(#ffffff, #C8C8C8);
 }

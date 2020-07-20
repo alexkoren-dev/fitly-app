@@ -113,7 +113,7 @@ const Profile = ({ props }) => {
                             className="mr-2"
                           />
                           <span className="pt-1">
-                            {CERTIFICATES.filter((c) => c.value === cer)[0].label}
+                            {CERTIFICATES.filter((c) => c.value === cer).length>0 && CERTIFICATES.filter((c) => c.value === cer)[0].label}
                           </span>
                         </p>
                       ))

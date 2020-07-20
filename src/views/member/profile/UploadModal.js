@@ -51,6 +51,8 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
       strokeWidth: 25,
       format: (percent) => `${parseFloat(percent.toFixed(0))}%`,
     },
+    method: "put",
+    name: "gallery",
     async onChange(info) {
       if (info.file.status === "uploading") {
         // console.log(info.file, info.fileList);
