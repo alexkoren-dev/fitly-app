@@ -1,3 +1,3 @@
 export default {
-  API_ROOT_URL: "http://ec2-18-219-156-79.us-east-2.compute.amazonaws.com:3000/api",
+  API_ROOT_URL: "http://ec2-18-219-119-244.us-east-2.compute.amazonaws.com:3000/api",
 }

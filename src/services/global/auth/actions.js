@@ -49,6 +49,25 @@ export const createUserProfile = (profile) => {
   }
 }
 
+
+export const likeProfileImage = (profileId, imageId) => {
+  return (dispatch) => {
+    let data = {
+      method: "post",
+      url: `/profiles/like`,
+      data: {profileId: profileId, imageId: imageId},
+    }
+    return authApi(data)
+      .then((res) => {
+
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
 export const editUserProfile = (profile) => {
   return (dispatch) => {
     let data = {
@@ -94,10 +113,36 @@ export const getOwnerProfile = () => {
   }
 }
 
+
+export const removeProfileImage = (imageId) => {
+  return (dispatch) => {
+    let data = {
+      method: "get",
+      url: `/profiles/remove-gallery-item?imageId=${imageId}`,
+    }
+    return authApi(data)
+      .then((res) => {
+        if (!res.error) {
+          dispatch({
+            type: AUTH.REMOVE_GALLERY,
+            payload: imageId,
+          })
+          return res
+        } else {
+          throw new Error("Auth Failed")
+        }
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+
 export const getUserProfile = (userId) => {
   let data = {
     method: "get",
-    url: `/profiles`,
+    url: `/profiles/view-profile?profileId=${userId}`,
   }
   return authApi(data)
     .then((res) => {
@@ -107,6 +152,8 @@ export const getUserProfile = (userId) => {
       throw err
     })
 }
+
+
 
 export const login = (obj) => (dispatch) =>
   api

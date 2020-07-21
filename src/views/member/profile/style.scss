@@ -43,6 +43,21 @@
         .heart-icon path{
             stroke: red;
         }
+
+        .gallery-bar {
+            margin-top: -33px;
+            background-color: rgba(255, 255, 255, 0.7);
+            position: relative;
+
+            i {
+                transition: 0.3s;
+            }
+            i:hover {
+
+                background-color: white;
+                box-shadow: 0 10px 5px 0 rgba(0,0,0,0.2);
+            }
+        }
     }
 
     .ant-upload-list-item-info {

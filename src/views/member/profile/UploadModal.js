@@ -28,6 +28,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
   const [loading, setUploading] = useState(false)
   const [previewImage, setPreviewImage] = useState(null)
   const [error, setError] = useState(false)
+  const [file, setFile] = useState(null)
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
