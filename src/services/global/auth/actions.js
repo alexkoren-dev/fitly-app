@@ -49,17 +49,15 @@ export const createUserProfile = (profile) => {
   }
 }
 
-
 export const likeProfileImage = (profileId, imageId) => {
   return (dispatch) => {
     let data = {
       method: "post",
       url: `/profiles/like`,
-      data: {profileId: profileId, imageId: imageId},
+      data: { profileId: profileId, imageId: imageId },
     }
     return authApi(data)
       .then((res) => {
-
         return res
       })
       .catch((err) => {
@@ -113,7 +111,6 @@ export const getOwnerProfile = () => {
   }
 }
 
-
 export const removeProfileImage = (imageId) => {
   return (dispatch) => {
     let data = {
@@ -138,7 +135,6 @@ export const removeProfileImage = (imageId) => {
   }
 }
 
-
 export const getUserProfile = (userId) => {
   let data = {
     method: "get",
@@ -152,8 +148,6 @@ export const getUserProfile = (userId) => {
       throw err
     })
 }
-
-
 
 export const login = (obj) => (dispatch) =>
   api

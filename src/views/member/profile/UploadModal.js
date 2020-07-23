@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import axios from "axios"
 import { useDispatch, useSelector } from "react-redux"
 import { ToastContainer, toast } from "react-toastify"
 import { Link } from "react-router-dom"
@@ -13,10 +14,10 @@ import {
   CModalHeader,
   CInputRadio,
 } from "@coreui/react"
-import { Upload } from "antd"
+import { Upload, Progress } from "antd"
 import CIcon from "@coreui/icons-react"
 import Loader from "components/loader"
-
+import { AUTH } from "constants/types"
 import config from "constants/config"
 import { AuthActions } from "services/global"
 
@@ -29,6 +30,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
   const [previewImage, setPreviewImage] = useState(null)
   const [error, setError] = useState(false)
   const [file, setFile] = useState(null)
+  const [progress, setProgress] = useState(0)
 
   const getBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -37,6 +39,44 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
       reader.onload = () => resolve(reader.result)
       reader.onerror = (error) => reject(error)
     })
+  }
+
+  const handleUpload = async () => {
+    setUploading(true)
+    const fmData = new FormData()
+    const apiConfig = {
+      headers: {
+        "content-type": "multipart/form-data",
+        authorization: `Token ${window.localStorage.getItem("accessToken")}`,
+      },
+      onUploadProgress: (event) => {
+        console.log(event)
+        const percent = Math.floor((event.loaded / event.total) * 100)
+        setProgress(percent)
+        if (percent === 100) {
+          setTimeout(() => setProgress(0), 1000)
+        }
+      },
+    }
+    fmData.append("gallery", file)
+
+    setUploading(true)
+    try {
+      const res = await axios.put(
+        `${config.API_ROOT_URL}/profiles`,
+        fmData,
+        apiConfig
+      )
+
+      setUploading(false)
+      dispatch({
+        type: AUTH.USER_PROFILE,
+        payload: res.data.profile,
+      })
+    } catch (err) {
+      setUploading(false)
+      console.log(err)
+    }
   }
 
   const props = {
@@ -52,29 +92,16 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
       strokeWidth: 25,
       format: (percent) => `${parseFloat(percent.toFixed(0))}%`,
     },
+    beforeUpload: async (file) => {
+      setFile(file)
+      console.log(file)
+      const realfile = await getBase64(file)
+      setPreviewImage(realfile)
+      return false
+    },
+    showUploadList: false,
     method: "put",
     name: "gallery",
-    async onChange(info) {
-      if (info.file.status === "uploading") {
-        // console.log(info.file, info.fileList);
-        const file = await getBase64(info.file.originFileObj)
-        setPreviewImage(file)
-        setUploading(true)
-      }
-      if (info.file.status !== "uploading") {
-        setUploading(false)
-      }
-      if (info.file.status === "done") {
-        setUploading(false)
-        setError(false)
-      } else if (info.file.status === "error") {
-        toast.error("Oops! Upload image is failed!", {
-          position: toast.POSITION.TOP_RIGHT,
-        })
-        setUploading(false)
-        setError(true)
-      }
-    },
   }
 
   return (
@@ -114,6 +141,10 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
             </div>
           )}
         </Upload.Dragger>
+        <p className="mt-4" />
+        {progress > 0 ? (
+          <Progress percent={progress} strokeWidth={30} strokeColor="#a8a8a8" />
+        ) : null}
         <div className="d-flex justify-content-end mt-5 mb-3">
           <CButton
             color="primary"
@@ -121,6 +152,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
             className="px-4 btn-pill button-bg-dark text-bold mt-3 d-flex align-items-center justify-content-center box-shadow"
             disabled={loading}
             style={{ width: 130, height: 40 }}
+            onClick={() => handleUpload()}
           >
             {loading ? <Loader /> : "SUBMIT"}
           </CButton>

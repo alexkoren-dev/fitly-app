@@ -26,12 +26,10 @@ import UserAvatar from "assets/img/user-avatar.png"
 import UserCard from "assets/img/LEVEL-3-USER-CARD.svg"
 import PersonalTrainer from "assets/img/PERSONAL-TRAINER.svg"
 
-
 const responsive = {
   0: { items: 1 },
   1024: { items: 4 },
 }
-
 
 const CarouselBackgrounds = [
   CarouselBackground1,
@@ -40,17 +38,22 @@ const CarouselBackgrounds = [
 ]
 
 const CarouselItem = ({ index }) => (
-  <div
-    className="justify-content-center carousel-background"
-  >
-    <img src={CarouselBackgrounds[index]} width="100%"/>
-    <CRow className="h-100 position-absolute text-right w-100" style={{top:0, left:0}}>
+  <div className="justify-content-center carousel-background">
+    <img src={CarouselBackgrounds[index]} width="100%" />
+    <CRow
+      className="h-100 position-absolute text-right w-100"
+      style={{ top: 0, left: 0 }}
+    >
       <CCol xs={7} className="h-100">
         <div className="d-flex justify-content-end align-items-center h-100">
           <div className="text-right">
             <h1 className="text-dark">Reach your Fitness Goals Anywhere !!!</h1>
             <p className="text-grey">- Rohit Bahl - Fitness Guru</p>
-            <CButton color="primary" className="btn-pill" style={{height: 50, width: 200}}>
+            <CButton
+              color="primary"
+              className="btn-pill"
+              style={{ height: 50, width: 200 }}
+            >
               Loreum Ipsum
             </CButton>
           </div>
@@ -178,14 +181,14 @@ const Landing = () => {
           mouseTrackingEnabled
           buttonsDisabled={true}
         >
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
-          <CardItem onDragStart={handleOnDragStart}/>
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
+          <CardItem onDragStart={handleOnDragStart} />
         </AliceCarousel>
       </section>
 
@@ -200,8 +203,8 @@ const Landing = () => {
                     LOREUM IPSUM LOREM IPSUM
                   </h1>
                   <p className="text-white">
-                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
-                    Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
+                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum
+                    Loram Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
                   </p>
                   <CLink href="/signup">
                     <CButton
@@ -214,7 +217,9 @@ const Landing = () => {
                     </CButton>
                   </CLink>
                   <p className="mt-3 text-white">
-                    <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
+                    <CLink className="text-white">
+                      Learn more about Lorem Ipsum
+                    </CLink>
                   </p>
                 </div>
               </div>
@@ -227,8 +232,8 @@ const Landing = () => {
                     LOREUM IPSUM LOREM IPSUM
                   </h1>
                   <p className="text-white">
-                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum Loram
-                    Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
+                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum
+                    Loram Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
                   </p>
                   <CLink href="/signup">
                     <CButton
@@ -241,7 +246,9 @@ const Landing = () => {
                     </CButton>
                   </CLink>
                   <p className="mt-3 text-white">
-                    <CLink className="text-white">Learn more about Lorem Ipsum</CLink>
+                    <CLink className="text-white">
+                      Learn more about Lorem Ipsum
+                    </CLink>
                   </p>
                 </div>
               </div>

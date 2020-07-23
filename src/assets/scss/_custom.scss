@@ -17,6 +17,16 @@
   }
 }
 
+.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+  z-index: 9999 !important;
+}
+
+.custom-alert {
+  border-radius: 20px;
+  min-width: 300px;
+}
+
 .is-invalid {
   border: 1px solid #e55353 !important;
 }

@@ -7,7 +7,7 @@ const TheFooter = () => {
   return (
     <CFooter fixed={false} className="static-footer py-5 px-5">
       <div className="d-flex flex-wrap justify-content-between">
-        <div className="d-flex justify-content-start" style={{flex: 1}}>
+        <div className="d-flex justify-content-start" style={{ flex: 1 }}>
           <div className="menu">
             <p className="menu-title">Link Header</p>
             <ul>
@@ -51,7 +51,7 @@ const TheFooter = () => {
             </ul>
           </div>
         </div>
-       
+
         <div className="text-center mx-auto">
           <CLink href="/">
             <img src={logoWhite} width="150" height="89" />

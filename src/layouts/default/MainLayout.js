@@ -19,7 +19,7 @@ const MainLayout = (props) => {
     const token = window.localStorage.getItem("accessToken")
 
     if (!token) {
-      props.history.push('/')
+      props.history.push("/")
       const remember = window.localStorage.getItem("remember")
 
       if (remember) {
@@ -44,7 +44,7 @@ const MainLayout = (props) => {
 
   const logout = () => {
     dispatch(AuthActions.logOut())
-    props.history.push('/')
+    props.history.push("/")
   }
 
   return (

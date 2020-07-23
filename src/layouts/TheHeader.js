@@ -105,25 +105,25 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
           )}
         </CHeaderNav>
       </div>
-        <CFormGroup className="my-2 d-sm-down-block d-md-none mx-auto w-100">
-          <div className="controls search-input" style={{width: '100%'}}>
-            <CInputGroup>
-              <CInput
-                id="appendedInput"
-                size="16"
-                type="text"
-                placeholder="Search for a Trainer or live classes"
-              />
-              <CInputGroupAppend>
-                <CInputGroupText>
-                  <span className="divider">
-                    <CIcon name="cuSearch" width="18" height="22" />
-                  </span>
-                </CInputGroupText>
-              </CInputGroupAppend>
-            </CInputGroup>
-          </div>
-        </CFormGroup>
+      <CFormGroup className="my-2 d-sm-down-block d-md-none mx-auto w-100">
+        <div className="controls search-input" style={{ width: "100%" }}>
+          <CInputGroup>
+            <CInput
+              id="appendedInput"
+              size="16"
+              type="text"
+              placeholder="Search for a Trainer or live classes"
+            />
+            <CInputGroupAppend>
+              <CInputGroupText>
+                <span className="divider">
+                  <CIcon name="cuSearch" width="18" height="22" />
+                </span>
+              </CInputGroupText>
+            </CInputGroupAppend>
+          </CInputGroup>
+        </div>
+      </CFormGroup>
     </CHeader>
   )
 }

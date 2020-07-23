@@ -37,11 +37,11 @@ const AuthReducer = (state = initState, action) => {
 
     case AUTH.REMOVE_GALLERY:
       const profile = Object.assign({}, state.profile)
-      profile.gallery = profile.gallery.filter(img => img.imageId != payload)
-      
+      profile.gallery = profile.gallery.filter((img) => img.imageId != payload)
+
       return {
         ...state,
-        profile: profile
+        profile: profile,
       }
 
     case AUTH.OPEN_LOGIN_MODAL:
