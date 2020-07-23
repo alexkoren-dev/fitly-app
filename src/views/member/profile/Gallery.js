@@ -15,7 +15,7 @@ const responsive = {
 }
 
 const CardItem = ({ onDragStart, data, deleteGalleryImage, likeOrDislikeImage, owner }) => (
-  <div className="gallery-card m-2" onDragStart={onDragStart}>
+  <div className="gallery-card" onDragStart={onDragStart}>
     <img src={image4} style={{ width: "100%", borderRadius: 20 }} />
     <div className="d-flex justify-content-between pt-1 pb-2 px-3 gallery-bar">
       <p className="mb-0">

@@ -1,14 +1,28 @@
 .landing-page {
     background-color: white;
+    overflow: hidden;
     .img-carousel {
-        height: 400px;
+        height: 100%;
     }
     .carousel-background {
-        height: 425px;
+        max-height: 380px;
+        min-height: 300px;
+        height: 100%;
         width: 100%;
-        background-size: 100% 100%;
+        background-size: 110% 110%;
+        background-position-y: 80%;
         h1 { font-size: 27px; }
         p { font-size: 14px;}
+        img {
+            max-height: 380px;
+            min-height: 300px;
+            height: 100%;
+
+            @media (max-width: 400px){
+                width: 250%;
+                margin-left: -100%;
+            }
+        }
     }
     .card-carousel {
         .carousel-control-prev {
@@ -23,9 +37,14 @@
             overflow: visible;
         }
     }
+
+    .alice-carousel__stage-item {
+        padding: 0 10px;
+    }
     
     .fit-card {
-        width: 404px;
+        width: 100%;
+        margin-top: 50px !important;
         border-radius: 20px;
         border-color: #CFCFCF !important;
         padding: 20px 15px 10px 15px;
@@ -105,8 +124,7 @@
     }
 
   .ex-card {
-      margin-top: 10%;
-      max-width: 850px;
+      width: 100%;
       padding: 50px !important;
       p { font-size: 20px; }
       img {
@@ -118,5 +136,14 @@
       button { border-width: 2px;}
       button:hover { background-color: transparent; }
       a { text-decoration: underline; }
+
+      @media (max-width: 992px){
+        img {
+            margin-top: 0;
+        }
+        * {
+            text-align: center !important;
+        }
+      }
   }
 }
