@@ -17,6 +17,7 @@ export const getCurrentUser = () => {
             type: AUTH.USER_INFO,
             payload: res.user,
           })
+          dispatch(getOwnerProfile())
           return res
         } else {
           throw new Error("Auth Failed")
@@ -54,6 +55,23 @@ export const likeProfileImage = (profileId, imageId) => {
     let data = {
       method: "post",
       url: `/profiles/like`,
+      data: { profileId: profileId, imageId: imageId },
+    }
+    return authApi(data)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+export const dislikeProfileImage = (profileId, imageId, userId) => {
+  return (dispatch) => {
+    let data = {
+      method: "post",
+      url: `/profiles/unlike`,
       data: { profileId: profileId, imageId: imageId },
     }
     return authApi(data)

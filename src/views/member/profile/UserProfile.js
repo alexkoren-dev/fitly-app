@@ -25,11 +25,15 @@ const Profile = (props) => {
 
   useEffect(() => {
     setLoading(true)
+    getUserProfile()
+  }, [])
+
+  const getUserProfile = () => {
     AuthActions.getUserProfile(userId).then((res) => {
       setProfile(res.profile)
       setLoading(false)
     })
-  }, [])
+  }
 
   if (loading)
     return (
@@ -122,8 +126,10 @@ const Profile = (props) => {
             <Gallery
               gallery={profile && profile.gallery}
               owner={false}
+              userId={userId}
               profileId={profile && profile.id}
               username={profile && profile.firstName}
+              getUserProfile={getUserProfile}
             />
           </CCol>
         </CRow>

@@ -1,11 +1,12 @@
 .landing-page {
     background-color: white;
     overflow: hidden;
+    margin-top: -120px;
     .img-carousel {
         height: 100%;
     }
     .carousel-background {
-        max-height: 380px;
+        max-height: 480px;
         min-height: 300px;
         height: 100%;
         width: 100%;
@@ -14,7 +15,7 @@
         h1 { font-size: 27px; }
         p { font-size: 14px;}
         img {
-            max-height: 380px;
+            max-height: 480px;
             min-height: 300px;
             height: 100%;
 
@@ -145,5 +146,11 @@
             text-align: center !important;
         }
       }
+  }
+
+  @media (max-width: 768px){
+    & {
+        margin-top: -40px;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { CCard, CCardBody, CButton } from "@coreui/react"
 import { useDispatch, useSelector } from "react-redux"
 import CIcon from "@coreui/icons-react"
@@ -6,6 +6,7 @@ import { AuthActions } from "services/global"
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import CConfirmAlert from "components/confirmAlert"
+import LikeOrDislike from "./likeOrDislike"
 
 import UploadModal from "./UploadModal"
 import image4 from "assets/img/Image4.png"
@@ -22,9 +23,11 @@ const CardItem = ({
   deleteGalleryImage,
   likeOrDislikeImage,
   owner,
+  ownerProfile,
 }) => (
   <div className="gallery-card" onDragStart={onDragStart}>
     <img src={image4} style={{ width: "100%", borderRadius: 20 }} />
+
     <div className="d-flex justify-content-between pt-1 pb-2 px-3 gallery-bar">
       <p className="mb-0">
         <i
@@ -40,26 +43,33 @@ const CardItem = ({
         />
       </p>
       <p className="d-flex align-items-center justify-content-center mb-0">
-        <i
-          className="fa fa-heart mr-1 d-flex justify-content-center align-items-center"
-          style={{
-            color: "red",
-            fontSize: 18,
-            width: 25,
-            height: 25,
-            borderRadius: "50%",
-          }}
-          onClick={() => (owner ? false : likeOrDislikeImage(data.imageId))}
-        />{" "}
-        {data.userlikes.length}
+        {owner ? (
+          <i
+            className="fa fa-heart mr-1 d-flex justify-content-center align-items-center"
+            style={{
+              color: "red",
+              fontSize: 18,
+              width: 25,
+              height: 25,
+              borderRadius: "50%",
+            }}
+          />
+        ) : (
+          <LikeOrDislike
+            callback={(like) => likeOrDislikeImage(data.imageId, like)}
+            initialValue={data.userlikes.includes((ownerProfile || {}).userId)}
+          />
+        )}
+        {owner && data.userlikes.length}
       </p>
     </div>
   </div>
 )
 
-const Gallery = ({ gallery, owner, username, profileId }) => {
+const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
   const dispatch = useDispatch()
   const [toggleUpload, setToggleUpload] = useState(false)
+  const ownerProfile = useSelector((state) => state.auth.profile)
 
   const handleOnDragStart = (e) => e.preventDefault()
 
@@ -78,8 +88,16 @@ const Gallery = ({ gallery, owner, username, profileId }) => {
     CConfirmAlert(dispatch, AuthActions.removeProfileImage(imageId))
   }
 
-  const likeOrDislikeImage = (imageId) => {
-    dispatch(AuthActions.likeProfileImage(profileId, imageId))
+  const likeOrDislikeImage = (imageId, isLiked) => {
+    if (isLiked) {
+      dispatch(AuthActions.dislikeProfileImage(profileId, imageId)).then((res) => {
+        getUserProfile()
+      })
+    } else {
+      dispatch(AuthActions.likeProfileImage(profileId, imageId)).then((res) => {
+        getUserProfile()
+      })
+    }
   }
 
   return (
@@ -125,7 +143,7 @@ const Gallery = ({ gallery, owner, username, profileId }) => {
             fadeOutAnimation={true}
             mouseTrackingEnabled
             buttonsDisabled={true}
-            key={gallery}
+            key={owner ? gallery : ownerProfile}
           >
             {gallery.map((img, key) => (
               <CardItem
@@ -135,6 +153,7 @@ const Gallery = ({ gallery, owner, username, profileId }) => {
                 owner={owner}
                 deleteGalleryImage={deleteGalleryImage}
                 likeOrDislikeImage={likeOrDislikeImage}
+                ownerProfile={ownerProfile}
               />
             ))}
           </AliceCarousel>

@@ -69,6 +69,9 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
       )
 
       setUploading(false)
+      setPreviewImage(null)
+      setFile(null)
+      closeModal()
       dispatch({
         type: AUTH.USER_PROFILE,
         payload: res.data.profile,
