@@ -20,13 +20,14 @@ const responsive = {
 const CardItem = ({
   onDragStart,
   data,
+  url,
   deleteGalleryImage,
   likeOrDislikeImage,
   owner,
   ownerProfile,
 }) => (
   <div className="gallery-card" onDragStart={onDragStart}>
-    <img src={image4} style={{ width: "100%", borderRadius: 20 }} />
+    <img src={data.url} style={{ width: "100%", borderRadius: 20 }} />
 
     <div className="d-flex justify-content-between pt-1 pb-2 px-3 gallery-bar">
       <p className="mb-0">
@@ -70,7 +71,7 @@ const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
   const dispatch = useDispatch()
   const [toggleUpload, setToggleUpload] = useState(false)
   const ownerProfile = useSelector((state) => state.auth.profile)
-
+  console.log("Owner's Profile=================>", ownerProfile)
   const handleOnDragStart = (e) => e.preventDefault()
 
   const UploadButton = () => (

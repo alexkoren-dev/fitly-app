@@ -65,11 +65,13 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
         </CHeaderNav>
 
         <CHeaderNav className="px-3">
-          {auth.is_authed ? (
+          {auth && auth.is_authed ? (
             <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
               <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
                 <div className="c-avatar mr-2">
-                  {profile && profile.profileImage.url ? (
+                  {profile &&
+                  profile.profilprofile &&
+                  profile.profilprofile.profileImage.url ? (
                     <img
                       src={profile.profileImage.url}
                       width="40"

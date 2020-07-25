@@ -80,28 +80,28 @@ const CardItem = () => (
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="22"
-            height="16"
+            width="24"
+            height="20"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="22"
-            height="16"
+            width="24"
+            height="20"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="22"
-            height="16"
+            width="24"
+            height="20"
           />
           <CIcon
             name="cuThumbsUp"
             className="thumbsup-yellow"
-            width="22"
-            height="16"
+            width="24"
+            height="20"
           />
-          <CIcon name="cuThumbsUp" className="thumbsup" width="22" height="16" />
+          <CIcon name="cuThumbsUp" className="thumbsup" width="24" height="20" />
         </div>
         <p className="session mt-1">225K Sessions</p>
         <ul>
