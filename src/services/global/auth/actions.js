@@ -17,6 +17,7 @@ export const getCurrentUser = () => {
             type: AUTH.USER_INFO,
             payload: res.user,
           })
+          dispatch(getOwnerProfile())
           return res
         } else {
           throw new Error("Auth Failed")
@@ -41,6 +42,40 @@ export const createUserProfile = (profile) => {
           type: AUTH.USER_PROFILE,
           payload: res.profile,
         })
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+export const likeProfileImage = (profileId, imageId) => {
+  return (dispatch) => {
+    let data = {
+      method: "post",
+      url: `/profiles/like`,
+      data: { profileId: profileId, imageId: imageId },
+    }
+    return authApi(data)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+export const dislikeProfileImage = (profileId, imageId, userId) => {
+  return (dispatch) => {
+    let data = {
+      method: "post",
+      url: `/profiles/unlike`,
+      data: { profileId: profileId, imageId: imageId },
+    }
+    return authApi(data)
+      .then((res) => {
         return res
       })
       .catch((err) => {
@@ -94,10 +129,34 @@ export const getOwnerProfile = () => {
   }
 }
 
+export const removeProfileImage = (imageId) => {
+  return (dispatch) => {
+    let data = {
+      method: "get",
+      url: `/profiles/remove-gallery-item?imageId=${imageId}`,
+    }
+    return authApi(data)
+      .then((res) => {
+        if (!res.error) {
+          dispatch({
+            type: AUTH.REMOVE_GALLERY,
+            payload: imageId,
+          })
+          return res
+        } else {
+          throw new Error("Auth Failed")
+        }
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
 export const getUserProfile = (userId) => {
   let data = {
     method: "get",
-    url: `/profiles`,
+    url: `/profiles/view-profile?profileId=${userId}`,
   }
   return authApi(data)
     .then((res) => {

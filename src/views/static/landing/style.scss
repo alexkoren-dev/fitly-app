@@ -1,122 +1,171 @@
 .landing-page {
-    background-color: white;
-    .img-carousel {
-        height: 400px;
+  background-color: white;
+  overflow: hidden;
+  margin-top: -120px;
+  .img-carousel {
+    height: 100%;
+  }
+  .carousel-background {
+    max-height: 480px;
+    min-height: 300px;
+    height: 100%;
+    width: 100%;
+    background-size: 110% 110%;
+    background-position-y: 80%;
+    h1 {
+      font-size: 27px;
     }
-    .carousel-background {
-        height: 425px;
-        width: 100%;
-        background-size: 100% 100%;
-        h1 { font-size: 27px; }
-        p { font-size: 14px;}
+    p {
+      font-size: 14px;
     }
-    .card-carousel {
-        .carousel-control-prev {
-            width: 40px;
-            left: -40px;
-        }
-        .carousel-control-next {
-            width: 40px;
-            right: -40px;
-        }
-        .carousel-inner {
-            overflow: visible;
-        }
-    }
-    
-    .fit-card {
-        width: 404px;
-        border-radius: 20px;
-        border-color: #CFCFCF !important;
-        padding: 20px 15px 10px 15px;
-        .thumbsup-yellow {
-            path {
-                fill: #FED32C;
-                stroke: #FED32C;
-            }
-        }
-        .fit-type {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-        }
-        .fit-title { font-size: 10px;}
-        .c-avatar-img {
-            width: 93px !important;
-            height: 93px !important;
-        }
-        .user-name { 
-            font-size: 20px; 
-            font-weight: bold;
-        }
-        .book-button {
-            top: -15px;
-            left: 0;
-            margin: 0 auto;
-            width: 100%;
-            text-align: center;
-            button {
-              height: 30px;
-              font-size: 10px;
-              font-weight: bold;
-            }
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-            li {
-                .detail-list {
-                    min-height: 34px;
-                    margin: 2px;
-                    width: 100%;
-                    .icon {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: #F7F6F9;
-                        border-top-left-radius: 10px;
-                        border-bottom-left-radius: 10px;
-                        margin-right: 2px;
-                        width: 50px;
-                    }
-                    .content {
-                        display: flex;
-                        align-items: center;
-                        font-size: 15px;
-                        padding: 5px;
-                        width: 100%;
-                        background-color: #F7F6F9;
-                        border-top-right-radius: 10px;
-                        border-bottom-right-radius: 10px;
-                        min-height: 34px;
-                    }
-                }
-            }
-        }
-    }
+    img {
+      max-height: 480px;
+      min-height: 300px;
+      height: 100%;
 
+      @media (max-width: 400px) {
+        width: 250%;
+        margin-left: -100%;
+      }
+    }
+  }
+  .card-carousel {
+    .carousel-control-prev {
+      width: 40px;
+      left: -40px;
+    }
     .carousel-control-next {
       width: 40px;
       right: -40px;
     }
-
     .carousel-inner {
       overflow: visible;
     }
+  }
+
+  .alice-carousel__stage-item {
+    padding: 0 10px;
+  }
+
+  .fit-card {
+    width: 100%;
+    margin-top: 50px !important;
+    border-radius: 20px;
+    border-color: #cfcfcf !important;
+    padding: 20px 10px 10px 10px;
+    .thumbsup-yellow {
+      path {
+        fill: #fed32c;
+        stroke: #fed32c;
+        padding: 0px;
+      }
+    }
+    .fit-type {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+    .fit-title {
+      font-size: 10px;
+    }
+    .c-avatar-img {
+      width: 93px !important;
+      height: 93px !important;
+    }
+    .user-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .book-button {
+      top: -15px;
+      left: 0;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      button {
+        height: 30px;
+        font-size: 10px;
+        font-weight: bold;
+      }
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li {
+        .detail-list {
+          min-height: 34px;
+          margin: 2px;
+          width: 100%;
+          .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f6f9;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            margin-right: 2px;
+            width: 50px;
+          }
+          .content {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            padding: 5px;
+            width: 100%;
+            background-color: #f7f6f9;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            min-height: 34px;
+          }
+        }
+      }
+    }
+  }
+
+  .carousel-control-next {
+    width: 40px;
+    right: -40px;
+  }
+
+  .carousel-inner {
+    overflow: visible;
+  }
 
   .ex-card {
-      margin-top: 10%;
-      max-width: 850px;
-      padding: 50px !important;
-      p { font-size: 20px; }
+    width: 100%;
+    padding: 50px !important;
+    p {
+      font-size: 20px;
+    }
+    img {
+      width: 100%;
+      max-width: 305px;
+      margin-top: -35%;
+      border-radius: 30px;
+    }
+    button {
+      border-width: 2px;
+    }
+    button:hover {
+      background-color: transparent;
+    }
+    a {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 992px) {
       img {
-          width: 100%;
-          max-width: 305px;
-          margin-top: -35%;
-          border-radius: 30px;
+        margin-top: 0;
       }
-      button { border-width: 2px;}
-      button:hover { background-color: transparent; }
-      a { text-decoration: underline; }
+      * {
+        text-align: center !important;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    & {
+      margin-top: -40px;
+    }
   }
 }

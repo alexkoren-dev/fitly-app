@@ -9,7 +9,7 @@ const AvatarUploader = ({ avatar, editable }) => {
       {avatar && avatar.url ? (
         <img
           src={avatar.url}
-          style={{ maxWidth: 150, width: "100%", height: 150 }}
+          style={{ maxWidth: 150, width: "100%", height: 150, borderRadius: "50%" }}
         />
       ) : (
         <div className="avatar-placeholder d-flex align-items-center justify-content-center">

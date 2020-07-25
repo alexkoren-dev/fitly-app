@@ -18,6 +18,7 @@ import {
   CModalHeader,
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
+import { Input } from "antd"
 import { Formik } from "formik"
 
 import Loader from "components/loader"
@@ -120,13 +121,14 @@ const Login = (props) => {
               </CLink>
               <CFormGroup>
                 <CLabel className="text-bold text-white">Email</CLabel>
-                <CInput
+                <Input
                   type="text"
                   id="email"
                   name="email"
                   onChange={handleChange}
                   placeholder="Type your email address here"
                   value={values.email}
+                  style={{ height: 45 }}
                   className={
                     touched.email ? (errors.email ? "is-invalid" : "is-valid") : ""
                   }
@@ -137,13 +139,13 @@ const Login = (props) => {
               </CFormGroup>
               <CFormGroup>
                 <CLabel className="text-bold text-white">Password</CLabel>
-                <CInput
-                  type="password"
+                <Input.Password
+                  placeholder="Type your password here"
                   id="password"
                   name="password"
-                  placeholder="Type your password here"
                   onChange={handleChange}
                   value={values.password}
+                  style={{ height: 45 }}
                   className={
                     touched.password
                       ? errors.password
@@ -152,6 +154,7 @@ const Login = (props) => {
                       : ""
                   }
                 />
+
                 {errors.password && touched.password && (
                   <div className="invalid-feedback">{errors.password}</div>
                 )}

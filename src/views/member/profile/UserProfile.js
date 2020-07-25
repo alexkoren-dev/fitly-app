@@ -20,16 +20,20 @@ const Profile = (props) => {
   const userId = props.match.params.id
 
   const [toggleProfile, setToggleProfile] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [profile, setProfile] = useState(null)
 
   useEffect(() => {
     setLoading(true)
+    getUserProfile()
+  }, [])
+
+  const getUserProfile = () => {
     AuthActions.getUserProfile(userId).then((res) => {
       setProfile(res.profile)
       setLoading(false)
     })
-  }, [])
+  }
 
   if (loading)
     return (
@@ -47,7 +51,7 @@ const Profile = (props) => {
         <CCol xs="12">
           <div className="profile-bar bg-primary text-white p-4">
             <CRow>
-              <CCol lg={2}>
+              <CCol lg={3}>
                 <div className="text-center">
                   <div style={{ marginTop: -80 }}>
                     <AvatarUploader
@@ -56,17 +60,23 @@ const Profile = (props) => {
                     />
                   </div>
                   <div className="mt-2">
-                    <h4>
-                      <strong>Add Your Name</strong>
+                    <h4 className="text-white">
+                      <strong>
+                        {profile
+                          ? `${profile.firstName} ${profile.lastName}`
+                          : "Add Your Name"}
+                      </strong>
                     </h4>
                     <p className="d-flex align-items-center justify-content-center">
-                      <CIcon name="cu-location-pin" width="15" className="mr-1" />{" "}
-                      Add Your Location{" "}
+                      <CIcon name="cu-location-pin" width="15" className="mr-1" />
+                      {profile
+                        ? `${profile.city}, ${profile.state}`
+                        : "Add Your Location"}
                     </p>
                   </div>
                 </div>
               </CCol>
-              <CCol lg={8}>
+              <CCol lg={9}>
                 <div className="d-flex align-items-center">
                   <p className="d-flex align-items-center justify-content-center">
                     <CIcon
@@ -113,7 +123,14 @@ const Profile = (props) => {
         </CRow>
         <CRow className="mt-5">
           <CCol lg={12}>
-            <Gallery gallery={profile && profile.gallery} owner={false} />
+            <Gallery
+              gallery={profile && profile.gallery}
+              owner={false}
+              userId={userId}
+              profileId={profile && profile.id}
+              username={profile && profile.firstName}
+              getUserProfile={getUserProfile}
+            />
           </CCol>
         </CRow>
       </div>
@@ -122,3 +139,5 @@ const Profile = (props) => {
 }
 
 export default Profile
+
+// 5f168aee4b646c04b88ca963

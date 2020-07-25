@@ -1,5 +1,36 @@
 // Here you can add other styles
 
+@media (max-width: 400px){
+  h1 { font-size: 18px !important;}
+  h2 { font-size: 16px !important;}
+  h3 { font-size: 14px !important;}
+
+  p,a {font-size: 12px !important;}
+
+  button {
+    font-size: 13px !important;
+    height: 40px !important;
+    padding: 0 10px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: max-content !important;
+  }
+}
+
+.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, 0.6) !important;
+  z-index: 9999 !important;
+}
+
+.custom-alert {
+  border-radius: 20px;
+  min-width: 300px;
+}
+
+.is-invalid {
+  border: 1px solid #e55353 !important;
+}
+
 .bg-gradient {
   background: linear-gradient(#ffffff, #C8C8C8);
 }
@@ -197,7 +228,7 @@ button:hover {
 .static-header {
   background-color: transparent;
   border-bottom: none;
-  height: 85px;
+  min-height: 85px;
 
 
   .c-avatar {
@@ -265,8 +296,11 @@ button:hover {
     display: block;
     
     .menu {
-        min-width: 300px;
+        width: 100%;
+        max-width: 200px;
+        min-width: 30%;
         margin-bottom: 30px;
+        margin-right: 5%;
 
         .menu-title {
             font-size: 20px;
@@ -290,6 +324,19 @@ button:hover {
       a {
         color: white;
         font-size: 18px;
+      }
+    }
+
+    @media (max-width: 700px){
+      * {
+        text-align: center !important;
+      }
+    }
+
+    @media (max-width: 400px){
+      & {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
       }
     }
   }
