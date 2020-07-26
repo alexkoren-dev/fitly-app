@@ -1,126 +1,128 @@
 .profile-page {
-    .profile-bar {
-        border-radius: 20px;
-        margin-top: 50px;
+  .profile-bar {
+    border-radius: 20px;
+    margin-top: 50px;
 
-        p {margin-bottom: 0;}
-        .v-divider {
-            border-right: 1px solid white;
-            height: 50px;
-            // background-color: white;
-            margin: 0 30px;
-        }
+    p {
+      margin-bottom: 0;
+    }
+    .v-divider {
+      border-right: 1px solid white;
+      height: 50px;
+      // background-color: white;
+      margin: 0 30px;
+    }
+  }
+
+  .avatar-placeholder {
+    border-radius: 50%;
+    background: #b1b1b1;
+    width: 150px;
+    height: 150px;
+  }
+
+  .plus-icon {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #aab3fb;
+    font-size: 50px;
+    font-weight: 100;
+    cursor: pointer;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .plus-icon:hover {
+    background-color: #939de9;
+  }
+
+  .gallery-card {
+    width: 100%;
+    max-width: 300px;
+    .heart-icon path {
+      stroke: red;
     }
 
-    .avatar-placeholder {
-        border-radius: 50%;
-        background: #B1B1B1;
-        width: 150px;
-        height: 150px;
-    }
+    .gallery-bar {
+      margin-top: -33px;
+      background-color: rgba(255, 255, 255, 0.7);
+      position: relative;
 
-    .plus-icon {
-        border-radius: 50%;
-        width: 80px;
-        height: 80px;
-        background-color: #AAB3FB;
-        font-size: 50px;
-        font-weight: 100;
-        cursor: pointer;
-        margin: 20px auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      i {
+        transition: 0.3s;
+      }
     }
+  }
 
-    .plus-icon:hover {
-        background-color: #939de9;
-    }
+  .ant-upload-list-item-info {
+    display: none !important;
+  }
+  .ant-upload-list-item-error {
+    display: none !important;
+  }
 
-    .gallery-card {
-        width: 100%;
-        max-width: 300px;
-        .heart-icon path{
-            stroke: red;
-        }
+  .ant-progress-text {
+    color: white !important;
+  }
 
-        .gallery-bar {
-            margin-top: -33px;
-            background-color: rgba(255, 255, 255, 0.7);
-            position: relative;
-
-            i {
-                transition: 0.3s;
-            }
-        }
+  .session-table {
+    th {
+      font-weight: 600;
+      color: #707070;
     }
-
-    .ant-upload-list-item-info {
-        display: none !important;
+    td {
+      font-size: 12px;
     }
-    .ant-upload-list-item-error {
-        display: none !important;
+    tbody tr {
+      transition: 0.3s;
     }
-
-    .ant-progress-text {
-        color: white !important;
+    tbody tr:hover {
+      box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.2);
     }
-
-    .session-table {
-        th {
-            font-weight: 600;
-            color: #707070;
-        }
-        td {
-            font-size: 12px;
-        }
-        tbody tr {
-            transition: 0.3s;
-        }
-        tbody tr:hover {
-            box-shadow: 0 0 10px 6px rgba(0,0,0,0.2);
-        }
+  }
+  .action-buttons {
+    button {
+      font-size: 13px;
+      width: 100px;
     }
-    .action-buttons {
-        button {
-            font-size: 13px;
-            width: 100px;
-        }
-    }
+  }
 }
 
 .profile-form {
-    .MuiTypography-body1,
-    label {
-        font-family: 'CenturyGothic' !important;
-        font-size: 14px;
-    }
+  .MuiTypography-body1,
+  label {
+    font-family: "CenturyGothic" !important;
+    font-size: 14px;
+  }
 
-    .custom-control-inline {
-        margin-right: 0;
-    }
+  .custom-control-inline {
+    margin-right: 0;
+  }
 }
 
 .alice-carousel__stage-item {
-    padding: 0 5px;
+  padding: 0 5px;
 }
 
 .gallery-upload,
 .gallery-upload:hover {
-    background: transparent !important;
-    border-radius: 20px !important;
-    max-width: 300px;
-    height: 300px !important;
-    border: 0.1rem dashed white !important;
-    width: 300px;
-    margin: 0 auto;
-    overflow: hidden;
+  background: transparent !important;
+  border-radius: 20px !important;
+  max-width: 300px;
+  height: 300px !important;
+  border: 0.1rem dashed white !important;
+  width: 300px;
+  margin: 0 auto;
+  overflow: hidden;
 
-    span.ant-upload {
-        padding: 0 !important;
-    }
+  span.ant-upload {
+    padding: 0 !important;
+  }
 }
 
 .gallery-upload.error {
-    border-color: red !important;
+  border-color: red !important;
 }

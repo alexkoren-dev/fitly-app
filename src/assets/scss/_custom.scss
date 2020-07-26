@@ -1,11 +1,20 @@
 // Here you can add other styles
 
-@media (max-width: 400px){
-  h1 { font-size: 18px !important;}
-  h2 { font-size: 16px !important;}
-  h3 { font-size: 14px !important;}
+@media (max-width: 400px) {
+  h1 {
+    font-size: 18px !important;
+  }
+  h2 {
+    font-size: 16px !important;
+  }
+  h3 {
+    font-size: 14px !important;
+  }
 
-  p,a {font-size: 12px !important;}
+  p,
+  a {
+    font-size: 12px !important;
+  }
 
   button {
     font-size: 13px !important;
@@ -32,7 +41,7 @@
 }
 
 .bg-gradient {
-  background: linear-gradient(#ffffff, #C8C8C8);
+  background: linear-gradient(#ffffff, #c8c8c8);
 }
 
 .border-bottom {
@@ -71,7 +80,7 @@ button:hover {
 }
 
 .bg-blue-custom {
-    background-color: $bg-blue;
+  background-color: $bg-blue;
 }
 
 .bg-dark-grey {
@@ -87,7 +96,7 @@ button:hover {
 }
 
 .text-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .form-control.is-valid {
@@ -109,12 +118,12 @@ button:hover {
   button {
     color: white;
     font-size: 25px;
-  };
+  }
 }
 
 .ant-popover-inner {
   border-radius: 15px !important;
-  box-shadow: 0 0 10px 5px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2) !important;
 
   button {
     font-size: 12px;
@@ -129,11 +138,11 @@ button:hover {
 }
 
 .status-badge.Upcoming {
-  background-color: #FFD565;
+  background-color: #ffd565;
 }
 
 .status-badge.Completed {
-  background-color: #E6E6E6;
+  background-color: #e6e6e6;
 }
 
 .card {
@@ -156,7 +165,7 @@ button:hover {
     color: $secondary;
   }
 
-  .react-calendar__month-view{
+  .react-calendar__month-view {
     .react-calendar__tile {
       padding: 0.4rem 0.3rem;
       max-width: 10.4% !important;
@@ -167,7 +176,7 @@ button:hover {
 
     .react-calendar__tile--hasActive,
     .react-calendar__tile--hasActive:hover {
-      background: #FFD565 !important;
+      background: #ffd565 !important;
       border-radius: 5px;
       color: $secondary;
       font-weight: bold;
@@ -190,7 +199,7 @@ button:hover {
   position: relative;
 
   li {
-    background-color: #CFCFCF;
+    background-color: #cfcfcf;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -198,10 +207,9 @@ button:hover {
   }
 
   li.active {
-    background-color: #234BD5;
+    background-color: #234bd5;
   }
 }
-
 
 .cu-avatar-upload {
   position: relative;
@@ -218,9 +226,7 @@ button:hover {
   }
 }
 
-
 .m-select {
-
 }
 
 // Static Layout Header
@@ -230,11 +236,10 @@ button:hover {
   border-bottom: none;
   min-height: 85px;
 
-
   .c-avatar {
     min-width: 40px;
     height: 40px;
-    background: #B1B1B1;
+    background: #b1b1b1;
   }
 
   button {
@@ -250,14 +255,14 @@ button:hover {
   }
 
   .search-input {
-    width: 525px;
+    width: 420px;
     border-radius: 50px;
     // border: 2px solid red;
 
     input {
-      height: 40px;
-      border-top-left-radius: 23px;
-      border-bottom-left-radius: 23px;
+      height: 35px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
       padding-left: 30px;
       font-size: 14px;
       background-color: transparent;
@@ -265,10 +270,10 @@ button:hover {
       border-right: none;
     }
 
-    .input-group-append>div {
-      height: 40px;
-      border-top-right-radius: 23px;
-      border-bottom-right-radius: 23px;
+    .input-group-append > div {
+      height: 35px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
       padding-right: 25px;
       padding-left: 20px;
       border: 1px solid #707070;
@@ -290,33 +295,22 @@ button:hover {
 // Static Layout Footer
 
 .static-footer {
-    background-color: $secondary-dark !important;
-    height: 100%;
-    color: white;
-    display: block;
-    
-    .menu {
-        width: 100%;
-        max-width: 200px;
-        min-width: 30%;
-        margin-bottom: 30px;
-        margin-right: 5%;
+  background-color: $secondary-dark !important;
+  height: 100%;
+  color: white;
+  display: block;
 
-        .menu-title {
-            font-size: 20px;
-            font-weight: 600;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
+  .menu {
+    width: 100%;
+    max-width: 200px;
+    min-width: 30%;
+    margin-bottom: 30px;
+    margin-right: 5%;
 
-            a {
-                color: white;
-                font-size: 18px;
-            }
-        }
+    .menu-title {
+      font-size: 20px;
+      font-weight: 600;
     }
-
     ul {
       list-style: none;
       padding-left: 0;
@@ -326,17 +320,28 @@ button:hover {
         font-size: 18px;
       }
     }
+  }
 
-    @media (max-width: 700px){
-      * {
-        text-align: center !important;
-      }
-    }
+  ul {
+    list-style: none;
+    padding-left: 0;
 
-    @media (max-width: 400px){
-      & {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-      }
+    a {
+      color: white;
+      font-size: 18px;
     }
   }
+
+  @media (max-width: 700px) {
+    * {
+      text-align: center !important;
+    }
+  }
+
+  @media (max-width: 400px) {
+    & {
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+  }
+}
