@@ -1,92 +1,91 @@
 import React from "react"
-import { CFooter, CLink } from "@coreui/react"
+import { CFooter, CLink, CRow, CCol } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
+
 import logoWhite from "assets/img/logo-white.svg"
+import facebookIcon from "assets/img/facebook.png"
+import instagramIcon from "assets/img/insta2.png"
+import twitterIcon from "assets/img/TWITTER.png"
+import linkedinIcon from "assets/img/linkedin.png"
+import youtubeIcon from "assets/img/youtube.png"
 
 const TheFooter = () => {
   return (
     <CFooter fixed={false} className="static-footer py-5 px-5">
-      <div className="d-flex flex-wrap justify-content-between">
-        <div className="d-flex justify-content-start" style={{ flex: 1 }}>
-          <div className="menu">
-            <p className="menu-title">Link Header</p>
-            <ul>
+      <CRow>
+        <CCol lg={4} md={12}>
+          <CRow className="pl-4">
+            <CCol xs={6}>
+              <div className="menu">
+                <p className="menu-title">COMPANY</p>
+                <ul>
+                  <li>
+                    <CLink>About us</CLink>
+                  </li>
+                  <li>
+                    <CLink>FAQ</CLink>
+                  </li>
+                  <li>
+                    <CLink>Privacy Policy</CLink>
+                  </li>
+                </ul>
+              </div>
+            </CCol>
+            <CCol xs={6}>
+              <div className="menu">
+                <p className="menu-title">PRODUCTS</p>
+                <ul>
+                  <li>
+                    <CLink>Fitness Trainers </CLink>
+                  </li>
+                  <li>
+                    <CLink>Workout Enthusiasts </CLink>
+                  </li>
+                  <li>
+                    <CLink>How it works</CLink>
+                  </li>
+                </ul>
+              </div>
+            </CCol>
+          </CRow>
+        </CCol>
+        <CCol lg={6} md={5}></CCol>
+        <CCol lg={2} md={12}>
+          <div className="text-center mx-auto">
+            <CLink href="/">
+              <img src={logoWhite} width="150" height="89" />
+            </CLink>
+            <p className="">Company Tagline Comes Here </p>
+            <ul className="mt-4 d-flex justify-content-center c-header-nav">
               <li>
-                <CLink>Link 1</CLink>
+                <CLink>
+                  <img src={facebookIcon} width="33" height="31" />
+                </CLink>
               </li>
               <li>
-                <CLink>Link 2</CLink>
+                <CLink>
+                  <img src={instagramIcon} width="33" height="31" />
+                </CLink>
               </li>
               <li>
-                <CLink>Link 3</CLink>
+                <CLink>
+                  <img src={linkedinIcon} width="33" height="31" />
+                </CLink>
+              </li>
+              <li>
+                <CLink>
+                  <img src={twitterIcon} width="33" height="31" />
+                </CLink>
+              </li>
+              <li>
+                <CLink>
+                  <img src={youtubeIcon} width="33" height="31" />
+                </CLink>
               </li>
             </ul>
           </div>
-          <div className="menu">
-            <p className="menu-title">Link Header</p>
-            <ul>
-              <li>
-                <CLink>Link 1</CLink>
-              </li>
-              <li>
-                <CLink>Link 2</CLink>
-              </li>
-              <li>
-                <CLink>Link 3</CLink>
-              </li>
-            </ul>
-          </div>
-          <div className="menu">
-            <p className="menu-title">Link Header</p>
-            <ul>
-              <li>
-                <CLink>Link 1</CLink>
-              </li>
-              <li>
-                <CLink>Link 2</CLink>
-              </li>
-              <li>
-                <CLink>Link 3</CLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="text-center mx-auto">
-          <CLink href="/">
-            <img src={logoWhite} width="150" height="89" />
-          </CLink>
-          <p className="">Company Tagline Comes Here </p>
-          <ul className="mt-4 d-flex justify-content-center c-header-nav">
-            <li>
-              <CLink>
-                <CIcon name="cuFacebook" width="55" height="55" />
-              </CLink>
-            </li>
-            <li>
-              <CLink>
-                <CIcon name="cuYoutube" width="55" height="55" />
-              </CLink>
-            </li>
-            <li>
-              <CLink>
-                <CIcon name="cuLoom" width="55" height="55" />
-              </CLink>
-            </li>
-            <li>
-              <CLink>
-                <CIcon name="cuTwitter" width="55" height="55" />
-              </CLink>
-            </li>
-            <li>
-              <CLink>
-                <CIcon name="cuLinkdln" width="55" height="55" />
-              </CLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+        </CCol>
+      </CRow>
       <p className="mb-0">© 2020 Fitnezz Co. LLC . All rights reserved.</p>
     </CFooter>
   )

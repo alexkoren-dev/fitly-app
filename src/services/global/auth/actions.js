@@ -207,6 +207,20 @@ export const register = (obj, type) => {
   }
 }
 
+export const getAllWorkOuts = () => {
+  let data = {
+    method: "get",
+    url: `/workouts`,
+  }
+  return authApi(data)
+    .then((res) => {
+      return res
+    })
+    .catch((err) => {
+      throw err
+    })
+}
+
 export const logOut = () => {
   window.localStorage.removeItem("accessToken")
   window.localStorage.removeItem("remember")

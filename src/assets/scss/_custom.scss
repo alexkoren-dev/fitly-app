@@ -295,17 +295,16 @@ button:hover {
 // Static Layout Footer
 
 .static-footer {
-  background-color: $secondary-dark !important;
+  background-color: #3E4BB2 !important;
   height: 100%;
   color: white;
   display: block;
 
   .menu {
     width: 100%;
-    max-width: 200px;
-    min-width: 30%;
     margin-bottom: 30px;
     margin-right: 5%;
+    min-width: 150px;
 
     .menu-title {
       font-size: 20px;
@@ -318,6 +317,7 @@ button:hover {
       a {
         color: white;
         font-size: 18px;
+        white-space: nowrap;
       }
     }
   }
@@ -336,12 +336,15 @@ button:hover {
     * {
       text-align: center !important;
     }
+    .menu, .menu-title, ul, li, a {
+      text-align: left !important;
+    }
   }
 
   @media (max-width: 400px) {
     & {
-      padding-left: 10px !important;
-      padding-right: 10px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
     }
   }
 }

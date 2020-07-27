@@ -2,6 +2,86 @@
   background-color: white;
   overflow: hidden;
   margin-top: -120px;
+
+  .section-3 {
+    height: 100%;
+    min-height: 400px;
+    background-image: url('../../../assets/img/spotlight.png');
+    background-size: cover;
+
+    @media (max-width: 1024px) {
+        & {
+            background-size: 150% 100%;
+            background-position-x: -180px;
+            min-height: 350px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        & {
+            background-size: 270% 100%;
+            background-position-x: -250px;
+            min-height: 300px;
+        }
+    }
+  }
+
+  .section-4 {
+    img {
+        max-height: 350px;
+        width: 100%;
+        margin: 0 auto;
+    }
+  }
+
+  .section-6 {
+    .instagram-item {
+        width: 19%;
+        min-width: 10%;
+        // margin: 0 auto !important;
+        padding: 10px;
+
+        @media (max-width: 1024px) {
+            & {
+                width: 30%;
+            }
+        }
+        @media (max-width: 768px) {
+            & {
+                width: 45%;
+            }
+        }
+        @media (max-width: 500px) {
+            & {
+                // margin: 0 auto !important;
+                width: 100%;
+            }
+        }
+    }
+  }
+
+  .section-5 {
+    height: 100%;
+    min-height: 400px;
+    background-image: url('../../../assets/img/spotlight2.png');
+    background-size: 100% 100%;
+    @media (max-width: 1024px) {
+        & {
+            background-size: 170% 100%;
+            background-position-x: -220px;
+            min-height: 300px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        & {
+            background-size: 270% 100%;
+            background-position-x: -400px;
+            min-height: 300px;
+        }
+    }
+  }
+
   .img-carousel {
     height: 100%;
   }

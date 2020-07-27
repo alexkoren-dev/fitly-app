@@ -18,6 +18,7 @@ import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./style.scss"
 
+import UpcomingSession from "./upcomingSession"
 import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
 import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
@@ -25,11 +26,14 @@ import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
 import UserAvatar from "assets/img/user-avatar.png"
 import UserCard from "assets/img/LEVEL-3-USER-CARD.svg"
 import PersonalTrainer from "assets/img/PERSONAL-TRAINER.svg"
-
-const responsive = {
-  0: { items: 1 },
-  1024: { items: 4 },
-}
+import fitType1 from "assets/img/findyourguru1.jpg"
+import fitType2 from "assets/img/findyourguru2.jpg"
+import fitType3 from "assets/img/findyourguru3.jpg"
+import fitType4 from "assets/img/findyourguru4.jpg"
+import yoga from "assets/img/yoga.svg"
+import cardio from "assets/img/cardio.svg"
+import weight from "assets/img/weight.svg"
+import instgramFeedback from "assets/img/instgram.png"
 
 const CarouselBackgrounds = [
   CarouselBackground1,
@@ -63,93 +67,7 @@ const CarouselItem = ({ index }) => (
   </div>
 )
 
-const CardItem = () => (
-  <CCard className="fit-card">
-    <CCardBody>
-      <div className="fit-type text-center">
-        <CIcon name="cuDance" width={30} height={40} />
-        <p className="fit-title text-grey">Dance</p>
-      </div>
-      <div className="position-absolute book-button">
-        <CButton color="danger px-4 btn-pill">FULLY BOOKED</CButton>
-      </div>
-      <div className="text-center card-content">
-        <img src={UserAvatar} className="c-avatar-img" width="93" height="93" />
-        <p className="user-name mb-1">Joshua Wilson</p>
-        <div className="d-flex justify-content-center">
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon name="cuThumbsUp" className="thumbsup" width="24" height="20" />
-        </div>
-        <p className="session mt-1">225K Sessions</p>
-        <ul>
-          <li>
-            <div className="d-flex detail-list">
-              <div className="icon">
-                <CIcon name="cuUserOutline" width="23" height="23" />
-              </div>
-              <p className="content mb-0">10 Participants </p>
-            </div>
-          </li>
-          <li>
-            <div className="d-flex detail-list">
-              <div className="icon">
-                <CIcon name="cuClock" width="23" height="23" />
-              </div>
-              <p className="content mb-0">MoN June 6 | 4PM - 5PM CST </p>
-            </div>
-          </li>
-          <li>
-            <div className="d-flex detail-list">
-              <div className="icon">
-                <CIcon name="cuMoney" width="23" height="23" />
-              </div>
-              <p className="content mb-0">$20 / Hr </p>
-            </div>
-          </li>
-          <li>
-            <div className="d-flex detail-list">
-              <div className="icon">
-                <CIcon name="cuRegister" width="23" height="23" />
-              </div>
-              <p className="content mb-0">2 LB weights </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div className="d-flex flex-wrap justify-content-center mt-4">
-        <CButton className="button-bg-light btn-pill m-1 px-4">COUNT ME IN</CButton>
-        <CButton className="button-bg-dark btn-pill m-1 px-4">LEARN MORE</CButton>
-      </div>
-    </CCardBody>
-  </CCard>
-)
-
 const Landing = () => {
-  const handleOnDragStart = (e) => e.preventDefault()
-
   return (
     <div className="landing-page pb-5">
       <section className="w-100">
@@ -172,88 +90,150 @@ const Landing = () => {
         <h2 className="text-dark">
           <strong>UPCOMING SESSIONS</strong>
         </h2>
-        <AliceCarousel
-          responsive={responsive}
-          fadeOutAnimation={true}
-          startIndex={0}
-          autoPlay={true}
-          autoPlayInterval={3000}
-          mouseTrackingEnabled
-          buttonsDisabled={true}
-        >
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-          <CardItem onDragStart={handleOnDragStart} />
-        </AliceCarousel>
+        <UpcomingSession />
       </section>
 
-      <section className="py-4 mx-auto" style={{ marginTop: "8%", maxWidth: 1350 }}>
-        <div className="d-flex justify-content-between flex-wrap">
+      <section className="p-4 mx-auto">
+        <div>
+          <h2 className="text-dark text-center">
+            <strong>FIND YOUR FITNEZZ GURU </strong>
+          </h2>
+          <p className="text-dark text-center">
+            This isn’t just a app. It’s a cardio class,, it’s a yoga class, it’s a
+            boxing ring. It’s your
+            <br />
+            New personal group trainer, and it’s so much more.{" "}
+          </p>
           <CRow>
-            <CCol lg={6}>
-              <div className="bg-dark-grey px-5 py-4 w-100 ex-card text-center">
-                <img src={PersonalTrainer} />
-                <div className="text-left mt-4">
-                  <h1 className="text-white text-bold mt-2 mb-5">
-                    LOREUM IPSUM LOREM IPSUM
-                  </h1>
-                  <p className="text-white">
-                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum
-                    Loram Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
-                  </p>
-                  <CLink href="/signup">
-                    <CButton
-                      color="secondary"
-                      variant="outline"
-                      size="lg"
-                      className="btn-pill px-5 mt-3 text-white border-white text-bold"
-                    >
-                      SIGN UP
-                    </CButton>
-                  </CLink>
-                  <p className="mt-3 text-white">
-                    <CLink className="text-white">
-                      Learn more about Lorem Ipsum
-                    </CLink>
-                  </p>
-                </div>
-              </div>
+            <CCol md={3} xs={6}>
+              <img src={fitType1} width="100%" className="mb-4" />
             </CCol>
-            <CCol lg={6}>
-              <div className="bg-blue-custom px-5 py-4 w-100 ex-card text-center">
-                <img src={UserCard} />
-                <div className="text-left mt-4">
-                  <h1 className="text-white text-bold mt-2 mb-5">
-                    LOREUM IPSUM LOREM IPSUM
-                  </h1>
-                  <p className="text-white">
-                    Lorem Ipsum Lorum Ipsum Lorum Ipsum, Loram Ipsum, Loram Ipsum
-                    Loram Ipsum Loram Ipsum, Lorem Ipsum, Lorem Ipsum, Lorem Ipsum.
-                  </p>
-                  <CLink href="/signup">
-                    <CButton
-                      color="primary"
-                      variant="outline"
-                      size="lg"
-                      className="btn-pill px-5 mt-3 text-white border-white text-bold"
-                    >
-                      SIGN UP
-                    </CButton>
-                  </CLink>
-                  <p className="mt-3 text-white">
-                    <CLink className="text-white">
-                      Learn more about Lorem Ipsum
-                    </CLink>
-                  </p>
-                </div>
-              </div>
+            <CCol md={3} xs={6}>
+              <img src={fitType2} width="100%" className="mb-4" />
+            </CCol>
+            <CCol md={3} xs={6}>
+              <img src={fitType3} width="100%" className="mb-4" />
+            </CCol>
+            <CCol md={3} xs={6}>
+              <img src={fitType4} width="100%" className="mb-4" />
             </CCol>
           </CRow>
+        </div>
+      </section>
+
+      <section className="py-5 mx-auto section-3 d-flex align-items-center justify-content-end">
+        <div className="d-flex align-items-center justify-content-end">
+          <div className="col-lg-8 col-md-7 col-sm-9 col-9">
+            <div className="col-lg-5 d-flex justify-content-center align-items-center flex-column mx-auto">
+              <h2 className="text-white text-center">
+                <strong>GURU IN SPOTLIGHT</strong>
+              </h2>
+              <p className="text-white text-center">
+                If you are a personal trainer and would like to host group or
+                individual live workout session, you could sign up as a fitnezzguru -
+                It’s completely. Host workout sessions and change lives today! It's
+                free!!
+              </p>
+              <CButton color="secondary">HOW IT WORKS</CButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-5 pb-5 mx-auto section-4" style={{ maxWidth: 1300 }}>
+        <div className="mt-2">
+          <h2 className="text-dark text-center">
+            <strong>EVERY KIND OF WORKOUT </strong>
+          </h2>
+          <p className="text-dark text-center">
+            From cardio and strength to yoga and flexibility, find a perfect workout
+            live class. Blah blah blah blah blah blha…
+          </p>
+          <CRow>
+            <CCol md={4} xs={4} className="text-center">
+              <img src={yoga} className="mb-4" />
+              <h5 className="text-dark text-center text-bold">YOGA & FLEXIBILITY</h5>
+            </CCol>
+            <CCol md={4} xs={4} className="text-center">
+              <img src={cardio} className="mb-4" />
+              <h5 className="text-dark text-center text-bold">CARDIO & AEROBICS</h5>
+            </CCol>
+            <CCol md={4} xs={4} className="text-center">
+              <img src={weight} className="mb-4" />
+              <h5 className="text-dark text-center text-bold">
+                WEIGHT & STRENGTH TRAINING
+              </h5>
+            </CCol>
+          </CRow>
+        </div>
+      </section>
+
+      <section className="py-5 mx-auto section-5 d-flex align-items-center justify-content-start">
+        <div className="d-flex align-items-center justify-content-start">
+          <div className="col-lg-6 col-sm-7 col-9">
+            <div className="col-lg-7 col-sm-10 col-12 d-flex justify-content-center align-items-center flex-column mx-auto">
+              <h2 className="text-dark text-center">
+                <strong>BECOME A FITNEZZ GURU</strong>
+              </h2>
+              <p className="text-dark text-center">
+                If you are a personal trainer and would like to host group or
+                individual live workout session, you could sign up as a fitnezzguru -
+                It’s completely. Host workout sessions and change lives today! It's
+                free!!
+              </p>
+              <CButton color="primary">HOW IT WORKS</CButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-5 pl-5 pr-5 mx-auto section-6">
+        <div className="mt-2">
+          <h2 className="text-dark text-center">
+            <strong>INSTRAGRAM FEEDBLOCK</strong>
+          </h2>
+          <p className="text-dark text-center">
+            follow us on Instagram !!!!!!!!!!!!
+          </p>
+          <div className="d-flex mx-auto justify-content-start flex-wrap">
+            <div className="m-1 instagram-item">
+              <img src={instgramFeedback} width="100%" className="mb-2" />
+              <p className="text-dark text-bold">
+                Instagram post content Instagram post content Insta post content
+                Instagram post content Instagram post content
+              </p>
+            </div>
+            <div className="m-1 instagram-item">
+              <img src={instgramFeedback} width="100%" className="mb-2" />
+              <p className="text-dark text-bold">
+                Instagram post content Instagram post content Insta post content
+                Instagram post content Instagram post content
+              </p>
+            </div>
+            <div className="m-1 instagram-item">
+              <img src={instgramFeedback} width="100%" className="mb-2" />
+              <p className="text-dark text-bold">
+                Instagram post content Instagram post content Insta post content
+                Instagram post content Instagram post content
+              </p>
+            </div>
+
+            <div className="m-1 instagram-item">
+              <img src={instgramFeedback} width="100%" className="mb-2" />
+              <p className="text-dark text-bold">
+                Instagram post content Instagram post content Insta post content
+                Instagram post content Instagram post content
+              </p>
+            </div>
+
+            <div className="m-1 instagram-item">
+              <img src={instgramFeedback} width="100%" className="mb-2" />
+              <p className="text-dark text-bold">
+                Instagram post content Instagram post content Insta post content
+                Instagram post content Instagram post content
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
