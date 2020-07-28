@@ -212,7 +212,7 @@ export const getAllWorkOuts = () => {
     method: "get",
     url: `/workouts`,
   }
-  return authApi(data)
+  return api(data)
     .then((res) => {
       return res
     })

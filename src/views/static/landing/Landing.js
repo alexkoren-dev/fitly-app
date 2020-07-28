@@ -30,9 +30,9 @@ import fitType1 from "assets/img/findyourguru1.jpg"
 import fitType2 from "assets/img/findyourguru2.jpg"
 import fitType3 from "assets/img/findyourguru3.jpg"
 import fitType4 from "assets/img/findyourguru4.jpg"
-import yoga from "assets/img/yoga.svg"
-import cardio from "assets/img/cardio.svg"
-import weight from "assets/img/weight.svg"
+import yoga from "assets/img/yoga.jpg"
+import cardio from "assets/img/aerobic.jpg"
+import weight from "assets/img/weight.jpg"
 import instgramFeedback from "assets/img/instgram.png"
 
 const CarouselBackgrounds = [
