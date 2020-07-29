@@ -26,17 +26,17 @@ class App extends Component {
             <Route
               path="/auth"
               name="Static"
-              render={(props) => <AuthLayout {...props} />}
+              component={AuthLayout}
             />
             <Route
               path="/user"
               name="main"
-              render={(props) => <MainLayout {...props} />}
+              component={MainLayout}
             />
             <Route
               path="/"
               name="Static"
-              render={(props) => <StaticLayout {...props} />}
+              component={StaticLayout}
             />
           </Switch>
         </React.Suspense>
