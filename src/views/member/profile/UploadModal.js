@@ -50,7 +50,6 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
         authorization: `Token ${window.localStorage.getItem("accessToken")}`,
       },
       onUploadProgress: (event) => {
-        console.log(event)
         const percent = Math.floor((event.loaded / event.total) * 100)
         setProgress(percent)
         if (percent === 100) {
@@ -84,20 +83,9 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
 
   const props = {
     name: "file",
-    action: `${config.API_ROOT_URL}/profiles`,
-    headers: {
-      authorization: `Token ${window.localStorage.getItem("accessToken")}`,
-    },
     multiple: false,
-    progress: {
-      strokeColor: "rgba(255, 255, 255, 0.5)",
-      trailColor: "rgba(255, 255, 255, 0.5)",
-      strokeWidth: 25,
-      format: (percent) => `${parseFloat(percent.toFixed(0))}%`,
-    },
     beforeUpload: async (file) => {
       setFile(file)
-      console.log(file)
       const realfile = await getBase64(file)
       setPreviewImage(realfile)
       return false
@@ -153,7 +141,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
             color="primary"
             type="submit"
             className="px-4 btn-pill button-bg-dark text-bold mt-3 d-flex align-items-center justify-content-center box-shadow"
-            disabled={loading}
+            disabled={loading || !file}
             style={{ width: 130, height: 40 }}
             onClick={() => handleUpload()}
           >
