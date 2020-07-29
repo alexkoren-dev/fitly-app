@@ -138,8 +138,6 @@ const UpcomingSession = () => {
     dispatch(AuthActions.openLoginModal())
   }
 
-  console.log(auth.is_authed)
-
   const handleOnDragStart = (e) => e.preventDefault()
 
   useEffect(() => {
@@ -173,6 +171,7 @@ const UpcomingSession = () => {
       autoPlayInterval={3000}
       mouseTrackingEnabled
       buttonsDisabled={true}
+      key={auth.is_authed}
     >
       {workouts.map((wo, key) => (
         <CardItem key={key} 
