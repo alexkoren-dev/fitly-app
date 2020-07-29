@@ -14,6 +14,7 @@
       "url": "https://github.com/orgs/coreui/people"
     }
   ],
+  "homepage": ".",
   "copyright": "Copyright 2017-2020 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "private": true,
@@ -67,7 +68,7 @@
     "react-scripts": "^3.4.1"
   },
   "scripts": {
-    "start": "node server",
+    "start": "node src/server.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
