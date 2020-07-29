@@ -12,8 +12,7 @@ import UploadModal from "./UploadModal"
 import image4 from "assets/img/Image4.png"
 
 const responsive = {
-  0: { items: 2 },
-  768: { items: 3 },
+  0: { items: 1 },
   1024: { items: 4 },
 }
 
