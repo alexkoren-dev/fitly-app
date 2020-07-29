@@ -71,7 +71,7 @@ const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
   const dispatch = useDispatch()
   const [toggleUpload, setToggleUpload] = useState(false)
   const ownerProfile = useSelector((state) => state.auth.profile)
-  console.log("Owner's Profile=================>", ownerProfile)
+
   const handleOnDragStart = (e) => e.preventDefault()
 
   const UploadButton = () => (

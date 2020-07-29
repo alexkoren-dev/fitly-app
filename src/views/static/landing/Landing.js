@@ -1,4 +1,5 @@
 import React, { lazy } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import {
   CButton,
   CCarousel,
@@ -13,11 +14,12 @@ import {
   CCard,
   CRow,
 } from "@coreui/react"
+
 import CIcon from "@coreui/icons-react"
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import "./style.scss"
-
+import { AuthActions } from "services/global"
 import UpcomingSession from "./upcomingSession"
 import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
@@ -68,6 +70,14 @@ const CarouselItem = ({ index }) => (
 )
 
 const Landing = () => {
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+
+  // Callbacks
+  const openModal = () => {
+    dispatch(AuthActions.openLoginModal())
+  }
+
   return (
     <div className="landing-page pb-5">
       <section className="w-100">
@@ -90,7 +100,7 @@ const Landing = () => {
         <h2 className="text-dark">
           <strong>UPCOMING SESSIONS</strong>
         </h2>
-        <UpcomingSession />
+        <UpcomingSession openModal={openModal} isAuthed={auth.is_authed}/>
       </section>
 
       <section className="p-4 mx-auto">

@@ -42,6 +42,10 @@
   .gallery-card {
     width: 100%;
     max-width: 300px;
+    img {
+      object-fit: cover;
+      height: 300px;
+    }
     .heart-icon path {
       stroke: red;
     }

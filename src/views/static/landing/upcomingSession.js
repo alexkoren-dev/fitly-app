@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { AuthActions } from "services/global"
 import moment from "moment"
 import AliceCarousel from "react-alice-carousel"
@@ -13,6 +14,23 @@ const responsive = {
   1024: { items: 4 },
 }
 
+const generateRating = (rate) => {
+  let items = []
+
+  for(var i=0; i < Math.round(rate); i++)
+    items.push(<CIcon
+      name="cuThumbsUp"
+      className="thumbsup-yellow"
+      width="24"
+      height="20"
+    />)
+
+  for(var i=0; i<5-Math.round(rate);i++)
+    items.push(<CIcon key={i} name="cuThumbsUp" className="thumbsup" width="24" height="20" />)
+
+  return items
+}
+
 const CardItem = ({
   registeredUsers,
   duration,
@@ -22,6 +40,9 @@ const CardItem = ({
   perUserCharge,
   type,
   timezone,
+  trainerDetails,
+  is_authed,
+  openModal
 }) => (
   <CCard className="fit-card">
     <CCardBody>
@@ -37,36 +58,15 @@ const CardItem = ({
         </div>
       )}
       <div className="text-center card-content">
-        <img src={UserAvatar} className="c-avatar-img" width="93" height="93" />
-        <p className="user-name mb-1">Joshua Wilson</p>
+        <img src={trainerDetails.profileImage?trainerDetails.profileImage.url:'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png'} className="c-avatar-img" width="93" height="93" />
+        <p className="user-name mb-1">{ `${trainerDetails.firstName} ${trainerDetails.lastName}`}</p>
         <div className="d-flex justify-content-center">
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon
-            name="cuThumbsUp"
-            className="thumbsup-yellow"
-            width="24"
-            height="20"
-          />
-          <CIcon name="cuThumbsUp" className="thumbsup" width="24" height="20" />
+          {
+            generateRating(trainerDetails.overAllRating)
+          }
+         
         </div>
-        <p className="session mt-1">225K Sessions</p>
+        <p className="session mt-1">{trainerDetails.totalSessionCompleted} Sessions</p>
         <ul>
           <li>
             <div className="d-flex detail-list">
@@ -111,7 +111,14 @@ const CardItem = ({
       </div>
       <div className="d-flex flex-wrap justify-content-center mt-4">
         <CButton className="button-bg-light btn-pill m-1 px-4">COUNT ME IN</CButton>
-        <CButton className="button-bg-dark btn-pill m-1 px-4">LEARN MORE</CButton>
+        {
+          is_authed?
+            <CLink to={`/user/${trainerDetails.id}`}>
+              <CButton className="button-bg-dark btn-pill m-1 px-4">LEARN MORE</CButton>
+            </CLink>
+            :
+            <CButton className="button-bg-dark btn-pill m-1 px-4" onClick={() => openModal()}>LEARN MORE</CButton>
+        }
       </div>
     </CCardBody>
   </CCard>
@@ -120,6 +127,18 @@ const CardItem = ({
 const UpcomingSession = () => {
   const [loading, setLoading] = useState(false)
   const [workouts, setSession] = useState([])
+
+  const dispatch = useDispatch()
+  const auth = useSelector((state) => state.auth)
+
+  useEffect(() => {
+  }, [auth])
+
+  const openModal = () => {
+    dispatch(AuthActions.openLoginModal())
+  }
+
+  console.log(auth.is_authed)
 
   const handleOnDragStart = (e) => e.preventDefault()
 
@@ -156,7 +175,12 @@ const UpcomingSession = () => {
       buttonsDisabled={true}
     >
       {workouts.map((wo, key) => (
-        <CardItem key={key} onDragStart={handleOnDragStart} {...wo} />
+        <CardItem key={key} 
+          onDragStart={handleOnDragStart} 
+          {...wo} 
+          is_authed={auth.is_authed}
+          openModal={openModal}
+        />
       ))}
     </AliceCarousel>
   )
