@@ -21,6 +21,8 @@ import "react-alice-carousel/lib/alice-carousel.css"
 import "./style.scss"
 import { AuthActions } from "services/global"
 import UpcomingSession from "./upcomingSession"
+import StripeModal from "./StripeModal"
+
 import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
 import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
@@ -52,7 +54,7 @@ const CarouselItem = ({ index }) => (
     >
       <CCol xs={7} className="h-100">
         <div className="d-flex justify-content-end align-items-center h-100">
-          <div className="text-right">
+          <div className="text-right mt-4">
             <h1 className="text-dark">Reach your Fitness Goals Anywhere !!!</h1>
             <p className="text-grey">- Rohit Bahl - Fitness Guru</p>
             <CButton
@@ -70,14 +72,6 @@ const CarouselItem = ({ index }) => (
 )
 
 const Landing = () => {
-  const dispatch = useDispatch()
-  const auth = useSelector((state) => state.auth)
-
-  // Callbacks
-  const openModal = () => {
-    dispatch(AuthActions.openLoginModal())
-  }
-
   return (
     <div className="landing-page pb-5">
       <section className="w-100">
@@ -100,7 +94,7 @@ const Landing = () => {
         <h2 className="text-dark">
           <strong>UPCOMING SESSIONS</strong>
         </h2>
-        <UpcomingSession openModal={openModal} isAuthed={auth.is_authed}/>
+        <UpcomingSession />
       </section>
 
       <section className="p-4 mx-auto">
@@ -134,7 +128,7 @@ const Landing = () => {
       <section className="py-5 mx-auto section-3 d-flex align-items-center justify-content-end">
         <div className="d-flex align-items-center justify-content-end">
           <div className="col-lg-8 col-md-7 col-sm-9 col-9">
-            <div className="col-lg-5 d-flex justify-content-center align-items-center flex-column mx-auto">
+            <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column mx-auto">
               <h2 className="text-white text-center">
                 <strong>GURU IN SPOTLIGHT</strong>
               </h2>
@@ -246,6 +240,8 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
+      <StripeModal />
     </div>
   )
 }

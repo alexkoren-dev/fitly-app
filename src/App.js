@@ -23,21 +23,9 @@ class App extends Component {
       <Router history={history}>
         <React.Suspense fallback={loading}>
           <Switch>
-            <Route
-              path="/auth"
-              name="Static"
-              component={AuthLayout}
-            />
-            <Route
-              path="/user"
-              name="main"
-              component={MainLayout}
-            />
-            <Route
-              path="/"
-              name="Static"
-              component={StaticLayout}
-            />
+            <Route path="/auth" name="Static" component={AuthLayout} />
+            <Route path="/user" name="main" component={MainLayout} />
+            <Route path="/" name="Static" component={StaticLayout} />
           </Switch>
         </React.Suspense>
       </Router>

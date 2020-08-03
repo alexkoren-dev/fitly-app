@@ -13,7 +13,7 @@ const TheFooter = () => {
   return (
     <CFooter fixed={false} className="static-footer py-5 px-5">
       <CRow>
-        <CCol lg={4} md={12}>
+        <CCol lg={4} md={6} sm={6}>
           <CRow className="pl-4">
             <CCol xs={6}>
               <div className="menu">
@@ -49,8 +49,8 @@ const TheFooter = () => {
             </CCol>
           </CRow>
         </CCol>
-        <CCol lg={6} md={5}></CCol>
-        <CCol lg={2} md={12}>
+        <CCol lg={6} md={3} sm={1}></CCol>
+        <CCol lg={2} md={3} sm={5}>
           <div className="text-center mx-auto">
             <CLink href="/">
               <img src={logoWhite} width="150" height="89" />

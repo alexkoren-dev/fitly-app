@@ -13,6 +13,7 @@ import image4 from "assets/img/Image4.png"
 
 const responsive = {
   0: { items: 1 },
+  768: { items: 2 },
   1024: { items: 4 },
 }
 

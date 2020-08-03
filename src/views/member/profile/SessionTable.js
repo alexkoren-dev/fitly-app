@@ -103,7 +103,12 @@ const SessionTable = () => {
             <strong>LIVE WORKOUT SESSIONS</strong>
           </h3>
         </div>
-        <Table columns={columns} dataSource={data} className="session-table" />
+        <Table
+          columns={columns}
+          dataSource={data}
+          className="session-table"
+          scroll={{ x: 1300 }}
+        />
       </CCardBody>
     </CCard>
   )

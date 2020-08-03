@@ -104,7 +104,7 @@ const Login = (props) => {
       className="login-modal"
     >
       <CModalHeader closeButton></CModalHeader>
-      <CModalBody className="pt-0 pb-5 pl-5 pr-5 bg-primary">
+      <CModalBody className="pt-0 pb-5 px-4 bg-primary">
         <Formik
           initialValues={initialValues}
           onSubmit={handleSubmit}
@@ -184,8 +184,8 @@ const Login = (props) => {
                   </CButton>
                 </CCol>
               </CRow>
-              <div className="d-flex justify-content-between align-items-center mt-4">
-                <CFormGroup variant="checkbox" className="checkbox">
+              <div className="d-flex flex-wrap justify-content-between align-items-center mt-4">
+                <CFormGroup variant="checkbox" className="checkbox mb-3">
                   <CInputCheckbox
                     id="rememberMe"
                     name="rememberMe"
@@ -202,54 +202,56 @@ const Login = (props) => {
                     Remember me
                   </CLabel>
                 </CFormGroup>
-                <Link to={"/"} className="text-white text-decoration-none">
+                <Link to={"/"} className="text-white text-decoration-none mb-3">
                   Forget password?{" "}
                 </Link>
               </div>
               <p className="text-white text-center my-3">Don't have an account?</p>
-              <div className="d-flex signup-links justify-content-between align-items-center h-100 text-white pt-2 mb-4">
-                <Link
-                  className="pb-2 border-bottom text-decoration-none border-white text-white"
-                  style={{ flex: 1 }}
-                  onClick={() => closeModal()}
-                  to={{
-                    pathname: "/auth/user-signup",
-                    state: { type: "user" },
-                  }}
-                >
-                  <div className="d-flex justify-content-between align-items-center">
-                    <p className="text-white mb-0">sign up to Lorem Ipsum</p>
-                    <span>
-                      <CIcon
-                        name="cil-arrow-right"
-                        className="text-white"
-                        width="20"
-                      />
-                    </span>
-                  </div>
-                </Link>
-                <span className="mx-5 px-4"></span>
-                <Link
-                  className="pb-2 border-bottom border-white text-decoration-none"
-                  style={{ flex: 1 }}
-                  onClick={() => closeModal()}
-                  to={{
-                    pathname: "/auth/member-signup",
-                    state: { type: "member" },
-                  }}
-                >
-                  <div className="d-flex justify-content-between align-items-center">
-                    <p className="text-white mb-0">sign up to Lorem Ipsum</p>
-                    <span>
-                      <CIcon
-                        name="cil-arrow-right"
-                        className="text-white"
-                        width="20"
-                      />
-                    </span>
-                  </div>
-                </Link>
-              </div>
+              <CRow className="mt-4">
+                <CCol lg={5}>
+                  <Link
+                    className="pb-3 border-bottom text-decoration-none border-white text-white"
+                    onClick={() => closeModal()}
+                    to={{
+                      pathname: "/auth/user-signup",
+                      state: { type: "user" },
+                    }}
+                  >
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="text-white mb-0">sign up to Lorem Ipsum</p>
+                      <span>
+                        <CIcon
+                          name="cil-arrow-right"
+                          className="text-white"
+                          width="20"
+                        />
+                      </span>
+                    </div>
+                  </Link>
+                </CCol>
+                <CCol lg={2} />
+                <CCol lg={5}>
+                  <Link
+                    className="pb-3 border-bottom border-white text-decoration-none"
+                    onClick={() => closeModal()}
+                    to={{
+                      pathname: "/auth/member-signup",
+                      state: { type: "member" },
+                    }}
+                  >
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="text-white mb-0">sign up to Lorem Ipsum</p>
+                      <span>
+                        <CIcon
+                          name="cil-arrow-right"
+                          className="text-white"
+                          width="20"
+                        />
+                      </span>
+                    </div>
+                  </Link>
+                </CCol>
+              </CRow>
             </CForm>
           )}
         </Formik>
