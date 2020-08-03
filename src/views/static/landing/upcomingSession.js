@@ -7,7 +7,38 @@ import "react-alice-carousel/lib/alice-carousel.css"
 import { CButton, CLink, CCol, CCardBody, CCard, CRow } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import UserAvatar from "assets/img/user-avatar.png"
+
+import IndoorBike from "assets/img/IndoorBike.svg"
+import Elliptical from "assets/img/Elliptical.svg"
+import IndoorRun from "assets/img/IndoorRun.svg"
+import IndoorWalk from "assets/img/IndoorWalk.svg"
+import HIITWorkout from "assets/img/HIITWorkout.svg"
+import Core from "assets/img/core.svg"
+import Cross from "assets/img/cross.svg"
+import Pilate from "assets/img/pilate.svg"
+import Kick from "assets/img/kick.svg"
+import Yoga from "assets/img/yoga.svg"
+import Dance from "assets/img/dance.svg"
+import JumpingRope from "assets/img/jumping-rope.svg"
+import Weight from "assets/img/weight.svg"
+
 import Loader from "components/loader"
+
+const WORKOUT_TYPES = {
+  "Indoor Cycle": IndoorBike,
+  Elliptical: Elliptical,
+  "Indoor Run": IndoorRun,
+  "Indoor Walk": IndoorWalk,
+  "Jump Rope": JumpingRope,
+  "HIIT Workout": HIITWorkout,
+  Dance: Dance,
+  Boxing: Kick,
+  "Weight Training": Weight,
+  "Core Training": Core,
+  "Cross Training": Cross,
+  Yoga: Yoga,
+  Pilates: Pilate,
+}
 
 const responsive = {
   0: { items: 1 },
@@ -35,7 +66,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
   <CCard className="fit-card">
     <CCardBody>
       <div className="fit-type text-center" style={{ maxWidth: 70 }}>
-        <CIcon name="cuDance" width={30} height={40} />
+        <img src={WORKOUT_TYPES[workout.typeDetails]} width={40} height={50} />
         <p className="fit-title text-grey" style={{ textTransform: "capitalize" }}>
           {workout.typeDetails}
         </p>

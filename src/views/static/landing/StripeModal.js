@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ToastContainer, toast } from "react-toastify"
-import { message } from 'antd'
+import { message } from "antd"
 import { Link } from "react-router-dom"
 import moment from "moment"
 import "react-toastify/dist/ReactToastify.css"
@@ -76,13 +76,15 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
       if (confirm_payload.error) {
         message.error(confirm_payload.error.message)
       } else {
-        const result = await dispatch(StripeActions.addUserToWorkout(
-          workoutId, 
-          confirm_payload.paymentIntent.id, 
-          userId
-        ))
+        const result = await dispatch(
+          StripeActions.addUserToWorkout(
+            workoutId,
+            confirm_payload.paymentIntent.id,
+            userId
+          )
+        )
 
-        if(result.msg) {
+        if (result.msg) {
           toast.error(result.msg, {
             position: toast.POSITION.TOP_RIGHT,
           })
@@ -101,7 +103,7 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
         <CCol lg={12}>
           <div className="form-inputs w-100" name="card_num">
             <div className="text-white">Email Address</div>
-            <input type="email" className="w-100" required/>
+            <input type="email" className="w-100" required />
           </div>
         </CCol>
       </CRow>
@@ -223,11 +225,12 @@ const StripeModal = (props) => {
           </p>
         </div>
         <Elements stripe={stripePromise}>
-          <SplitForm 
-            closeModal={closeModal} 
-            workoutId={workout._id} 
+          <SplitForm
+            closeModal={closeModal}
+            workoutId={workout._id}
             dispatch={dispatch}
-            userId={user.userId}/>
+            userId={user.userId}
+          />
         </Elements>
       </CModalBody>
     </CModal>

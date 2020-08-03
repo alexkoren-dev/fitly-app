@@ -242,7 +242,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                     value={getSelectedOptions(CERTIFICATES, values.specialities)}
                     onChange={(options) => {
                       handleChange("specialities")(
-                        options?options.map((opt) => opt.value).join(","):""
+                        options ? options.map((opt) => opt.value).join(",") : ""
                       )
                     }}
                     className="m-select mb-2"
@@ -262,7 +262,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                     )}
                     onChange={(options) => {
                       handleChange("trainingAccreditation")(
-                        options?options.map((opt) => opt.value).join(","):""
+                        options ? options.map((opt) => opt.value).join(",") : ""
                       )
                     }}
                     placeholder="Select Certification"

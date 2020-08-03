@@ -19,18 +19,19 @@ export const getSecret = async (amount) => {
   })
 }
 
-
 export const addUserToWorkout = (workoutId, paymentId, userId) => {
   return (dispatch) => {
-
-    return authApi.post("/workouts/add-user", {
-      workoutId: workoutId,
-      paymentId: paymentId,
-      userId: userId
-    }).then(res => {
-      return res
-    }).catch(err => {
-      console.log(err)
-    })
+    return authApi
+      .post("/workouts/add-user", {
+        workoutId: workoutId,
+        paymentId: paymentId,
+        userId: userId,
+      })
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 }
