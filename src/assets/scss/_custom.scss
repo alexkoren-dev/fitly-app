@@ -183,6 +183,14 @@ button:hover {
 
 .modal-primary .modal-content {
   background-color: $primary;
+  border-radius: 15px;
+  // overflow: hidden;
+}
+
+.modal-primary .modal-content,
+.modal-primary .modal-header,
+.modal-primary .modal-body {
+  border-radius: 15px;
 }
 
 .react-calendar {
@@ -382,4 +390,13 @@ button:hover {
       padding-right: 20px !important;
     }
   }
+}
+
+
+.ant-message .anticon {
+  top: -3px !important;
+}
+
+.ant-message {
+  z-index: 9999 !important;
 }

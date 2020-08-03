@@ -97,7 +97,7 @@ const Profile = ({ props }) => {
                     </span>
                   </p>
                   <div className="v-divider" />
-                  <div>
+                  <div className="my-1">
                     {profile &&
                     profile.trainingAccreditation[0] !== "" &&
                     profile.trainingAccreditation[0].split(",").length > 0 ? (
@@ -120,7 +120,7 @@ const Profile = ({ props }) => {
                         </p>
                       ))
                     ) : (
-                      <p className="d-flex align-items-center justify-content-center mb-2">
+                      <p className="d-flex align-items-center justify-content-center mb-0">
                         <CIcon
                           name="cu-certificate"
                           width="25"

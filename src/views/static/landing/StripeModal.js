@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { ToastContainer, toast } from "react-toastify"
+import { message } from 'antd'
 import { Link } from "react-router-dom"
 import moment from "moment"
 import "react-toastify/dist/ReactToastify.css"
@@ -46,7 +47,7 @@ import stripeLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)
 
-const SplitForm = ({ closeModal }) => {
+const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
   const [loading, setLoading] = useState(false)
 
   const stripe = useStripe()
@@ -54,6 +55,8 @@ const SplitForm = ({ closeModal }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    setLoading(true)
 
     const secKey = await StripeActions.getSecret(30)
 
@@ -64,12 +67,32 @@ const SplitForm = ({ closeModal }) => {
     })
 
     if (payload.error) {
-      return
+      message.error(payload.error.message)
     } else {
-      const { error } = await stripe.confirmCardPayment(secKey, {
+      const confirm_payload = await stripe.confirmCardPayment(secKey, {
         payment_method: payload.paymentMethod.id,
       })
+
+      if (confirm_payload.error) {
+        message.error(confirm_payload.error.message)
+      } else {
+        const result = await dispatch(StripeActions.addUserToWorkout(
+          workoutId, 
+          confirm_payload.paymentIntent.id, 
+          userId
+        ))
+
+        if(result.msg) {
+          toast.error(result.msg, {
+            position: toast.POSITION.TOP_RIGHT,
+          })
+        } else {
+          closeModal()
+        }
+      }
     }
+
+    setLoading(false)
   }
 
   return (
@@ -78,7 +101,7 @@ const SplitForm = ({ closeModal }) => {
         <CCol lg={12}>
           <div className="form-inputs w-100" name="card_num">
             <div className="text-white">Email Address</div>
-            <input type="email" className="w-100" />
+            <input type="email" className="w-100" required/>
           </div>
         </CCol>
       </CRow>
@@ -149,9 +172,9 @@ const SplitForm = ({ closeModal }) => {
 const StripeModal = (props) => {
   const dispatch = useDispatch()
   const toggleModal = useSelector((state) => state.stripe.toggleStripeModal)
+  const user = useSelector((state) => state.auth.profile) || {}
   const workout = useSelector((state) => state.stripe.selectedWorkout)
 
-  console.log(workout)
   const closeModal = () => {
     dispatch(StripeActions.closeStripeModal())
   }
@@ -191,7 +214,7 @@ const StripeModal = (props) => {
             </strong>{" "}
             <br />
             Schedule for{" "}
-            {moment(new Date(workout.scheduledTime)).format("DD MMM YYYY")},
+            {moment(new Date(workout.scheduledTime)).format("DD MMM YYYY")},{" "}
             {moment(new Date(workout.scheduledTime)).format("h:m A")} -{" "}
             {moment(new Date(workout.scheduledTime))
               .add(workout.duration, "minutes")
@@ -200,7 +223,11 @@ const StripeModal = (props) => {
           </p>
         </div>
         <Elements stripe={stripePromise}>
-          <SplitForm closeModal={closeModal} />
+          <SplitForm 
+            closeModal={closeModal} 
+            workoutId={workout._id} 
+            dispatch={dispatch}
+            userId={user.userId}/>
         </Elements>
       </CModalBody>
     </CModal>

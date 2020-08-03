@@ -107,7 +107,7 @@ const SessionTable = () => {
           columns={columns}
           dataSource={data}
           className="session-table"
-          scroll={{ x: 1300 }}
+          scroll={{ x: 800 }}
         />
       </CCardBody>
     </CCard>

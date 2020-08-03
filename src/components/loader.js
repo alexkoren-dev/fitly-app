@@ -6,7 +6,7 @@ const CLoader = ({ color, type, width, height }) => (
   <Loader
     type={type || "ThreeDots"}
     color={color || "white"}
-    height={height || 30}
+    height={height || 20}
     width={width || 30}
   />
 )
