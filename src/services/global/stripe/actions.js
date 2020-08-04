@@ -28,10 +28,10 @@ export const addUserToWorkout = (workoutId, paymentId, userId) => {
         userId: userId,
       })
       .then((res) => {
-        return res
+        return { success: true, msg: res.msg }
       })
       .catch((err) => {
-        console.log(err)
+        return { success: false, msg: err.data.errors.msg }
       })
   }
 }

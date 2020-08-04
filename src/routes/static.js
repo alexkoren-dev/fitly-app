@@ -6,8 +6,8 @@ const Page404 = React.lazy(() => import("views/static/page404/Page404"))
 const Page500 = React.lazy(() => import("views/static/page500/Page500"))
 
 const routes = [
-  { path: "/", exact: true, name: "Home", component: Landing },
-  { path: "/signup", exact: true, name: "Signup", component: SignUp },
+  { path: "/home", exact: true, name: "Home", component: Landing },
+  { path: "/home/signup", exact: true, name: "Signup", component: SignUp },
   { path: "/404", exact: true, name: "404", component: Page404 },
   { path: "/500", exact: true, name: "500", component: Page500 },
 ]

@@ -266,6 +266,10 @@ button:hover {
   }
 }
 
+.Toastify__toast-body {
+  white-space: unset !important;
+}
+
 .m-select {
 }
 
@@ -284,6 +288,28 @@ button:hover {
     min-width: 40px;
     height: 40px;
     background: #b1b1b1;
+  }
+
+  .c-menus {
+    li {
+      padding: 0 !important;
+      width: 75px;
+      text-align: center;
+
+      a {
+        padding-top: 15px;
+        padding-bottom: 10px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        text-align: center;
+        font-size: 12px;
+      }
+      a.active,
+      a.active:hover {
+        background-color: #3E4BB2 !important;
+        color: white !important;
+      }
+    }
   }
 
   button {

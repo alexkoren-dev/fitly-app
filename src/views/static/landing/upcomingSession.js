@@ -111,7 +111,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
                 <CIcon name="cuClock" width="23" height="23" />
               </div>
               <p className="content mb-0">
-                {moment(new Date(workout.scheduledTime)).format("ddd MMM DD")} |{" "}
+                {moment(new Date(workout.scheduledTime)).format("ddd MMM YY")} |{" "}
                 {moment(new Date(workout.scheduledTime)).format("h:m A")} -{" "}
                 {moment(new Date(workout.scheduledTime))
                   .add(workout.duration, "minutes")
@@ -141,6 +141,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
       <div className="d-flex flex-wrap justify-content-center mt-4">
         <CButton
           className="button-bg-light btn-pill m-1 px-4"
+          disabled={workout.registeredUsers.length === workout.totalUserLimit}
           onClick={() => openStripeModal(workout)}
         >
           COUNT ME IN

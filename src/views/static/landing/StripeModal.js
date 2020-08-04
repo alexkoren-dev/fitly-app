@@ -84,11 +84,18 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
           )
         )
 
-        if (result.msg) {
-          toast.error(result.msg, {
+        if (!result.success) {
+          toast.error(
+            result.msg,
+            {
+              position: toast.POSITION.TOP_RIGHT,
+            },
+            100000
+          )
+        } else {
+          toast.success(result.msg, {
             position: toast.POSITION.TOP_RIGHT,
           })
-        } else {
           closeModal()
         }
       }

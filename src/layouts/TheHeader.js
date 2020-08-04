@@ -6,6 +6,8 @@ import {
   CButton,
   CHeaderBrand,
   CHeaderNav,
+  CHeaderNavItem,
+  CHeaderNavLink,
   CDropdownToggle,
   CDropdownItem,
   CDropdownMenu,
@@ -64,43 +66,91 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
           </CFormGroup>
         </CHeaderNav>
 
-        <CHeaderNav className="px-3">
+        <CHeaderNav className="px-3 align-items-start">
           {auth && auth.is_authed ? (
-            <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
-              <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
-                <div className="c-avatar mr-2">
-                  {profile &&
-                  profile.profilprofile &&
-                  profile.profilprofile.profileImage.url ? (
-                    <img
-                      src={profile.profileImage.url}
-                      width="40"
-                      height="40"
-                      style={{ borderRadius: "50%" }}
-                    />
-                  ) : (
-                    <CIcon name="cuUserWhite" width="20" />
-                  )}
-                </div>
-                {auth.userInfo && auth.userInfo.username}
-              </CDropdownToggle>
-              <CDropdownMenu className="p-0" placement="bottom-end">
-                <CDropdownItem href="/user/profile">
-                  <CIcon name="cil-user" className="mfe-2" />
-                  Profile
-                </CDropdownItem>
-                <CDropdownItem onClick={() => logout()}>
-                  <CIcon name="cil-lock-locked" className="mfe-2" />
-                  Log Out
-                </CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
+            <>
+              <CHeaderNav className="d-md-down-none mr-auto c-menus">
+                <CHeaderNavItem className="px-3">
+                  <CHeaderNavLink to="/home">
+                    <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
+                      <CIcon name="cil-home" width="30" />
+                      Home
+                    </div>
+                  </CHeaderNavLink>
+                </CHeaderNavItem>
+                <CHeaderNavItem className="px-3">
+                  <CHeaderNavLink to="/user/profile">
+                    <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
+                      <CIcon name="cil-user" width="30" />
+                      Profile
+                    </div>
+                  </CHeaderNavLink>
+                </CHeaderNavItem>
+                <CHeaderNavItem className="px-3">
+                  <CHeaderNavLink to="/user/account">
+                    <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
+                      <CIcon name="cil-cog" width="30" />
+                      Account
+                    </div>
+                  </CHeaderNavLink>
+                </CHeaderNavItem>
+                <CHeaderNavItem className="px-3">
+                  <CHeaderNavLink onClick={() => logout()}>
+                    <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
+                      <CIcon name="cil-account-logout" width="30" />
+                      Log out
+                    </div>
+                  </CHeaderNavLink>
+                </CHeaderNavItem>
+              </CHeaderNav>
+              <CDropdown
+                inNav
+                className="d-md-block d-lg-none c-header-nav-items mx-2 mt-3 pt-1"
+                direction="down"
+              >
+                <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
+                  <div className="c-avatar mr-2">
+                    {profile &&
+                    profile.profilprofile &&
+                    profile.profilprofile.profileImage.url ? (
+                      <img
+                        src={profile.profileImage.url}
+                        width="40"
+                        height="40"
+                        style={{ borderRadius: "50%" }}
+                      />
+                    ) : (
+                      <CIcon name="cuUserWhite" width="20" />
+                    )}
+                  </div>
+                  {auth.userInfo && auth.userInfo.username}
+                </CDropdownToggle>
+                <CDropdownMenu className="p-0" placement="bottom-end">
+                  <CDropdownItem href="/">
+                    <CIcon name="cil-home" className="mfe-2" />
+                    Home
+                  </CDropdownItem>
+                  <CDropdownItem href="/user/profile">
+                    <CIcon name="cil-user" className="mfe-2" />
+                    Profile
+                  </CDropdownItem>
+                  <CDropdownItem href="/user/account">
+                    <CIcon name="cil-cog" className="mfe-2" />
+                    Account
+                  </CDropdownItem>
+                  <CDropdownItem onClick={() => logout()}>
+                    <CIcon name="cil-lock-locked" className="mfe-2" />
+                    Log Out
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </CDropdown>
+            </>
           ) : (
             <>
               <CButton
                 block
                 color="secondary"
-                className="btn-pill d-flex align-items-center justify-content-center"
+                className="btn-pill d-flex align-items-center justify-content-center mt-4"
                 onClick={() => {
                   openLoginModal()
                 }}
@@ -109,7 +159,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 Sign In
               </CButton>
               <CLink href="/signup">
-                <CButton block color="primary" className="ml-3 mt-0 btn-pill">
+                <CButton block color="primary" className="ml-3 mt-0 btn-pill mt-4">
                   Sign Up
                 </CButton>
               </CLink>

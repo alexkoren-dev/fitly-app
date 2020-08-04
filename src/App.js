@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { createBrowserHistory } from "history"
-import { Router, Route, Switch } from "react-router-dom"
+import { Router, Route, Switch, Redirect } from "react-router-dom"
 import "./assets/scss/style.scss"
 import "antd/dist/antd.css"
 
@@ -25,7 +25,8 @@ class App extends Component {
           <Switch>
             <Route path="/auth" name="Static" component={AuthLayout} />
             <Route path="/user" name="main" component={MainLayout} />
-            <Route path="/" name="Static" component={StaticLayout} />
+            <Route path="/home" name="Static" component={StaticLayout} />
+            <Redirect from="/" to="/home" />
           </Switch>
         </React.Suspense>
       </Router>

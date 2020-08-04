@@ -146,6 +146,8 @@ import {
   cilXCircle,
   cilWarning,
   cilHeart,
+  cilAccountLogout,
+  cilCog,
 } from "@coreui/icons"
 
 export const icons = Object.assign(
@@ -179,11 +181,13 @@ export const icons = Object.assign(
   {
     cilAlignCenter,
     cilAlignLeft,
+    cilCog,
     cilAlignRight,
     cilApplicationsSettings,
     cilArrowRight,
     cilArrowTop,
     cilAsterisk,
+    cilAccountLogout,
     cilBan,
     cilBasket,
     cilBell,
