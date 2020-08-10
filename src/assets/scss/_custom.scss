@@ -177,8 +177,11 @@ button:hover {
   background-color: #e6e6e6;
 }
 
-.card {
-  border-radius: 20px;
+.avatar-placeholder {
+  border-radius: 50%;
+  background: #b1b1b1;
+  width: 150px;
+  height: 150px;
 }
 
 .modal-primary .modal-content {

@@ -57,7 +57,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CInputGroupAppend>
                   <CInputGroupText>
                     <span className="divider">
-                      <CIcon name="cuSearch" width="18" height="22" />
+                      <CIcon name="cuSearch" w-100idth="18" height="22" />
                     </span>
                   </CInputGroupText>
                 </CInputGroupAppend>
@@ -158,7 +158,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CIcon name="cuUserFill" width="30" height="30" className="mr-1" />{" "}
                 Sign In
               </CButton>
-              <CLink href="/signup">
+              <CLink href="/home/signup">
                 <CButton block color="primary" className="ml-3 mt-0 btn-pill mt-4">
                   Sign Up
                 </CButton>
