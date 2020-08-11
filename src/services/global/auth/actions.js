@@ -269,7 +269,7 @@ export const changePassword = (new_password) => {
     let data = {
       method: "put",
       url: `/user`,
-      data: new_password,
+      data: {user: new_password},
     }
     return authApi(data)
       .then((res) => {

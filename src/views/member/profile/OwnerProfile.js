@@ -98,9 +98,10 @@ const Profile = ({ props }) => {
                   </p>
                   <div className="v-divider" />
                   <div className="my-1">
-                    {profile &&
-                    profile.trainingAccreditation[0] !== "" &&
-                    profile.trainingAccreditation[0].split(",").length > 0 ? (
+                    {profile && 
+                      profile.trainingAccreditation.length > 0 && 
+                      profile.trainingAccreditation[0] !== "" &&
+                      profile.trainingAccreditation[0].split(",").length > 0 ? (
                       profile.trainingAccreditation[0].split(",").map((cer, key) => (
                         <p
                           key={key}
