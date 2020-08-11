@@ -70,7 +70,7 @@ const Register = (props) => {
     )
       .then((res) => {
         setLoading(false)
-        props.history.push("/")
+        window.location.href = "/"
       })
       .catch((err) => {
         setLoading(false)

@@ -15,6 +15,9 @@ const TheContent = ({ routes }) => {
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {
+              if (route.redirect)
+                return <Redirect from={route.path} to={route.pathTo} key={idx} />
+
               return (
                 route.component && (
                   <Route

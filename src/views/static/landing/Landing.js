@@ -34,6 +34,7 @@ import fitType1 from "assets/img/findyourguru1.jpg"
 import fitType2 from "assets/img/findyourguru2.jpg"
 import fitType3 from "assets/img/findyourguru3.jpg"
 import fitType4 from "assets/img/findyourguru4.jpg"
+
 import yoga from "assets/img/yoga.jpg"
 import cardio from "assets/img/aerobic.jpg"
 import weight from "assets/img/weight.jpg"
@@ -71,7 +72,7 @@ const CarouselItem = ({ index }) => (
   </div>
 )
 
-const Landing = () => {
+const Landing = (props) => {
   return (
     <div className="landing-page pb-5">
       <section className="w-100">
@@ -94,7 +95,7 @@ const Landing = () => {
         <h2 className="text-dark">
           <strong>UPCOMING SESSIONS</strong>
         </h2>
-        <UpcomingSession />
+        <UpcomingSession {...props} />
       </section>
 
       <section className="p-4 mx-auto">
@@ -241,7 +242,7 @@ const Landing = () => {
         </div>
       </section>
 
-      <StripeModal />
+      <StripeModal {...props} />
     </div>
   )
 }

@@ -24,7 +24,7 @@ import { AuthActions } from "services/global"
 import logoWhite from "assets/img/logo-white.svg"
 import uploadPicture from "assets/img/picture.svg"
 
-const UploadModal = ({ openModal, closeModal, profile }) => {
+const UploadModal = ({ openModal, closeModal, profile, uploadField }) => {
   const dispatch = useDispatch()
   const [loading, setUploading] = useState(false)
   const [previewImage, setPreviewImage] = useState(null)
@@ -57,7 +57,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
         }
       },
     }
-    fmData.append("gallery", file)
+    fmData.append(uploadField || "gallery", file)
 
     setUploading(true)
     try {
@@ -77,7 +77,6 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
       })
     } catch (err) {
       setUploading(false)
-      console.log(err)
     }
   }
 
@@ -92,7 +91,7 @@ const UploadModal = ({ openModal, closeModal, profile }) => {
     },
     showUploadList: false,
     method: "put",
-    name: "gallery",
+    name: uploadField || "gallery",
   }
 
   return (

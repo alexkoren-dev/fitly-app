@@ -47,8 +47,14 @@ import stripeLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)
 
-const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
+const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
   const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("")
+  const userId = user.userId
+  const userProfileId = user.id
+  const trainerId = workout.trainerDetails ? workout.trainerDetails.userId : ""
+  const trainerProfileId = workout.trainerDetails ? workout.trainerDetails.id : ""
+  const workoutId = workout._id
 
   const stripe = useStripe()
   const elements = useElements()
@@ -58,16 +64,17 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
 
     setLoading(true)
 
-    const secKey = await StripeActions.getSecret(30)
+    const secKey = await StripeActions.getSecret(workout.perUserCharge * 100)
 
     const payload = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardNumberElement),
-      billing_details: { email: "tester@tester.com" },
+      billing_details: { email: email },
     })
 
     if (payload.error) {
       message.error(payload.error.message)
+      setLoading(false)
     } else {
       const confirm_payload = await stripe.confirmCardPayment(secKey, {
         payment_method: payload.paymentMethod.id,
@@ -75,33 +82,58 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
 
       if (confirm_payload.error) {
         message.error(confirm_payload.error.message)
+        setLoading(false)
       } else {
-        const result = await dispatch(
-          StripeActions.addUserToWorkout(
+        dispatch(
+          StripeActions.workoutPayment(
             workoutId,
             confirm_payload.paymentIntent.id,
-            userId
+            userId,
+            userProfileId,
+            trainerId,
+            trainerProfileId,
+            workout.perUserCharge
           )
         )
+          .then(async (res) => {
+            const result = await dispatch(
+              StripeActions.addUserToWorkout(
+                workoutId,
+                confirm_payload.paymentIntent.id,
+                userId
+              )
+            )
 
-        if (!result.success) {
-          toast.error(
-            result.msg,
-            {
-              position: toast.POSITION.TOP_RIGHT,
-            },
-            100000
-          )
-        } else {
-          toast.success(result.msg, {
-            position: toast.POSITION.TOP_RIGHT,
+            if (!result.success) {
+              toast.error(
+                result.msg,
+                {
+                  position: toast.POSITION.TOP_RIGHT,
+                },
+                100000
+              )
+            } else {
+              toast.success(result.msg, {
+                position: toast.POSITION.TOP_RIGHT,
+              })
+              closeModal()
+              history.push("/user/account/workouts")
+            }
+
+            setLoading(false)
           })
-          closeModal()
-        }
+          .catch((err) => {
+            toast.error(
+              "Payment failed",
+              {
+                position: toast.POSITION.TOP_RIGHT,
+              },
+              100000
+            )
+            setLoading(false)
+          })
       }
     }
-
-    setLoading(false)
   }
 
   return (
@@ -110,7 +142,12 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
         <CCol lg={12}>
           <div className="form-inputs w-100" name="card_num">
             <div className="text-white">Email Address</div>
-            <input type="email" className="w-100" required />
+            <input
+              type="email"
+              className="w-100"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
         </CCol>
       </CRow>
@@ -178,7 +215,7 @@ const SplitForm = ({ closeModal, workoutId, userId, dispatch }) => {
   )
 }
 
-const StripeModal = (props) => {
+const StripeModal = ({ history }) => {
   const dispatch = useDispatch()
   const toggleModal = useSelector((state) => state.stripe.toggleStripeModal)
   const user = useSelector((state) => state.auth.profile) || {}
@@ -234,9 +271,10 @@ const StripeModal = (props) => {
         <Elements stripe={stripePromise}>
           <SplitForm
             closeModal={closeModal}
-            workoutId={workout._id}
+            workout={workout}
             dispatch={dispatch}
-            userId={user.userId}
+            user={user}
+            history={history}
           />
         </Elements>
       </CModalBody>

@@ -15,8 +15,37 @@ export const closeStripeModal = () => {
 
 export const getSecret = async (amount) => {
   return await authApi.post("/workouts/payment", {
-    amount: amount * 1000,
+    amount: amount,
   })
+}
+
+export const workoutPayment = (
+  workoutId,
+  paymentId,
+  userId,
+  userProfileId,
+  trainerId,
+  trainerProfileId,
+  amount
+) => {
+  return (dispatch) => {
+    return authApi
+      .post("/payment", {
+        workoutId: workoutId,
+        StripesPaymentId: paymentId,
+        participantsUserId: userId,
+        participantsProfileId: userProfileId,
+        TrainersUserId: trainerId,
+        TrainersProfileId: trainerProfileId,
+        amountPaid: amount,
+      })
+      .then((res) => {
+        return { success: true, msg: res.msg }
+      })
+      .catch((err) => {
+        return { success: false, msg: err.data.errors.msg }
+      })
+  }
 }
 
 export const addUserToWorkout = (workoutId, paymentId, userId) => {

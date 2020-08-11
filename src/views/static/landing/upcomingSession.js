@@ -51,12 +51,24 @@ const generateRating = (rate) => {
 
   for (var i = 0; i < Math.round(rate); i++)
     items.push(
-      <CIcon name="cuThumbsUp" className="thumbsup-yellow" width="24" height="20" />
+      <CIcon
+        key={i}
+        name="cuThumbsUp"
+        className="thumbsup-yellow"
+        width="24"
+        height="20"
+      />
     )
 
   for (var i = 0; i < 5 - Math.round(rate); i++)
     items.push(
-      <CIcon key={i} name="cuThumbsUp" className="thumbsup" width="24" height="20" />
+      <CIcon
+        key={i + 5}
+        name="cuThumbsUp"
+        className="thumbsup"
+        width="24"
+        height="20"
+      />
     )
 
   return items

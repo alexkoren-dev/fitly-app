@@ -14,13 +14,6 @@
     }
   }
 
-  .avatar-placeholder {
-    border-radius: 50%;
-    background: #b1b1b1;
-    width: 150px;
-    height: 150px;
-  }
-
   .plus-icon {
     border-radius: 50%;
     width: 80px;
@@ -101,6 +94,7 @@
   label {
     font-family: "CenturyGothic" !important;
     font-size: 14px;
+    color: white;
   }
 
   .custom-control-inline {
@@ -110,24 +104,4 @@
 
 .alice-carousel__stage-item {
   padding: 0 5px;
-}
-
-.gallery-upload,
-.gallery-upload:hover {
-  background: transparent !important;
-  border-radius: 20px !important;
-  max-width: 300px;
-  height: 300px !important;
-  border: 0.1rem dashed white !important;
-  width: 300px;
-  margin: 0 auto;
-  overflow: hidden;
-
-  span.ant-upload {
-    padding: 0 !important;
-  }
-}
-
-.gallery-upload.error {
-  border-color: red !important;
 }

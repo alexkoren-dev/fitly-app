@@ -1,64 +1,77 @@
-import React, { lazy } from "react"
-import UserAvatar from "assets/img/user-avatar.png"
+import { useDispatch, useSelector } from "react-redux"
+import React, { useState, useEffect } from "react"
+import moment from "moment"
 import { CButton, CCardHeader, CCard, CCardBody } from "@coreui/react"
+import { AuthActions } from "services/global"
 import CIcon from "@coreui/icons-react"
-import { Table, Popover } from "antd"
+import { Table } from "antd"
+
+const WORKOUT_STATUS = {
+  active: "Upcoming",
+}
 
 const columns = [
   {
     title: "STATUS",
     dataIndex: "status",
-    render: (status) => <div className={`status-badge ${status}`}>{status}</div>,
+    render: (status) => (
+      <div className={`status-badge ${WORKOUT_STATUS[status]}`}>
+        {WORKOUT_STATUS[status]}
+      </div>
+    ),
   },
   {
     title: "DATE & TIME",
-    dataIndex: "date",
-    render: (date) => date.toDateString(),
-    sorter: (a, b) => a.date - b.date,
+    dataIndex: "scheduledTime",
+    render: (scheduledTime) => (
+      <p className="mb-0">
+        {moment(new Date(scheduledTime)).format("ddd MMM YYYY")}{" "}
+        {moment(new Date(scheduledTime)).format("h:m A")}
+      </p>
+    ),
+    sorter: (a, b) => a.scheduledTime - b.scheduledTime,
   },
   {
     title: "DURATION",
     dataIndex: "duration",
+    align: "center",
   },
   {
     title: "USER REGISTERED",
-    dataIndex: "user",
-    render: (user) => `${user} Participants`,
+    dataIndex: "registeredUsers",
+    render: (registeredUsers) => `${registeredUsers.length} Participants`,
   },
   {
-    title: "EARNINGS",
-    dataIndex: "earning",
-    render: (earning) => `$${earning}`,
+    title: "FEES PAID",
+    dataIndex: "perUserCharge",
+    render: (perUserCharge) => `$${perUserCharge} / user`,
   },
   {
     title: "WORKOUT TYPE",
-    dataIndex: "workout",
+    dataIndex: "typeDetails",
+  },
+  {
+    title: "LIVE ROOM INFO",
+    dataIndex: "_id",
+    align: "center",
+    render: () => (
+      <CButton
+        color="primary"
+        className="btn-pill"
+        style={{ width: 40, height: 40 }}
+      >
+        <h3 className="text-white mb-0">+</h3>
+      </CButton>
+    ),
   },
   {
     title: "ACTIONS",
     key: "action",
+    width: "120px",
     render: () => (
-      <Popover
-        placement="left"
-        content={() => (
-          <div className="action-buttons">
-            <CButton color="primary" className="btn-pill mb-1">
-              JOIN SESSION
-            </CButton>
-            <br />
-            <CButton color="primary" className="btn-pill button-bg-dark mb-1">
-              EDIT SESSION
-            </CButton>
-            <br />
-            <CButton color="danger" className="btn-pill">
-              CANCEL SESSION
-            </CButton>
-          </div>
-        )}
-        trigger="click"
-      >
-        <i className="fa fa-ellipsis-h" style={{ fontSize: 30, color: "#707070" }} />
-      </Popover>
+      <CButton color="danger" className="btn-pill">
+        OPT OUT
+      </CButton>
     ),
   },
 ]
@@ -94,10 +107,26 @@ const data = [
 ]
 
 const SessionTable = () => {
+  const [workouts, setWorkouts] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    AuthActions.getUserWorkouts()
+      .then((res) => {
+        setWorkouts(res.workouts)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setLoading(false)
+      })
+  }, [])
+
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      loading={loading}
+      dataSource={workouts}
       className="session-table"
       scroll={{ x: 800 }}
     />

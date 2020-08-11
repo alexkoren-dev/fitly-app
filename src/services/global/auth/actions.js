@@ -1,6 +1,7 @@
 import { AUTH } from "constants/types"
 import { api, authApi, formData } from "utils"
 
+// Get User with Token
 export const getCurrentUser = () => {
   return (dispatch) => {
     let data = {
@@ -29,6 +30,7 @@ export const getCurrentUser = () => {
   }
 }
 
+// Create User Profile
 export const createUserProfile = (profile) => {
   return (dispatch) => {
     let data = {
@@ -50,6 +52,7 @@ export const createUserProfile = (profile) => {
   }
 }
 
+// Image Likd/Dislike Operation
 export const likeProfileImage = (profileId, imageId) => {
   return (dispatch) => {
     let data = {
@@ -84,6 +87,7 @@ export const dislikeProfileImage = (profileId, imageId, userId) => {
   }
 }
 
+// Edit Profile
 export const editUserProfile = (profile) => {
   return (dispatch) => {
     let data = {
@@ -105,6 +109,7 @@ export const editUserProfile = (profile) => {
   }
 }
 
+// Get Self Profile
 export const getOwnerProfile = () => {
   return (dispatch) => {
     let data = {
@@ -129,6 +134,7 @@ export const getOwnerProfile = () => {
   }
 }
 
+// Remove Gallery Image
 export const removeProfileImage = (imageId) => {
   return (dispatch) => {
     let data = {
@@ -153,6 +159,7 @@ export const removeProfileImage = (imageId) => {
   }
 }
 
+// Get Other Person's Profile
 export const getUserProfile = (userId) => {
   let data = {
     method: "get",
@@ -167,6 +174,7 @@ export const getUserProfile = (userId) => {
     })
 }
 
+// Login
 export const login = (obj) => (dispatch) =>
   api
     .post("/login", obj)
@@ -181,6 +189,7 @@ export const login = (obj) => (dispatch) =>
       throw err
     })
 
+//Reigster
 export const register = (obj, type) => {
   return (dispatch) => {
     let data = {
@@ -207,6 +216,7 @@ export const register = (obj, type) => {
   }
 }
 
+// Get Workout for Dashboard
 export const getAllWorkOuts = () => {
   let data = {
     method: "get",
@@ -219,6 +229,56 @@ export const getAllWorkOuts = () => {
     .catch((err) => {
       throw err
     })
+}
+
+// Get User Workouts
+export const getUserWorkouts = () => {
+  let data = {
+    method: "get",
+    url: `/workouts`,
+  }
+  return authApi(data)
+    .then((res) => {
+      return res
+    })
+    .catch((err) => {
+      throw err
+    })
+}
+
+// Get user account
+export const getUserAccount = () => {
+  return (dispatch) => {
+    let data = {
+      method: "get",
+      url: `/user`,
+    }
+    return authApi(data)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
+}
+
+// Change Password
+export const changePassword = (new_password) => {
+  return (dispatch) => {
+    let data = {
+      method: "put",
+      url: `/user`,
+      data: new_password,
+    }
+    return authApi(data)
+      .then((res) => {
+        return res
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
 }
 
 export const logOut = () => {
