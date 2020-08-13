@@ -99,6 +99,7 @@ const Profile = ({ props }) => {
                   <div className="v-divider" />
                   <div className="my-1">
                     {profile &&
+                    profile.trainingAccreditation && 
                     profile.trainingAccreditation.length > 0 &&
                     profile.trainingAccreditation[0] !== "" &&
                     profile.trainingAccreditation[0].split(",").length > 0 ? (

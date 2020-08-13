@@ -26,7 +26,7 @@ const AuthReducer = (state = initState, action) => {
     case AUTH.USER_PROFILE:
       return {
         ...state,
-        profile: Object.assign({}, payload),
+        profile: payload,
       }
 
     case AUTH.USER_INFO:

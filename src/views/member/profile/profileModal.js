@@ -103,8 +103,8 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
     city: profile ? profile.city : "",
     state: profile ? profile.state : "",
     gender: profile ? profile.gender : "",
-    trainingAccreditation: profile ? profile.trainingAccreditation[0] : "",
-    specialities: profile ? profile.specialities[0] : "",
+    trainingAccreditation: profile && profile.trainingAccreditation ? profile.trainingAccreditation[0] : "",
+    specialities: profile && profile.specialities? profile.specialities[0] : "",
   }
 
   return (

@@ -112,8 +112,8 @@ const SessionTable = () => {
   const profile = useSelector((state) => state.auth.profile)
 
   useEffect(() => {
-    setLoading(true)
-    if (profile)
+    if (profile) {
+      setLoading(true)
       AuthActions.getUserWorkouts(profile.userId)
         .then((res) => {
           setWorkouts(res.workouts)
@@ -122,6 +122,7 @@ const SessionTable = () => {
         .catch((err) => {
           setLoading(false)
         })
+    }
   }, [profile])
 
   return (

@@ -235,7 +235,7 @@ export const getAllWorkOuts = () => {
 export const getUserWorkouts = (id) => {
   let data = {
     method: "get",
-    url: `/workouts?userId=${id}`,
+    url: `/workouts/user-registered-workouts`,
   }
   return authApi(data)
     .then((res) => {
