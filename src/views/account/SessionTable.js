@@ -109,18 +109,20 @@ const data = [
 const SessionTable = () => {
   const [workouts, setWorkouts] = useState([])
   const [loading, setLoading] = useState(false)
+  const profile = useSelector((state) => state.auth.profile)
 
   useEffect(() => {
     setLoading(true)
-    AuthActions.getUserWorkouts()
-      .then((res) => {
-        setWorkouts(res.workouts)
-        setLoading(false)
-      })
-      .catch((err) => {
-        setLoading(false)
-      })
-  }, [])
+    if (profile)
+      AuthActions.getUserWorkouts(profile.userId)
+        .then((res) => {
+          setWorkouts(res.workouts)
+          setLoading(false)
+        })
+        .catch((err) => {
+          setLoading(false)
+        })
+  }, [profile])
 
   return (
     <Table

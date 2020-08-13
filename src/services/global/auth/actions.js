@@ -232,10 +232,10 @@ export const getAllWorkOuts = () => {
 }
 
 // Get User Workouts
-export const getUserWorkouts = () => {
+export const getUserWorkouts = (id) => {
   let data = {
     method: "get",
-    url: `/workouts`,
+    url: `/workouts?userId=${id}`,
   }
   return authApi(data)
     .then((res) => {
@@ -269,7 +269,7 @@ export const changePassword = (new_password) => {
     let data = {
       method: "put",
       url: `/user`,
-      data: {user: new_password},
+      data: { user: new_password },
     }
     return authApi(data)
       .then((res) => {

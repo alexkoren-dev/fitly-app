@@ -9,8 +9,11 @@ import { AuthActions } from "services/global"
 import AvatarUploader from "views/member/profile/AvatarUploader"
 import SessionTable from "./SessionTable"
 import AccountForm from "./AccountForm"
+import BillingsTab from "./BillingsTab"
 
 import gymIcon from "assets/img/gym.svg"
+
+import "./style.scss"
 
 const { TabPane } = Tabs
 
@@ -92,10 +95,10 @@ const AccountPage = (props) => {
                   <SessionTable />
                 </TabPane>
                 <TabPane tab="My Favorites" key="favorites">
-                  Content of Tab Pane 3
+                  Coming soon
                 </TabPane>
                 <TabPane tab="Billings" key="billings">
-                  Content of Tab Pane 3
+                  <BillingsTab billings={profile} />
                 </TabPane>
               </Tabs>
             </CCardBody>

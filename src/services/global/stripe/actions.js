@@ -30,7 +30,7 @@ export const workoutPayment = (
 ) => {
   return (dispatch) => {
     return authApi
-      .post("/payment", {
+      .post("/workouts/add-user", {
         workoutId: workoutId,
         StripesPaymentId: paymentId,
         participantsUserId: userId,

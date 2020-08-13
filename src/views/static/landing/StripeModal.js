@@ -92,39 +92,20 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
             userProfileId,
             trainerId,
             trainerProfileId,
-            workout.perUserCharge
+            workout.perUserCharge * 100
           )
         )
           .then(async (res) => {
-            const result = await dispatch(
-              StripeActions.addUserToWorkout(
-                workoutId,
-                confirm_payload.paymentIntent.id,
-                userId
-              )
-            )
+            if (!res.success) throw res
 
-            if (!result.success) {
-              toast.error(
-                result.msg,
-                {
-                  position: toast.POSITION.TOP_RIGHT,
-                },
-                100000
-              )
-            } else {
-              toast.success(result.msg, {
-                position: toast.POSITION.TOP_RIGHT,
-              })
-              closeModal()
-              history.push("/user/account/workouts")
-            }
-
+            closeModal()
             setLoading(false)
+            history.push("/user/account/workouts")
           })
           .catch((err) => {
+            console.log(err)
             toast.error(
-              "Payment failed",
+              err.msg,
               {
                 position: toast.POSITION.TOP_RIGHT,
               },
