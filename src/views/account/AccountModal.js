@@ -54,8 +54,8 @@ const validationSchema = Yup.object().shape({
 })
 
 const getSelectedOptions = (options, values) => {
-  const valueArray = values.split(",")
-  const data = options.filter((opt) => valueArray.includes(opt.value))
+  const valueArray = values && values.split(",")
+  const data = options.filter((opt) => valueArray && valueArray.includes(opt.value))
 
   return data
 }

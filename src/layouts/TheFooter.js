@@ -55,7 +55,7 @@ const TheFooter = () => {
             <CLink href="/">
               <img src={logoWhite} width="150" height="89" />
             </CLink>
-            <p className="">Company Tagline Comes Here </p>
+            <p className="">Sweat in your own space </p>
             <ul className="mt-4 d-flex justify-content-center c-header-nav">
               <li>
                 <CLink>
@@ -86,7 +86,7 @@ const TheFooter = () => {
           </div>
         </CCol>
       </CRow>
-      <p className="mb-0">© 2020 Fitnezz Co. LLC . All rights reserved.</p>
+      <p className="mb-0">© 2020 Fitnezz Guru LLC . All rights reserved.</p>
     </CFooter>
   )
 }

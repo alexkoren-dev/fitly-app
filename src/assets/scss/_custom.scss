@@ -9,7 +9,8 @@
   h3 {
     font-size: 18px !important;
   }
-  h4, h5 {
+  h4,
+  h5 {
     font-size: 16px !important;
   }
 
@@ -38,7 +39,8 @@
   h3 {
     font-size: 14px !important;
   }
-  h4, h5 {
+  h4,
+  h5 {
     font-size: 12px !important;
   }
 
@@ -269,7 +271,6 @@ button:hover {
   }
 }
 
-
 .gallery-upload,
 .gallery-upload:hover {
   background: transparent !important;
@@ -296,8 +297,6 @@ button:hover {
 
 .m-select {
 }
-
-
 
 // Static Layout Header
 
@@ -332,7 +331,7 @@ button:hover {
       }
       a.active,
       a.active:hover {
-        background-color: #3E4BB2 !important;
+        background-color: #3e4bb2 !important;
         color: white !important;
       }
     }
@@ -391,7 +390,7 @@ button:hover {
 // Static Layout Footer
 
 .static-footer {
-  background-color: #3E4BB2 !important;
+  background-color: #3e4bb2 !important;
   height: 100%;
   color: white;
   display: block;
@@ -411,7 +410,7 @@ button:hover {
 
       a {
         color: white;
-        font-size: 18px;
+        font-size: 12px;
         white-space: nowrap;
       }
     }
@@ -431,7 +430,11 @@ button:hover {
     * {
       text-align: center !important;
     }
-    .menu, .menu-title, ul, li, a {
+    .menu,
+    .menu-title,
+    ul,
+    li,
+    a {
       text-align: left !important;
     }
   }
@@ -443,7 +446,6 @@ button:hover {
     }
   }
 }
-
 
 .ant-message .anticon {
   top: -3px !important;
@@ -459,9 +461,7 @@ button:hover {
   justify-content: center;
 }
 
-
 .is-invalid-col {
-
   .invalid-feedback {
     display: block !important;
     padding-left: 10px;

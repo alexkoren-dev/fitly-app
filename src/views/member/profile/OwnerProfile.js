@@ -66,8 +66,8 @@ const Profile = ({ props }) => {
                     </h4>
                     <p className="d-flex align-items-center justify-content-center">
                       <CIcon name="cu-location-pin" width="15" className="mr-1" />
-                      {profile
-                        ? `${profile.city}, ${profile.state}`
+                      {profile && profile.city && profile.state
+                        ? `${profile.city},  ${profile.state}`
                         : "Add Your Location"}
                     </p>
                   </div>
@@ -99,7 +99,7 @@ const Profile = ({ props }) => {
                   <div className="v-divider" />
                   <div className="my-1">
                     {profile &&
-                    profile.trainingAccreditation && 
+                    profile.trainingAccreditation &&
                     profile.trainingAccreditation.length > 0 &&
                     profile.trainingAccreditation[0] !== "" &&
                     profile.trainingAccreditation[0].split(",").length > 0 ? (

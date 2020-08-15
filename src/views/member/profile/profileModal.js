@@ -56,8 +56,9 @@ const validationSchema = Yup.object().shape({
 })
 
 const getSelectedOptions = (options, values) => {
-  const valueArray = values.split(",")
-  const data = options.filter((opt) => valueArray.includes(opt.value))
+  const valueArray = values && values.split(",")
+  const data =
+    options && options.filter((opt) => valueArray && valueArray.includes(opt.value))
 
   return data
 }
@@ -103,8 +104,11 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
     city: profile ? profile.city : "",
     state: profile ? profile.state : "",
     gender: profile ? profile.gender : "",
-    trainingAccreditation: profile && profile.trainingAccreditation ? profile.trainingAccreditation[0] : "",
-    specialities: profile && profile.specialities? profile.specialities[0] : "",
+    trainingAccreditation:
+      profile && profile.trainingAccreditation
+        ? profile.trainingAccreditation[0]
+        : "",
+    specialities: profile && profile.specialities ? profile.specialities[0] : "",
   }
 
   return (

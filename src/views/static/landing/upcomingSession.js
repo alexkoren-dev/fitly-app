@@ -31,12 +31,12 @@ const WORKOUT_TYPES = {
   "Indoor Walk": IndoorWalk,
   "Jump Rope": JumpingRope,
   "HIIT Workout": HIITWorkout,
-  Dance: Dance,
-  Boxing: Kick,
+  dance: Dance,
+  boxing: Kick,
   "Weight Training": Weight,
   "Core Training": Core,
   "Cross Training": Cross,
-  Yoga: Yoga,
+  yoga: Yoga,
   Pilates: Pilate,
 }
 
@@ -49,10 +49,10 @@ const responsive = {
 const generateRating = (rate) => {
   let items = []
 
-  for (var i = 0; i < Math.round(rate); i++)
+  for (var y = 0; y < Math.round(rate); y++)
     items.push(
       <CIcon
-        key={i}
+        key={y}
         name="cuThumbsUp"
         className="thumbsup-yellow"
         width="24"
@@ -78,16 +78,22 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
   <CCard className="fit-card">
     <CCardBody>
       <div className="fit-type text-center" style={{ maxWidth: 70 }}>
-        <img src={WORKOUT_TYPES[workout.typeDetails]} width={40} height={50} />
+        <img
+          src={WORKOUT_TYPES[workout && workout.typeDetails]}
+          width={40}
+          height={50}
+        />
         <p className="fit-title text-grey" style={{ textTransform: "capitalize" }}>
-          {workout.typeDetails}
+          {workout && workout.typeDetails}
         </p>
       </div>
-      {workout.registeredUsers.length === workout.totalUserLimit && (
-        <div className="position-absolute book-button">
-          <CButton color="danger px-4 btn-pill">FULLY BOOKED</CButton>
-        </div>
-      )}
+      {workout &&
+        workout.paymentInfo &&
+        workout.paymentInfo.length === workout.totalUserLimit && (
+          <div className="position-absolute book-button">
+            <CButton color="danger px-4 btn-pill">FULLY BOOKED</CButton>
+          </div>
+        )}
       <div className="text-center card-content">
         <img
           src={
@@ -113,7 +119,8 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
                 <CIcon name="cuUserOutline" width="23" height="23" />
               </div>
               <p className="content mb-0">
-                {workout.registeredUsers.length} Participants{" "}
+                {workout && workout.paymentInfo && workout.paymentInfo.length}{" "}
+                Participants{" "}
               </p>
             </div>
           </li>
@@ -145,7 +152,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
               <div className="icon">
                 <CIcon name="cuRegister" width="23" height="23" />
               </div>
-              <p className="content mb-0">{workout.requirement}</p>
+              <p className="content mb-0">{workout && workout.requirement}</p>
             </div>
           </li>
         </ul>
@@ -153,7 +160,11 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
       <div className="d-flex flex-wrap justify-content-center mt-4">
         <CButton
           className="button-bg-light btn-pill m-1 px-4"
-          disabled={workout.registeredUsers.length === workout.totalUserLimit}
+          disabled={
+            workout &&
+            workout.paymentInfo &&
+            workout.paymentInfo.length === workout.totalUserLimit
+          }
           onClick={() => openStripeModal(workout)}
         >
           COUNT ME IN
