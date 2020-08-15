@@ -44,6 +44,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "express": "^4.17.1",
     "formik": "^2.1.4",
+    "lodash": "^4.17.20",
     "lodash.isequal": "^4.5.0",
     "netlify-cli": "^2.58.0",
     "node-sass": "^4.14.1",

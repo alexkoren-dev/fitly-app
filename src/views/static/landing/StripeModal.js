@@ -92,7 +92,7 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
             userProfileId,
             trainerId,
             trainerProfileId,
-            workout.perUserCharge * 100
+            workout.perUserCharge
           )
         )
           .then(async (res) => {
@@ -104,13 +104,9 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
           })
           .catch((err) => {
             console.log(err)
-            toast.error(
-              err.msg,
-              {
-                position: toast.POSITION.TOP_RIGHT,
-              },
-              100000
-            )
+            toast.error(err.msg, {
+              position: toast.POSITION.TOP_RIGHT,
+            })
             setLoading(false)
           })
       }

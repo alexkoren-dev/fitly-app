@@ -107,12 +107,12 @@ const data = [
 ]
 
 const SessionTable = () => {
-  const [workouts, setWorkouts] = useState([])
+  const [workouts, setWorkouts] = useState(null)
   const [loading, setLoading] = useState(false)
   const profile = useSelector((state) => state.auth.profile)
 
   useEffect(() => {
-    if (profile) {
+    if (profile && !workouts) {
       setLoading(true)
       AuthActions.getUserWorkouts(profile.userId)
         .then((res) => {
@@ -129,7 +129,7 @@ const SessionTable = () => {
     <Table
       columns={columns}
       loading={loading}
-      dataSource={workouts}
+      dataSource={workouts || []}
       className="session-table"
       scroll={{ x: 800 }}
     />

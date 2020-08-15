@@ -246,6 +246,21 @@ export const getUserWorkouts = (id) => {
     })
 }
 
+// Get User Billings
+export const getUserbillings = (id) => {
+  let data = {
+    method: "get",
+    url: `/payments?participantUserId=${id}`,
+  }
+  return authApi(data)
+    .then((res) => {
+      return res
+    })
+    .catch((err) => {
+      throw err
+    })
+}
+
 // Get user account
 export const getUserAccount = () => {
   return (dispatch) => {

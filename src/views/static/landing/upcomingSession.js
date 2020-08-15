@@ -131,10 +131,10 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
               </div>
               <p className="content mb-0">
                 {moment(new Date(workout.scheduledTime)).format("ddd MMM YY")} |{" "}
-                {moment(new Date(workout.scheduledTime)).format("h:m A")} -{" "}
+                {moment(new Date(workout.scheduledTime)).format("hh:mm A")} -{" "}
                 {moment(new Date(workout.scheduledTime))
                   .add(workout.duration, "minutes")
-                  .format("h:m A")}{" "}
+                  .format("hh:mm A")}{" "}
                 {workout.timezone}{" "}
               </p>
             </div>
