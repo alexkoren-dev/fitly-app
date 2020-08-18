@@ -17,6 +17,8 @@ const StaticLayout = React.lazy(() => import("./layouts/default/TheLayout"))
 const MainLayout = React.lazy(() => import("./layouts/default/MainLayout"))
 const AuthLayout = React.lazy(() => import("./layouts/auth"))
 
+const WorkoutEdit = React.lazy(() => import("views/workout"))
+
 class App extends Component {
   render() {
     return (
@@ -26,6 +28,9 @@ class App extends Component {
             <Route path="/auth" name="Static" component={AuthLayout} />
             <Route path="/user" name="main" component={MainLayout} />
             <Route path="/home" name="Static" component={StaticLayout} />
+
+            <Route path="/workout" name="Static" component={WorkoutEdit} />
+
             <Redirect from="/" to="/home" />
           </Switch>
         </React.Suspense>

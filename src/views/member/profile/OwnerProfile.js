@@ -159,16 +159,18 @@ const Profile = ({ props }) => {
       <div className="p-4 mt-3">
         <CRow>
           <CCol lg={9}>
-            <SessionTable />
+            <SessionTable profile={profile} />
           </CCol>
           <CCol lg={3}>
             <div
               className="bg-primary text-white text-center p-4 mb-5"
               style={{ borderRadius: 20 }}
             >
-              <div className="plus-icon">
-                <i className="fa fa-plus" />
-              </div>
+              <Link to={"/user/workout/create"}>
+                <div className="plus-icon">
+                  <i className="fa fa-plus" style={{ color: "white" }} />
+                </div>
+              </Link>
               <h5 className="pt-3 text-white">
                 <strong>
                   {profile ? "ADD WORKOUT SESSION" : "CREATE A WORKOUT SESSION"}

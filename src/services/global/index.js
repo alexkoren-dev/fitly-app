@@ -4,4 +4,14 @@ import * as AuthActions from "./auth/actions"
 import StripeReducer from "./stripe/reducer"
 import * as StripeActions from "./stripe/actions"
 
-export { AuthReducer, AuthActions, StripeReducer, StripeActions }
+import WorkoutReducer from "./workouts/reducer"
+import * as WorkoutActions from "./workouts/actions"
+
+export {
+  AuthReducer,
+  AuthActions,
+  StripeReducer,
+  StripeActions,
+  WorkoutActions,
+  WorkoutReducer,
+}

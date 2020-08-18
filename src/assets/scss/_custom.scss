@@ -468,3 +468,7 @@ button:hover {
     color: white;
   }
 }
+
+.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
+  background: #ffd06c !important;
+}

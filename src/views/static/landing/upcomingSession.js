@@ -25,18 +25,18 @@ import Weight from "assets/img/weight.svg"
 import Loader from "components/loader"
 
 const WORKOUT_TYPES = {
-  "Indoor Cycle": IndoorBike,
+  "Indoor Bike": IndoorBike,
   Elliptical: Elliptical,
   "Indoor Run": IndoorRun,
   "Indoor Walk": IndoorWalk,
   "Jump Rope": JumpingRope,
   "HIIT Workout": HIITWorkout,
-  dance: Dance,
-  boxing: Kick,
+  Dance: Dance,
+  Boxing: Kick,
   "Weight Training": Weight,
   "Core Training": Core,
   "Cross Training": Cross,
-  yoga: Yoga,
+  Yoga: Yoga,
   Pilates: Pilate,
 }
 

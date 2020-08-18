@@ -1,0 +1,38 @@
+.workout-page {
+	.border-radius {
+		border-radius: 15px;
+	}
+
+	.workout-item {
+		border-radius: 15px;
+		min-width: 150px;
+		height: 150px;
+		border: 0.1em solid #707070;
+		cursor: pointer;
+	}
+	.workout-item.active {
+		border: 0.2em solid #5063EE;
+		box-shadow: 1px 3px 10px 0 rgba(0, 0, 0, 0.5);
+	}
+	.invalid-feedback {
+		display: block;
+		font-size: 100%;
+	}
+
+	.ant-slider-rail {
+		background-color: rgba(0, 0, 0, 0.12) !important;
+	}
+	.ant-slider-dot {
+		top: -3px !important;
+	    width: 10px !important;
+	    height: 10px !important;
+	    border: 2px solid #5063ee !important;
+	}
+	.ant-slider-mark-text {
+		font-size: 12px !important;
+	}
+
+	.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
+		background: #ffd06c !important;
+	}
+}
