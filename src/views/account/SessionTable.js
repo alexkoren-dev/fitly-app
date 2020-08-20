@@ -38,8 +38,8 @@ const columns = [
   },
   {
     title: "USER REGISTERED",
-    dataIndex: "registeredUsers",
-    render: (registeredUsers) => `${registeredUsers.length} Participants`,
+    dataIndex: "paymentInfo",
+    render: (paymentInfo) => `${paymentInfo && paymentInfo.length} Participants`,
   },
   {
     title: "FEES PAID",
@@ -76,45 +76,15 @@ const columns = [
   },
 ]
 
-const data = [
-  {
-    key: 1,
-    status: "Upcoming",
-    date: new Date(),
-    duration: 450,
-    user: 89,
-    earning: 300,
-    workout: "Strength Traning",
-  },
-  {
-    key: 2,
-    status: "Completed",
-    date: new Date(),
-    duration: 450,
-    user: 89,
-    earning: 300,
-    workout: "Strength Traning",
-  },
-  {
-    key: 3,
-    status: "Upcoming",
-    date: new Date(),
-    duration: 450,
-    user: 89,
-    earning: 300,
-    workout: "Strength Traning",
-  },
-]
-
 const SessionTable = () => {
   const [workouts, setWorkouts] = useState(null)
   const [loading, setLoading] = useState(false)
   const profile = useSelector((state) => state.auth.profile)
 
   useEffect(() => {
-    if (profile && !workouts) {
+    if (!workouts) {
       setLoading(true)
-      AuthActions.getUserWorkouts(profile.userId)
+      AuthActions.getUserWorkouts()
         .then((res) => {
           setWorkouts(res.workouts)
           setLoading(false)

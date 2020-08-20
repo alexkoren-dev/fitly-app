@@ -7,83 +7,11 @@ import { CButton, CCardHeader, CCard, CCardBody } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 import { Table, Popover } from "antd"
 import { WorkoutActions } from "services/global"
+import CConfirmAlert from "components/confirmAlert"
 
 const WORKOUT_STATUS = {
   active: "Upcoming",
 }
-
-const columns = [
-  {
-    title: "STATUS",
-    dataIndex: "status",
-    render: (status) => (
-      <div className={`status-badge ${WORKOUT_STATUS[status]}`}>
-        {WORKOUT_STATUS[status]}
-      </div>
-    ),
-  },
-  {
-    title: "DATE & TIME",
-    dataIndex: "scheduledTime",
-    render: (scheduledTime) => (
-      <p className="mb-0">
-        {moment(new Date(scheduledTime)).format("ddd MMM YYYY")}{" "}
-        {moment(new Date(scheduledTime)).format("h:m A")}
-      </p>
-    ),
-    sorter: (a, b) => a.scheduledTime - b.scheduledTime,
-  },
-  {
-    title: "DURATION",
-    dataIndex: "duration",
-    align: "center",
-  },
-  {
-    title: "USER REGISTERED",
-    dataIndex: "registeredUsers",
-    render: (registeredUsers) =>
-      `${registeredUsers && registeredUsers.length} Participants`,
-  },
-  {
-    title: "EARNINGS",
-    dataIndex: "perUserCharge",
-    render: (perUserCharge) => `$${perUserCharge} / user`,
-  },
-  {
-    title: "WORKOUT TYPE",
-    dataIndex: "typeDetails",
-  },
-  {
-    title: "ACTIONS",
-    key: "action",
-    dataIndex: "_id",
-    render: (id) => (
-      <Popover
-        placement="left"
-        content={() => (
-          <div className="action-buttons">
-            <CButton color="primary" className="btn-pill mb-1">
-              JOIN SESSION
-            </CButton>
-            <br />
-            <Link to={`/user/workout/${id}`}>
-              <CButton color="primary" className="btn-pill button-bg-dark mb-1">
-                EDIT SESSION
-              </CButton>
-            </Link>
-            <br />
-            <CButton color="danger" className="btn-pill">
-              CANCEL SESSION
-            </CButton>
-          </div>
-        )}
-        trigger="click"
-      >
-        <i className="fa fa-ellipsis-h" style={{ fontSize: 30, color: "#707070" }} />
-      </Popover>
-    ),
-  },
-]
 
 const SessionTable = ({ profile }) => {
   const dispatch = useDispatch()
@@ -99,6 +27,93 @@ const SessionTable = ({ profile }) => {
     }
   }, [profile])
 
+  const cancelSession = (id) => {
+    CConfirmAlert(
+      dispatch,
+      WorkoutActions.cancelWorkoutSession(id),
+      "Are you sure want to delete this workout session?"
+    )
+  }
+
+  const columns = [
+    {
+      title: "STATUS",
+      dataIndex: "status",
+      render: (status) => (
+        <div className={`status-badge ${WORKOUT_STATUS[status]}`}>
+          {WORKOUT_STATUS[status]}
+        </div>
+      ),
+    },
+    {
+      title: "DATE & TIME",
+      dataIndex: "scheduledTime",
+      render: (scheduledTime) => (
+        <p className="mb-0">
+          {moment(new Date(scheduledTime)).format("ddd MMM YYYY")}{" "}
+          {moment(new Date(scheduledTime)).format("h:m A")}
+        </p>
+      ),
+      sorter: (a, b) => a.scheduledTime - b.scheduledTime,
+    },
+    {
+      title: "DURATION",
+      dataIndex: "duration",
+      align: "center",
+    },
+    {
+      title: "USER REGISTERED",
+      dataIndex: "paymentInfo",
+      render: (paymentInfo) => `${paymentInfo && paymentInfo.length} Participants`,
+    },
+    {
+      title: "EARNINGS",
+      dataIndex: "perUserCharge",
+      render: (perUserCharge) => `$${perUserCharge} / user`,
+    },
+    {
+      title: "WORKOUT TYPE",
+      dataIndex: "typeDetails",
+    },
+    {
+      title: "ACTIONS",
+      key: "action",
+      dataIndex: "_id",
+      render: (id) => (
+        <Popover
+          placement="left"
+          content={() => (
+            <div className="action-buttons">
+              <CButton color="primary" className="btn-pill mb-1">
+                JOIN SESSION
+              </CButton>
+              <br />
+              <Link to={`/user/workout/${id}`}>
+                <CButton color="primary" className="btn-pill button-bg-dark mb-1">
+                  EDIT SESSION
+                </CButton>
+              </Link>
+              <br />
+              <CButton
+                color="danger"
+                className="btn-pill"
+                onClick={() => cancelSession(id)}
+              >
+                CANCEL SESSION
+              </CButton>
+            </div>
+          )}
+          trigger="click"
+        >
+          <i
+            className="fa fa-ellipsis-h"
+            style={{ fontSize: 30, color: "#707070" }}
+          />
+        </Popover>
+      ),
+    },
+  ]
+
   return (
     <CCard className="shadow">
       <CCardBody>
@@ -110,6 +125,7 @@ const SessionTable = ({ profile }) => {
         </div>
         <Table
           columns={columns}
+          key={(record) => record._id}
           dataSource={workouts}
           loading={loading}
           className="session-table"

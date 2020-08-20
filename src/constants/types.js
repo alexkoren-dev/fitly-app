@@ -21,4 +21,5 @@ export const COMMON = {
 
 export const WORKOUT = {
   WORKOUT_SESSIONS: "WORKOUT_SESSIONS",
+  DELETE_SESSION: "DELETE_SESSION",
 }

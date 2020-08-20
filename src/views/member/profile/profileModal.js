@@ -28,7 +28,7 @@ import MSelect from "components/materialSelect"
 
 import { AuthActions } from "services/global"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
-import { CERTIFICATES } from "constants/common"
+import { CERTIFICATES, TRAININGS, TIMEZONES } from "constants/common"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
@@ -53,6 +53,8 @@ const validationSchema = Yup.object().shape({
   gender: Yup.string(),
   trainingAccreditation: Yup.string(),
   specialities: Yup.string(),
+  location: Yup.string(),
+  aboutme: Yup.string(),
 })
 
 const getSelectedOptions = (options, values) => {
@@ -109,12 +111,15 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
         ? profile.trainingAccreditation[0]
         : "",
     specialities: profile && profile.specialities ? profile.specialities[0] : "",
+    location: profile && profile.location ? profile.location : "",
+    aboutme: profile ? profile.aboutme : "",
   }
 
   return (
     <CModal
       show={openModal}
       onClose={closeModal}
+      key={openModal}
       size="lg"
       color="primary"
       className="profile_modal"
@@ -241,9 +246,9 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
               <CFormGroup row>
                 <CCol lg={12}>
                   <MSelect
-                    options={CERTIFICATES}
+                    options={TRAININGS}
                     isMulti
-                    value={getSelectedOptions(CERTIFICATES, values.specialities)}
+                    value={getSelectedOptions(TRAININGS, values.specialities)}
                     onChange={(options) => {
                       handleChange("specialities")(
                         options ? options.map((opt) => opt.value).join(",") : ""
@@ -270,6 +275,33 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                       )
                     }}
                     placeholder="Select Certification"
+                  />
+                </CCol>
+              </CFormGroup>
+              <CFormGroup row>
+                <CCol lg={12}>
+                  <MSelect
+                    options={TIMEZONES}
+                    className="m-select mb-2"
+                    value={getSelectedOptions(TIMEZONES, values.location)}
+                    onChange={(options) => {
+                      handleChange("location")(options ? options.value : "")
+                    }}
+                    placeholder="Select Your Timezone"
+                  />
+                </CCol>
+              </CFormGroup>
+              <CFormGroup row>
+                <CCol lg={12}>
+                  <MInput
+                    id="standard-basic"
+                    name="aboutme"
+                    multiline
+                    label="About Me"
+                    rows={4}
+                    defaultValue={values.aboutme}
+                    fullWidth
+                    onChange={handleChange}
                   />
                 </CCol>
               </CFormGroup>

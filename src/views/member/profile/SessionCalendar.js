@@ -14,8 +14,6 @@ const SessionCaneldar = () => {
     day: new Date(workout.scheduledTime).getDay(),
   }))
 
-  console.log(dates)
-
   return (
     <Calendar
       value={dates}

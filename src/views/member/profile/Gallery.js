@@ -9,7 +9,6 @@ import CConfirmAlert from "components/confirmAlert"
 import LikeOrDislike from "./likeOrDislike"
 
 import UploadModal from "./UploadModal"
-import image4 from "assets/img/Image4.png"
 
 const responsive = {
   0: { items: 1 },
@@ -86,7 +85,11 @@ const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
   )
 
   const deleteGalleryImage = (imageId) => {
-    CConfirmAlert(dispatch, AuthActions.removeProfileImage(imageId))
+    CConfirmAlert(
+      dispatch,
+      AuthActions.removeProfileImage(imageId),
+      "Are you sure want to delete this image!"
+    )
   }
 
   const likeOrDislikeImage = (imageId, isLiked) => {

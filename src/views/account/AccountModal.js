@@ -28,7 +28,7 @@ import MSelect from "components/materialSelect"
 
 import { AuthActions } from "services/global"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
-import { CERTIFICATES } from "constants/common"
+import { TIMEZONES } from "constants/common"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
@@ -51,6 +51,8 @@ const validationSchema = Yup.object().shape({
   city: Yup.string(),
   state: Yup.string(),
   gender: Yup.string(),
+  location: Yup.string(),
+  aboutme: Yup.string(),
 })
 
 const getSelectedOptions = (options, values) => {
@@ -65,7 +67,6 @@ const AccountModal = ({ openModal, closeModal, profile }) => {
 
   const [loading, setLoading] = useState(false)
   const [gender, setGender] = useState("woman")
-  const [certificates, setCertificates] = useState([])
   const [trainings, setTrainings] = useState([])
 
   const handleSubmit = (values) => {
@@ -101,6 +102,8 @@ const AccountModal = ({ openModal, closeModal, profile }) => {
     city: profile ? profile.city : "",
     state: profile ? profile.state : "",
     gender: profile ? profile.gender : "",
+    location: profile && profile.location ? profile.location : "",
+    aboutme: profile ? profile.aboutme : "",
   }
 
   return (
@@ -228,6 +231,34 @@ const AccountModal = ({ openModal, closeModal, profile }) => {
                       </CFormGroup>
                     </div>
                   </div>
+                </CCol>
+              </CFormGroup>
+
+              <CFormGroup row>
+                <CCol lg={12}>
+                  <MSelect
+                    options={TIMEZONES}
+                    className="m-select mb-2"
+                    value={getSelectedOptions(TIMEZONES, values.location)}
+                    onChange={(options) => {
+                      handleChange("location")(options ? options.value : "")
+                    }}
+                    placeholder="Select Your Timezone"
+                  />
+                </CCol>
+              </CFormGroup>
+              <CFormGroup row>
+                <CCol lg={12}>
+                  <MInput
+                    id="standard-basic"
+                    name="aboutme"
+                    multiline
+                    label="About Me"
+                    rows={4}
+                    defaultValue={values.aboutme}
+                    fullWidth
+                    onChange={handleChange}
+                  />
                 </CCol>
               </CFormGroup>
 

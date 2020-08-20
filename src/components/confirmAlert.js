@@ -4,13 +4,12 @@ import { CButton } from "@coreui/react"
 import { confirmAlert } from "react-confirm-alert" // Import
 import "react-confirm-alert/src/react-confirm-alert.css"
 
-const CConfirmAlert = (dispatch, action) => {
+const CConfirmAlert = (dispatch, action, title) => {
   confirmAlert({
     customUI: ({ onClose }) => {
       return (
         <div className="bg-primary custom-alert py-4 px-5">
-          <h2 className="text-white">Are you sure?</h2>
-          <p className="text-white">You want to delete this file?</p>
+          <p className="text-white mt-4">{title}</p>
           <div className="d-flex justify-content-end mt-5 mb-3">
             <CButton
               color="primary"

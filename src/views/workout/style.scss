@@ -22,17 +22,19 @@
 	.ant-slider-rail {
 		background-color: rgba(0, 0, 0, 0.12) !important;
 	}
+	.ant-slider-track {
+		background-color: rgb(207, 208, 210) !important;
+	}
+	.ant-slider-handle {
+		border: solid 3px #116294 !important;
+	}
 	.ant-slider-dot {
 		top: -3px !important;
 	    width: 10px !important;
 	    height: 10px !important;
-	    border: 2px solid #5063ee !important;
+	    border: 2px solid #8b8b8e !important;
 	}
 	.ant-slider-mark-text {
 		font-size: 12px !important;
-	}
-
-	.Calendar__day.-selected, .Calendar__day.-selectedStart, .Calendar__day.-selectedEnd {
-		background: #ffd06c !important;
 	}
 }

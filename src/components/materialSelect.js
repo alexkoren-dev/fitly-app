@@ -18,6 +18,10 @@ const customStyles = {
     ...provided,
     color: "white",
   }),
+  singleValueLabel: (provided) => ({
+    ...provided,
+    color: "white",
+  }),
   multiValueRemove: (provided) => ({
     ...provided,
     borderRadius: "50%",
@@ -70,8 +74,9 @@ const customStyles = {
   singleValue: (provided, state) => {
     const opacity = state.isDisabled ? 0.5 : 1
     const transition = "opacity 300ms"
+    const color = "white"
 
-    return { ...provided, opacity, transition }
+    return { ...provided, opacity, transition, color }
   },
 }
 

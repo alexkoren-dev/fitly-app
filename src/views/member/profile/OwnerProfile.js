@@ -6,7 +6,7 @@ import CIcon from "@coreui/icons-react"
 import { Link } from "react-router-dom"
 import { AuthActions } from "services/global"
 import Loader from "components/loader"
-import { CERTIFICATES } from "constants/common"
+import { CERTIFICATES, TIMEZONES } from "constants/common"
 
 import AvatarUploader from "./AvatarUploader"
 import SessionTable from "./SessionTable"
@@ -70,68 +70,86 @@ const Profile = ({ props }) => {
                         ? `${profile.city},  ${profile.state}`
                         : "Add Your Location"}
                     </p>
+                    <p className="d-flex align-items-center justify-content-center mt-2">
+                      {profile &&
+                        profile.location &&
+                        TIMEZONES.filter(
+                          (time) => time.value === profile.location
+                        )[0].label}
+                    </p>
                   </div>
                 </div>
               </CCol>
               <CCol lg={8}>
-                <div className="d-flex align-items-center">
-                  <p className="d-flex align-items-center justify-content-center my-1">
-                    <CIcon
-                      name="cu-sports"
-                      width="30"
-                      height="30"
-                      className="mr-2"
-                    />{" "}
-                    {profile && profile.totalSessionCompleted
-                      ? profile.totalSessionCompleted
-                      : 0}{" "}
-                    Sessions Hosted
-                  </p>
-                  <div className="v-divider" />
-                  <p className="d-flex align-items-center justify-content-center my-1">
-                    <CIcon name="cu-star" width="30" height="25" className="mr-2" />
-                    <span className="pt-1">
-                      {profile && profile.overAllRating
-                        ? `${profile.overAllRating} Stars`
-                        : "No Ratings"}
-                    </span>
-                  </p>
-                  <div className="v-divider" />
-                  <div className="my-1">
-                    {profile &&
-                    profile.trainingAccreditation &&
-                    profile.trainingAccreditation.length > 0 &&
-                    profile.trainingAccreditation[0] !== "" &&
-                    profile.trainingAccreditation[0].split(",").length > 0 ? (
-                      profile.trainingAccreditation[0].split(",").map((cer, key) => (
-                        <p
-                          key={key}
-                          className="d-flex align-items-center justify-content-start my-1"
-                        >
+                <div className="d-flex justify-content-between flex-column h-100">
+                  <p>{profile && profile.aboutme}</p>
+                  <div className="d-flex align-items-center">
+                    <p className="d-flex align-items-center justify-content-center my-1">
+                      <CIcon
+                        name="cu-sports"
+                        width="30"
+                        height="30"
+                        className="mr-2"
+                      />{" "}
+                      {profile && profile.totalSessionCompleted
+                        ? profile.totalSessionCompleted
+                        : 0}{" "}
+                      Sessions Hosted
+                    </p>
+                    <div className="v-divider" />
+                    <p className="d-flex align-items-center justify-content-center my-1">
+                      <CIcon
+                        name="cu-star"
+                        width="30"
+                        height="25"
+                        className="mr-2"
+                      />
+                      <span className="pt-1">
+                        {profile && profile.overAllRating
+                          ? `${profile.overAllRating} Stars`
+                          : "No Ratings"}
+                      </span>
+                    </p>
+                    <div className="v-divider" />
+                    <div className="my-1">
+                      {profile &&
+                      profile.trainingAccreditation &&
+                      profile.trainingAccreditation.length > 0 &&
+                      profile.trainingAccreditation[0] !== "" &&
+                      profile.trainingAccreditation[0].split(",").length > 0 ? (
+                        profile.trainingAccreditation[0]
+                          .split(",")
+                          .map((cer, key) => (
+                            <p
+                              key={key}
+                              className="d-flex align-items-center justify-content-start my-1"
+                            >
+                              <CIcon
+                                name="cu-certificate"
+                                width="25"
+                                height="25"
+                                className="mr-2"
+                              />
+                              <span className="pt-1">
+                                {CERTIFICATES.filter((c) => c.value === cer).length >
+                                  0 &&
+                                  CERTIFICATES.filter((c) => c.value === cer)[0]
+                                    .label}
+                              </span>
+                            </p>
+                          ))
+                      ) : (
+                        <p className="d-flex align-items-center justify-content-center mb-0">
                           <CIcon
                             name="cu-certificate"
                             width="25"
                             height="25"
                             className="mr-2"
                           />
-                          <span className="pt-1">
-                            {CERTIFICATES.filter((c) => c.value === cer).length >
-                              0 &&
-                              CERTIFICATES.filter((c) => c.value === cer)[0].label}
-                          </span>
+                          <span className="pt-1">No Certification</span>
                         </p>
-                      ))
-                    ) : (
-                      <p className="d-flex align-items-center justify-content-center mb-0">
-                        <CIcon
-                          name="cu-certificate"
-                          width="25"
-                          height="25"
-                          className="mr-2"
-                        />
-                        <span className="pt-1">No Certification</span>
-                      </p>
-                    )}
+                      )}
+                    </div>
                   </div>
                 </div>
               </CCol>

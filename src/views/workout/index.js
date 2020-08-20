@@ -125,7 +125,7 @@ const WorkoutPage = (props) => {
   const [selectedWorkout, setWorkout] = useState(null)
 
   const [initialValues, setInitialValues] = useState({
-    totalUserLimit: "",
+    totalUserLimit: "1",
     duration: "",
     timezone: "",
     perUserCharge: 10,
@@ -170,12 +170,16 @@ const WorkoutPage = (props) => {
     )
       .then((res) => {
         setSaving(false)
-        toast.success("Workout is created successfully!", {
-          position: toast.POSITION.TOP_RIGHT,
-        })
+        toast.success(
+          `Workout is ${workoutId ? "updated" : "created"} successfully!`,
+          {
+            position: toast.POSITION.TOP_RIGHT,
+          }
+        )
+        props.history.push("/user/profile")
       })
       .catch((err) => {
-        toast.error("Workout create is failed", {
+        toast.error("Something went wrong. Please try again!", {
           position: toast.POSITION.TOP_RIGHT,
         })
         setSaving(false)
@@ -259,7 +263,7 @@ const WorkoutPage = (props) => {
                     <CounterInput
                       min={1}
                       max={10}
-                      count={1}
+                      count={parseInt(values.totalUserLimit)}
                       inputStyle={{
                         minWidth: 80,
                         height: 37,
@@ -354,7 +358,6 @@ const WorkoutPage = (props) => {
                       }
                       isSearchable={false}
                       onChange={(val) => {
-                        console.log(val.value)
                         handleChange("duration")(val.value.toString())
                       }}
                     ></Select>

@@ -232,7 +232,7 @@ export const getAllWorkOuts = () => {
 }
 
 // Get User Workouts
-export const getUserWorkouts = (id) => {
+export const getUserWorkouts = () => {
   let data = {
     method: "get",
     url: `/workouts/user-registered-workouts`,

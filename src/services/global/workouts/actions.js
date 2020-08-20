@@ -3,10 +3,10 @@ import { api, authApi, formData } from "utils"
 
 // Create Workout Session
 export const createOrSaveWorkout = (workout, id) => {
-  console.log(workout)
+  console.log(id)
   return (dispatch) => {
     let data = {
-      method: "post",
+      method: id ? "put" : "post",
       url: `/workouts`,
       data: workout,
     }
@@ -50,14 +50,31 @@ export const getWorkoutById = (id) => {
     }
     return authApi(data)
       .then((res) => {
-        dispatch({
-          type: WORKOUT.WORKOUT_SESSIONS,
-          payload: res.workouts || [],
-        })
         return res
       })
       .catch((err) => {
         throw err
+      })
+  }
+}
+
+// Delete Workout Session
+export const cancelWorkoutSession = (id) => {
+  return (dispatch) => {
+    let data = {
+      method: "delete",
+      url: `/workouts?workoutId=${id}`,
+    }
+    return authApi(data)
+      .then((res) => {
+        dispatch({
+          type: WORKOUT.DELETE_SESSION,
+          payload: id,
+        })
+        return res
+      })
+      .catch((err) => {
+        throw {}
       })
   }
 }

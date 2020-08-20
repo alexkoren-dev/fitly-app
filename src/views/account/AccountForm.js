@@ -22,6 +22,8 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
+import { TIMEZONES } from "constants/common"
+
 import Loader from "components/loader"
 import MSelect from "components/materialSelect"
 
@@ -53,8 +55,6 @@ const validationSchema = Yup.object().shape({
   city: Yup.string(),
   state: Yup.string(),
   gender: Yup.string(),
-  trainingAccreditation: Yup.string(),
-  specialities: Yup.string(),
 })
 
 const getSelectedOptions = (options, values) => {
@@ -81,6 +81,8 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
     city: profile ? profile.city : "",
     state: profile ? profile.state : "",
     email: user ? user.email : "",
+    location: profile && profile.location ? profile.location : "",
+    aboutme: profile ? profile.aboutme : "",
   }
 
   return (
@@ -183,8 +185,12 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
                   id="standard-basic"
                   name="timezone"
                   label="timezone"
-                  readOnly
-                  value={"Central Daylight Time - CST"}
+                  value={
+                    profile &&
+                    profile.location &&
+                    TIMEZONES.filter((time) => time.value === profile.location)[0]
+                      .label
+                  }
                 />
               </CCol>
             </CFormGroup>
@@ -218,6 +224,21 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
                   readOnly
                   onChange={handleChange}
                 />
+              </CCol>
+            </CFormGroup>
+            <CFormGroup row>
+              <CCol lg={12}>
+                <CLabel className="text-bold text-primary">About Me</CLabel>
+                <textarea
+                  id="aboutme"
+                  name="aboutme"
+                  label="aboutme"
+                  rows={5}
+                  className="form-control"
+                  onChange={handleChange}
+                >
+                  {initialValues.aboutme}
+                </textarea>
               </CCol>
             </CFormGroup>
 
