@@ -117,58 +117,28 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
             <CFormGroup className="mt-3" row>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">First Name</CLabel>
-                <CInput
-                  id="firstName"
-                  name="firstName"
-                  label="First Name"
-                  value={initialValues.firstName}
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.firstName}</p>
               </CCol>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">Last Name</CLabel>
-                <CInput
-                  id="lastName"
-                  name="lastName"
-                  label="Last Name"
-                  value={initialValues.lastName}
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.lastName}</p>
               </CCol>
             </CFormGroup>
             <CFormGroup row>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">Phone Number</CLabel>
-                <CInput
-                  id="standard-basic"
-                  name="phoneNumber"
-                  label="Phone Number"
-                  value={initialValues.phoneNumber}
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.phoneNumber}</p>
               </CCol>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">Email Address</CLabel>
-                <CInput
-                  id="email"
-                  name="email"
-                  value={initialValues.email}
-                  readOnly
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.email}</p>
               </CCol>
             </CFormGroup>
             <CFormGroup row>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">Password</CLabel>
-                <div className="d-flex align-items-center justify-content-center">
-                  <CInput
-                    type="password"
-                    id="password"
-                    name="password"
-                    value="Random Password"
-                    onChange={handleChange}
-                  />
+                <div className="d-flex align-items-center justify-content-start w-100">
+                  <p className="border-bottom py-2" style={{flex:1}}>.............</p>
                   <CButton
                     color="primary"
                     className="btn-pill p-0 ml-3"
@@ -181,64 +151,34 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
               </CCol>
               <CCol lg={6}>
                 <CLabel className="text-bold text-primary">Time Zone</CLabel>
-                <CInput
-                  id="standard-basic"
-                  name="timezone"
-                  label="timezone"
-                  value={
+                <p className="border-bottom py-2">
+                  {
                     profile &&
                     profile.location &&
                     TIMEZONES.filter((time) => time.value === profile.location)[0]
                       .label
                   }
-                />
+                </p>
               </CCol>
             </CFormGroup>
             <CFormGroup row>
               <CCol lg={4}>
                 <CLabel className="text-bold text-primary">City/ County</CLabel>
-                <CInput
-                  id="city"
-                  name="city"
-                  label="City"
-                  value={initialValues.city}
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.city}</p>
               </CCol>
               <CCol lg={4}>
                 <CLabel className="text-bold text-primary">State</CLabel>
-                <CInput
-                  id="state"
-                  name="state"
-                  label="state"
-                  value={initialValues.state}
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">{initialValues.state}</p>
               </CCol>
               <CCol lg={4}>
                 <CLabel className="text-bold text-primary">Country</CLabel>
-                <CInput
-                  id="standard-basic"
-                  name="country"
-                  value={"USA"}
-                  readOnly
-                  onChange={handleChange}
-                />
+                <p className="border-bottom py-2">USA</p>
               </CCol>
             </CFormGroup>
             <CFormGroup row>
               <CCol lg={12}>
                 <CLabel className="text-bold text-primary">About Me</CLabel>
-                <textarea
-                  id="aboutme"
-                  name="aboutme"
-                  label="aboutme"
-                  rows={5}
-                  className="form-control"
-                  onChange={handleChange}
-                >
-                  {initialValues.aboutme}
-                </textarea>
+                <p className="border-bottom py-2">{initialValues.aboutme}</p>
               </CCol>
             </CFormGroup>
 

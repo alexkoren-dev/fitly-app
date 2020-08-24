@@ -8,6 +8,7 @@ import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import _ from "lodash"
 import { AuthActions } from "services/global"
 import cardIcon from "assets/img/surface1.svg"
+import PaymentComplete from "assets/img/payment_complete.svg"
 
 const columns = [
   {
@@ -33,7 +34,7 @@ const columns = [
     render: (refund) => (
       <>
         {refund === "no" ? (
-          <CheckCircleOutlined style={{ fontSize: 25, color: "#5063EE" }} />
+          <img src={PaymentComplete} height="30"/>
         ) : (
           <CloseCircleOutlined style={{ fontSize: 25, color: "#e55353" }} />
         )}

@@ -25,6 +25,9 @@ import { cuPencil } from "./custom/pencil"
 import { cuStar } from "./custom/star"
 import { cuUserWhite } from "./custom/user-white"
 import { cuCalendar } from "./custom/calendar"
+import { cuHome } from "./custom/home"
+import { cuPerson } from "./custom/profile"
+import { cuLogout } from "./custom/logout"
 
 import {
   cibSkype,
@@ -153,6 +156,8 @@ import {
 export const icons = Object.assign(
   {},
   {
+    cuPerson,
+    cuHome,
     sygnet,
     logo,
     logoNegative,
@@ -170,6 +175,7 @@ export const icons = Object.assign(
     cuFacebook,
     cuLinkdln,
     cuLoom,
+    cuLogout,
     cuStar,
     cuSports,
     cuLocationPin,

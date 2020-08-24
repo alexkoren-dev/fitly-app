@@ -22,6 +22,8 @@ import Dance from "assets/img/dance.svg"
 import JumpingRope from "assets/img/jumping-rope.svg"
 import Weight from "assets/img/weight.svg"
 
+import Users from "assets/img/users.svg"
+
 import Loader from "components/loader"
 
 const WORKOUT_TYPES = {
@@ -116,7 +118,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
           <li>
             <div className="d-flex detail-list">
               <div className="icon">
-                <CIcon name="cuUserOutline" width="23" height="23" />
+                <img src={Users} with="40" height="30"/>
               </div>
               <p className="content mb-0">
                 {workout && workout.paymentInfo && workout.paymentInfo.length}{" "}

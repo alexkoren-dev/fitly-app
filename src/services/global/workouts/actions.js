@@ -62,8 +62,8 @@ export const getWorkoutById = (id) => {
 export const cancelWorkoutSession = (id) => {
   return (dispatch) => {
     let data = {
-      method: "delete",
-      url: `/workouts?workoutId=${id}`,
+      method: "get",
+      url: `/workouts/delete?workoutId=${id}`,
     }
     return authApi(data)
       .then((res) => {
@@ -71,7 +71,6 @@ export const cancelWorkoutSession = (id) => {
           type: WORKOUT.DELETE_SESSION,
           payload: id,
         })
-        return res
       })
       .catch((err) => {
         throw {}

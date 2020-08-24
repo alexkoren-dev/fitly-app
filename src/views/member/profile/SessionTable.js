@@ -9,6 +9,8 @@ import { Table, Popover } from "antd"
 import { WorkoutActions } from "services/global"
 import CConfirmAlert from "components/confirmAlert"
 
+import MoreIcon from 'assets/img/more-dots.svg'
+
 const WORKOUT_STATUS = {
   active: "Upcoming",
 }
@@ -25,7 +27,7 @@ const SessionTable = ({ profile }) => {
         setLoading(false)
       })
     }
-  }, [profile])
+  }, [])
 
   const cancelSession = (id) => {
     CConfirmAlert(
@@ -78,6 +80,7 @@ const SessionTable = ({ profile }) => {
     {
       title: "ACTIONS",
       key: "action",
+      align: "center",
       dataIndex: "_id",
       render: (id) => (
         <Popover
@@ -105,10 +108,7 @@ const SessionTable = ({ profile }) => {
           )}
           trigger="click"
         >
-          <i
-            className="fa fa-ellipsis-h"
-            style={{ fontSize: 30, color: "#707070" }}
-          />
+          <img src={MoreIcon}/>
         </Popover>
       ),
     },

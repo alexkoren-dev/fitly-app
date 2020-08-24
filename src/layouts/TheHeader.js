@@ -25,9 +25,16 @@ import CIcon from "@coreui/icons-react"
 import { AuthActions } from "services/global"
 import { Link } from "react-router-dom"
 
+
+import HomeIcon from 'assets/img/browser.svg'
+import ProfileIcon from 'assets/img/person.svg'
+import Account from 'assets/img/gear.svg'
+import LogoutIcon from 'assets/img/exit.svg'
+
 const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
   const dispatch = useDispatch()
   const profile = auth.profile
+  const user_type = (auth.userInfo || {}).userType
 
   const openLoginModal = () => {
     dispatch(AuthActions.openLoginModal())
@@ -73,19 +80,22 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink to="/home">
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cil-home" width="30" />
+                      <CIcon name="cu-home" width="30" />
                       Home
                     </div>
                   </CHeaderNavLink>
                 </CHeaderNavItem>
-                <CHeaderNavItem className="px-3">
-                  <CHeaderNavLink to="/user/profile">
-                    <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cil-user" width="30" />
-                      Profile
-                    </div>
-                  </CHeaderNavLink>
-                </CHeaderNavItem>
+                {
+                    user_type === 'personal-trainer' && 
+                      <CHeaderNavItem className="px-3">
+                        <CHeaderNavLink to="/user/profile">
+                          <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
+                            <CIcon name="cu-person" width="30" />
+                            Profile
+                          </div>
+                        </CHeaderNavLink>
+                      </CHeaderNavItem>
+                }
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink to="/user/account">
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
@@ -97,10 +107,27 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink onClick={() => logout()}>
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cil-account-logout" width="30" />
+                      <CIcon name="cu-logout" width="30" />
                       Log out
                     </div>
                   </CHeaderNavLink>
+                </CHeaderNavItem>
+                <CHeaderNavItem style={{width: 100}} className="ml-4 px-3 d-flex align-items-center justify-content-center">
+                  
+                    {profile &&
+                    profile.profilprofile &&
+                    profile.profilprofile.profileImage.url && 
+                      <div className="c-avatar mr-2">
+                        <img
+                          src={profile.profileImage.url}
+                          width="40"
+                          height="40"
+                          style={{ borderRadius: "50%" }}
+                        />
+                      </div>
+                    }
+                  
+                  {auth.userInfo && auth.userInfo.username}
                 </CHeaderNavItem>
               </CHeaderNav>
               <CDropdown
@@ -112,34 +139,35 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                   <div className="c-avatar mr-2">
                     {profile &&
                     profile.profilprofile &&
-                    profile.profilprofile.profileImage.url ? (
+                    profile.profilprofile.profileImage.url && 
                       <img
                         src={profile.profileImage.url}
                         width="40"
                         height="40"
                         style={{ borderRadius: "50%" }}
                       />
-                    ) : (
-                      <CIcon name="cuUserWhite" width="20" />
-                    )}
+                    }
                   </div>
                   {auth.userInfo && auth.userInfo.username}
                 </CDropdownToggle>
                 <CDropdownMenu className="p-0" placement="bottom-end">
                   <CDropdownItem href="/">
-                    <CIcon name="cil-home" className="mfe-2" />
+                    <CIcon name="cu-home" className="mfe-2" />
                     Home
                   </CDropdownItem>
-                  <CDropdownItem href="/user/profile">
-                    <CIcon name="cil-user" className="mfe-2" />
-                    Profile
-                  </CDropdownItem>
+                  {
+                    user_type === 'personal-trainer' && 
+                      <CDropdownItem href="/user/profile">
+                        <CIcon name="cu-person" className="mfe-2" />
+                        Profile
+                      </CDropdownItem>
+                  }
                   <CDropdownItem href="/user/account">
                     <CIcon name="cil-cog" className="mfe-2" />
                     Account
                   </CDropdownItem>
                   <CDropdownItem onClick={() => logout()}>
-                    <CIcon name="cil-lock-locked" className="mfe-2" />
+                    <CIcon name="cu-logout" className="mfe-2" />
                     Log Out
                   </CDropdownItem>
                 </CDropdownMenu>
