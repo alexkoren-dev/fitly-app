@@ -1,25 +1,15 @@
-import React, { lazy } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React from "react"
 import {
   CButton,
   CCarousel,
-  CCarouselCaption,
-  CCarouselControl,
   CCarouselIndicators,
   CCarouselInner,
   CCarouselItem,
-  CLink,
   CCol,
-  CCardBody,
-  CCard,
   CRow,
 } from "@coreui/react"
 
-import CIcon from "@coreui/icons-react"
-import AliceCarousel from "react-alice-carousel"
-import "react-alice-carousel/lib/alice-carousel.css"
 import "./style.scss"
-import { AuthActions } from "services/global"
 import UpcomingSession from "./upcomingSession"
 import StripeModal from "./StripeModal"
 
@@ -27,9 +17,7 @@ import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
 import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
 
-import UserAvatar from "assets/img/user-avatar.png"
-import UserCard from "assets/img/LEVEL-3-USER-CARD.svg"
-import PersonalTrainer from "assets/img/PERSONAL-TRAINER.svg"
+
 import fitType1 from "assets/img/findyourguru1.jpg"
 import fitType2 from "assets/img/findyourguru2.jpg"
 import fitType3 from "assets/img/findyourguru3.jpg"

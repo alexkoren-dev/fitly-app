@@ -55,8 +55,7 @@ const generateRating = (rate) => {
     items.push(
       <CIcon
         key={y}
-        name="cuThumbsUp"
-        className="thumbsup-yellow"
+        name="cuThumbsUpLike"
         width="24"
         height="20"
       />
@@ -66,8 +65,7 @@ const generateRating = (rate) => {
     items.push(
       <CIcon
         key={i + 5}
-        name="cuThumbsUp"
-        className="thumbsup"
+        name="cuThumbsUpDislike"
         width="24"
         height="20"
       />
@@ -109,7 +107,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
         />
         <p className="user-name mb-1">{`${workout.trainerDetails.firstName} ${workout.trainerDetails.lastName}`}</p>
         <div className="d-flex justify-content-center">
-          {generateRating(workout.trainerDetails.overAllRating)}
+          {generateRating(4)}
         </div>
         <p className="session mt-1">
           {workout.trainerDetails.totalSessionCompleted} Sessions
@@ -152,7 +150,7 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
           <li>
             <div className="d-flex detail-list">
               <div className="icon">
-                <CIcon name="cuRegister" width="23" height="23" />
+                <CIcon name="cuRegister" width="18" height="23" />
               </div>
               <p className="content mb-0">{workout && workout.requirement}</p>
             </div>
@@ -171,6 +169,8 @@ const CardItem = ({ workout, is_authed, openLoginModal, openStripeModal }) => (
         >
           COUNT ME IN
         </CButton>
+      </div>
+      <div className="d-flex flex-wrap justify-content-center">
         {is_authed ? (
           <CLink to={`/user/${workout.trainerDetails.id}`}>
             <CButton className="button-bg-dark btn-pill m-1 px-4">

@@ -66,12 +66,14 @@
     "redux": "4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "source-map-explorer": "^2.5.0",
     "yup": "^0.29.1"
   },
   "devDependencies": {
     "react-scripts": "^3.4.3"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "node src/server.js",
     "dev": "react-scripts start",
     "build": "react-scripts build",

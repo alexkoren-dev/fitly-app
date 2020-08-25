@@ -4,7 +4,7 @@ import { CLink, CRow, CCol, CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
 import { Link } from "react-router-dom"
-import { AuthActions } from "services/global"
+import { AuthActions, WorkoutActions } from "services/global"
 import Loader from "components/loader"
 
 import AvatarUploader from "./AvatarUploader"
@@ -18,9 +18,10 @@ import "./style.scss"
 const Profile = (props) => {
   const dispatch = useDispatch()
   const userId = props.match.params.id
+  const workouts = useSelector((state) => state.workouts.workoutSessions)
 
   const [toggleProfile, setToggleProfile] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [profile, setProfile] = useState(null)
 
   useEffect(() => {
@@ -29,9 +30,12 @@ const Profile = (props) => {
   }, [])
 
   const getUserProfile = () => {
+    setLoading(true)
     AuthActions.getUserProfile(userId).then((res) => {
       setProfile(res.profile)
-      setLoading(false)
+      dispatch(WorkoutActions.getWorkOutSessions(res.profile.userId)).finally(() => {
+        setLoading(false)
+      })
     })
   }
 
@@ -118,7 +122,7 @@ const Profile = (props) => {
       <div className="p-4 mt-3">
         <CRow>
           <CCol lg={12}>
-            <SessionTable />
+            <SessionTable workouts={workouts} mode="user"/>
           </CCol>
         </CRow>
         <CRow className="mt-5">

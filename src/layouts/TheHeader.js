@@ -25,11 +25,12 @@ import CIcon from "@coreui/icons-react"
 import { AuthActions } from "services/global"
 import { Link } from "react-router-dom"
 
-
 import HomeIcon from 'assets/img/browser.svg'
 import ProfileIcon from 'assets/img/person.svg'
 import Account from 'assets/img/gear.svg'
 import LogoutIcon from 'assets/img/exit.svg'
+
+import Logo from 'components/logo'
 
 const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
   const dispatch = useDispatch()
@@ -47,8 +48,8 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
       style={{ zIndex: 999, backgroundColor: bgColor || "transparent" }}
     >
       <div className="d-flex justify-content-between w-100">
-        <CHeaderBrand className="mr-auto" to="/">
-          <CIcon name="logo" width="100%" height="68" className="logo" alt="Logo" />
+        <CHeaderBrand className="ml-2 mr-auto" to="/">
+          <Logo/>
         </CHeaderBrand>
 
         <CHeaderNav className="d-sm-down-none mr-auto">
@@ -80,7 +81,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink to="/home">
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cu-home" width="30" />
+                      <CIcon name="cu-home" height="30" />
                       Home
                     </div>
                   </CHeaderNavLink>
@@ -90,7 +91,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                       <CHeaderNavItem className="px-3">
                         <CHeaderNavLink to="/user/profile">
                           <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                            <CIcon name="cu-person" width="30" />
+                            <CIcon name="cu-person" height="30" />
                             Profile
                           </div>
                         </CHeaderNavLink>
@@ -99,7 +100,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink to="/user/account">
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cil-cog" width="30" />
+                      <CIcon name="cil-cog" height="30" />
                       Account
                     </div>
                   </CHeaderNavLink>
@@ -107,7 +108,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                 <CHeaderNavItem className="px-3">
                   <CHeaderNavLink onClick={() => logout()}>
                     <div className="d-flex align-items-center mx-auto justify-content-center flex-column">
-                      <CIcon name="cu-logout" width="30" />
+                      <CIcon name="cu-logout" height="30" />
                       Log out
                     </div>
                   </CHeaderNavLink>

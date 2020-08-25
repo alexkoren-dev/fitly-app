@@ -10,24 +10,25 @@ import { WorkoutActions } from "services/global"
 import CConfirmAlert from "components/confirmAlert"
 
 import MoreIcon from 'assets/img/more-dots.svg'
+import NoWorkout from 'assets/img/NOWORKOUT.svg'
 
 const WORKOUT_STATUS = {
   active: "Upcoming",
 }
 
-const SessionTable = ({ profile }) => {
+const SessionTable = ({ workouts, mode }) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-  const workouts = useSelector((state) => state.workouts.workoutSessions)
+  // const workouts = useSelector((state) => state.workouts.workoutSessions)
 
-  useEffect(() => {
-    if (profile) {
-      setLoading(true)
-      dispatch(WorkoutActions.getWorkOutSessions(profile.userId)).finally(() => {
-        setLoading(false)
-      })
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (profile) {
+  //     setLoading(true)
+  //     dispatch(WorkoutActions.getWorkOutSessions(profile.userId)).finally(() => {
+  //       setLoading(false)
+  //     })
+  //   }
+  // }, [])
 
   const cancelSession = (id) => {
     CConfirmAlert(
@@ -69,7 +70,7 @@ const SessionTable = ({ profile }) => {
       render: (paymentInfo) => `${paymentInfo && paymentInfo.length} Participants`,
     },
     {
-      title: "EARNINGS",
+      title: mode==='user'?"FEES/USER":"EARNINGS",
       dataIndex: "perUserCharge",
       render: (perUserCharge) => `$${perUserCharge} / user`,
     },
@@ -82,35 +83,40 @@ const SessionTable = ({ profile }) => {
       key: "action",
       align: "center",
       dataIndex: "_id",
-      render: (id) => (
-        <Popover
-          placement="left"
-          content={() => (
-            <div className="action-buttons">
-              <CButton color="primary" className="btn-pill mb-1">
-                JOIN SESSION
-              </CButton>
-              <br />
-              <Link to={`/user/workout/${id}`}>
-                <CButton color="primary" className="btn-pill button-bg-dark mb-1">
-                  EDIT SESSION
-                </CButton>
-              </Link>
-              <br />
-              <CButton
-                color="danger"
-                className="btn-pill"
-                onClick={() => cancelSession(id)}
-              >
-                CANCEL SESSION
-              </CButton>
-            </div>
-          )}
-          trigger="click"
-        >
-          <img src={MoreIcon}/>
-        </Popover>
-      ),
+      render: (id) => 
+        {return (mode==='user'?
+          <>
+            <CButton color="primary" className="btn-pill">SIGN UP</CButton>
+            <CButton color="primary" className="btn-pill">VIEW MORE</CButton>
+          </>
+          :<Popover
+              placement="left"
+              content={() => (
+                <div className="action-buttons">
+                  <CButton color="primary" className="btn-pill mb-1">
+                    JOIN SESSION
+                  </CButton>
+                  <br />
+                  <Link to={`/user/workout/${id}`}>
+                    <CButton color="primary" className="btn-pill button-bg-dark mb-1">
+                      EDIT SESSION
+                    </CButton>
+                  </Link>
+                  <br />
+                  <CButton
+                    color="danger"
+                    className="btn-pill"
+                    onClick={() => cancelSession(id)}
+                  >
+                    CANCEL SESSION
+                  </CButton>
+                </div>
+              )}
+              trigger="click"
+            >
+              <img src={MoreIcon}/>
+            </Popover>)
+      }
     },
   ]
 
@@ -123,14 +129,26 @@ const SessionTable = ({ profile }) => {
             <strong>LIVE WORKOUT SESSIONS</strong>
           </h3>
         </div>
-        <Table
-          columns={columns}
-          key={(record) => record._id}
-          dataSource={workouts}
-          loading={loading}
-          className="session-table"
-          scroll={{ x: 800 }}
-        />
+        {
+          workouts.length > 0 ?
+            <Table
+              columns={columns}
+              key="_id"
+              dataSource={workouts}
+              loading={loading}
+              className="session-table"
+              scroll={{ x: 700 }}
+            />
+          :
+          <div className="d-flex align-items-center justify-content-center flex-column">
+            <img src={NoWorkout} width="70%" className="mb-3"/>
+            <p>
+              You have not scheduled any live Training sessions. <br/>
+              Create a session and help people LOrem Ispusm 
+            </p>
+            <CButton color="primary" className="btn-pill mb-4">CREATE SESSION</CButton>
+          </div>
+        }
       </CCardBody>
     </CCard>
   )

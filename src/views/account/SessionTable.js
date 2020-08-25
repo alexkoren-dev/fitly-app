@@ -57,7 +57,7 @@ const columns = [
     render: () => (
       <CButton
         color="primary"
-        className="btn-pill"
+        className="btn-pill d-flex align-items-center"
         style={{ width: 40, height: 40 }}
       >
         <h3 className="text-white mb-0">+</h3>

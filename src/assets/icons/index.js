@@ -11,7 +11,8 @@ import { cuUserFill } from "./custom/user-fill"
 import { cuUserOutline } from "./custom/user-outline"
 import { cuSearch } from "./custom/search"
 import { cuMoney } from "./custom/money"
-import { cuThumbsUp } from "./custom/thumbs-up"
+import { cuThumbsUpLike } from "./custom/thumbs-up-like"
+import { cuThumbsUpDislike } from "./custom/thumbs-up-dislike"
 import { cuDance } from "./custom/dance"
 import { cuTwitter } from "./custom/twitter"
 import { cuYoutube } from "./custom/youtube"
@@ -168,7 +169,8 @@ export const icons = Object.assign(
     cuUserFill,
     cuUserOutline,
     cuMoney,
-    cuThumbsUp,
+    cuThumbsUpLike,
+    cuThumbsUpDislike,
     cuDance,
     cuTwitter,
     cuYoutube,

@@ -42,7 +42,7 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 
 import "./style.scss"
-import logoWhite from "assets/img/logo-white.svg"
+import Logo from 'components/logo'
 import stripeLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)
@@ -216,11 +216,11 @@ const StripeModal = ({ history }) => {
         <CLink
           href="/"
           className="d-block"
-          style={{ width: "fit-content", marginTop: -30 }}
+          style={{ width: "fit-content", marginTop: -10 }}
         >
-          <img src={logoWhite} width="120" height="80" />
+          <Logo/>
         </CLink>
-        <div className="text-center" style={{ marginTop: -80 }}>
+        <div className="text-center" style={{ marginTop: -70 }}>
           <div className="cart-bg d-flex align-items-center justify-content-center">
             <img src={stripeLogo} />
           </div>

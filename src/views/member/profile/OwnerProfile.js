@@ -4,7 +4,7 @@ import { CLink, CRow, CCol, CButton } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
 import { Link } from "react-router-dom"
-import { AuthActions } from "services/global"
+import { AuthActions, WorkoutActions } from "services/global"
 import Loader from "components/loader"
 import { CERTIFICATES, TIMEZONES } from "constants/common"
 
@@ -19,6 +19,7 @@ import "./style.scss"
 const Profile = ({ props }) => {
   const dispatch = useDispatch()
   const profile = useSelector((state) => state.auth.profile)
+  const workouts = useSelector((state) => state.workouts.workoutSessions)
 
   const [toggleProfile, setToggleProfile] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -26,7 +27,9 @@ const Profile = ({ props }) => {
   useEffect(() => {
     if (!profile) {
       setLoading(true)
-      dispatch(AuthActions.getOwnerProfile()).finally(() => {
+      dispatch(AuthActions.getOwnerProfile())
+    } else {
+      dispatch(WorkoutActions.getWorkOutSessions(profile.userId)).finally(() => {
         setLoading(false)
       })
     }
@@ -177,7 +180,7 @@ const Profile = ({ props }) => {
       <div className="p-4 mt-3">
         <CRow>
           <CCol lg={9}>
-            <SessionTable profile={profile} />
+            <SessionTable workouts={workouts} />
           </CCol>
           <CCol lg={3}>
             <div
@@ -191,7 +194,7 @@ const Profile = ({ props }) => {
               </Link>
               <h5 className="pt-3 text-white">
                 <strong>
-                  {profile ? "ADD WORKOUT SESSION" : "CREATE A WORKOUT SESSION"}
+                  {workouts && workouts.length > 0 ? "ADD WORKOUT SESSION" : "CREATE A WORKOUT SESSION"}
                 </strong>
               </h5>
             </div>

@@ -1,12 +1,13 @@
 import React from "react"
 import { CFooter, CLink, CRow, CCol } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import logoWhite from "assets/img/logo-white.svg"
 import facebookIcon from "assets/img/facebook.png"
 import instagramIcon from "assets/img/insta2.png"
 import twitterIcon from "assets/img/TWITTER.png"
 import linkedinIcon from "assets/img/linkedin.png"
 import youtubeIcon from "assets/img/youtube.png"
+
+import Logo from 'components/logo'
 
 const TheFooter = () => {
   return (
@@ -52,34 +53,34 @@ const TheFooter = () => {
         <CCol lg={2} md={3} sm={5}>
           <div className="text-center mx-auto">
             <CLink href="/">
-              <img src={logoWhite} width="150" height="89" />
+              <Logo/>
             </CLink>
             <p className="">Sweat in your own space </p>
             <ul className="mt-4 d-flex justify-content-center c-header-nav">
               <li>
-                <CLink>
+                <a href="https://www.facebook.com/FitlyAppForLife " target="_blank">
                   <img src={facebookIcon} width="33" height="31" />
-                </CLink>
+                </a>
               </li>
               <li>
-                <CLink>
+                <a href="https://www.instagram.com/fitly_app_/" target="_blank">
                   <img src={instagramIcon} width="33" height="31" />
-                </CLink>
+                </a>
               </li>
               <li>
-                <CLink>
+                <a href="https://www.linkedin.com/company/fitly-app/about/?viewAsMember=true" target="_blank">
                   <img src={linkedinIcon} width="33" height="31" />
-                </CLink>
+                </a>
               </li>
               <li>
-                <CLink>
+                <a href="https://www.facebook.com/FitlyAppForLife " target="_blank">
                   <img src={twitterIcon} width="33" height="31" />
-                </CLink>
+                </a>
               </li>
               <li>
-                <CLink>
+                <a href="https://www.facebook.com/FitlyAppForLife " target="_blank">
                   <img src={youtubeIcon} width="33" height="31" />
-                </CLink>
+                </a>
               </li>
             </ul>
           </div>
