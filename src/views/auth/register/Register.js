@@ -108,7 +108,7 @@ const Register = (props) => {
                 <img src={SignupImg} width="115%" style={{ marginLeft: "-10%" }} />
               </CCardBody>
             </CCard>
-            <CCard className="p-4 background-grey" style={{ flex: 2 }}>
+            <CCard className="p-4" style={{ flex: 2 }}>
               <CCardBody className="pr-5">
                 <Formik
                   initialValues={initialValues}
@@ -124,10 +124,11 @@ const Register = (props) => {
                         {props.location.state.type} Sign Up
                       </h2>
                       <p className="text-caption">
-                        LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
-                        LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
-                        LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM
-                        LOREM IPSUM LOREM IPSUM LOREM IPSUM
+                        Fitly isn’t an app. It’s a yoga class, it’s one-on-one
+                        personal training, it’s your motivation to reach your fitness
+                        goals. There’s no subscription, no gym and no need to feel
+                        self-conscious working out in front of others—just
+                        interactive training you can do at home.
                       </p>
                       <CFormGroup>
                         <CLabel className="text-bold text-dark">User Name</CLabel>

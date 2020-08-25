@@ -1,2 +1,1 @@
-
-# Fitnezz Guru
+# Fitly

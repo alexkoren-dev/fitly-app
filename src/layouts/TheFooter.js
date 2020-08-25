@@ -1,7 +1,6 @@
 import React from "react"
 import { CFooter, CLink, CRow, CCol } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-
 import logoWhite from "assets/img/logo-white.svg"
 import facebookIcon from "assets/img/facebook.png"
 import instagramIcon from "assets/img/insta2.png"

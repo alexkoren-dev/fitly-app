@@ -56,14 +56,14 @@ const CarouselItem = ({ index }) => (
       <CCol xs={7} className="h-100">
         <div className="d-flex justify-content-end align-items-center h-100">
           <div className="text-right mt-4">
-            <h1 className="text-dark">Reach your Fitness Goals Anywhere !!!</h1>
-            <p className="text-grey">- Rohit Bahl - Fitness Guru</p>
+            <h1 className="text-dark">Break a sweat with me anywhere!!!</h1>
+            <p className="text-grey">- Ruchita Bahl- Fitness Guru</p>
             <CButton
               color="primary"
               className="btn-pill"
               style={{ height: 50, width: 200 }}
             >
-              Loreum Ipsum
+              Book A Class
             </CButton>
           </div>
         </div>
@@ -101,13 +101,15 @@ const Landing = (props) => {
       <section className="p-4 mx-auto">
         <div>
           <h2 className="text-dark text-center">
-            <strong>FIND YOUR FITNEZZ GURU </strong>
+            <strong>SWEAT WITH FITLY </strong>
           </h2>
           <p className="text-dark text-center">
-            This isn’t just a app. It’s a cardio class,, it’s a yoga class, it’s a
-            boxing ring. It’s your
+            Fitly isn’t an app. It’s a yoga class, it’s one-on-one personal training,
+            it’s your motivation to reach your fitness goals.
             <br />
-            New personal group trainer, and it’s so much more.{" "}
+            There’s no subscription, no gym and no need to feel self-conscious
+            working out in front of others—just interactive training you can do at
+            home.
           </p>
           <CRow>
             <CCol md={3} xs={6}>
@@ -148,11 +150,12 @@ const Landing = (props) => {
       <section className="pt-5 pb-5 mx-auto section-4" style={{ maxWidth: 1300 }}>
         <div className="mt-2">
           <h2 className="text-dark text-center">
-            <strong>EVERY KIND OF WORKOUT </strong>
+            <strong>FIND YOUR FIT </strong>
           </h2>
           <p className="text-dark text-center">
-            From cardio and strength to yoga and flexibility, find a perfect workout
-            live class. Blah blah blah blah blah blha…
+            Everybody is unique—so your fitness plan should be too. Fitly offers a
+            variety of classes <br /> from cardio and HIIT to yoga and strength
+            training, so you can find the fit that works for you.
           </p>
           <CRow>
             <CCol md={4} xs={4} className="text-center">
@@ -176,17 +179,16 @@ const Landing = (props) => {
       <section className="py-5 mx-auto section-5 d-flex align-items-center justify-content-start">
         <div className="d-flex align-items-center justify-content-start">
           <div className="col-lg-6 col-sm-7 col-9">
-            <div className="col-lg-7 col-sm-10 col-12 d-flex justify-content-center align-items-center flex-column mx-auto">
+            <div className="col-lg-8 col-sm-10 col-12 d-flex justify-content-center align-items-center flex-column mx-auto">
               <h2 className="text-dark text-center">
-                <strong>BECOME A FITNEZZ GURU</strong>
+                <strong>SING UP AS A TRAINER </strong>
               </h2>
               <p className="text-dark text-center">
-                If you are a personal trainer and would like to host group or
-                individual live workout session, you could sign up as a fitnezzguru -
-                It’s completely. Host workout sessions and change lives today! It's
-                free!!
+                Inspire others and change lives by hosting one-on-one or small group
+                fitness classes through the Fitly app. Join the Fitly crew to host
+                classes from your home for free.
               </p>
-              <CButton color="primary">HOW IT WORKS</CButton>
+              <CButton color="primary">SIGN UP</CButton>
             </div>
           </div>
         </div>
@@ -195,10 +197,11 @@ const Landing = (props) => {
       <section className="pt-5 pl-5 pr-5 mx-auto section-6">
         <div className="mt-2">
           <h2 className="text-dark text-center">
-            <strong>INSTRAGRAM FEEDBLOCK</strong>
+            <strong>DO IT FOR 'GRAM</strong>
           </h2>
           <p className="text-dark text-center">
-            follow us on Instagram !!!!!!!!!!!!
+            Just kidding. Do it for yourself, your health and that feeling you get
+            after a great workout. But follow us on Instagram for fitsporation.
           </p>
           <div className="d-flex mx-auto justify-content-start flex-wrap">
             <div className="m-1 instagram-item">
