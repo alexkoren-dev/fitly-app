@@ -114,7 +114,6 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                   </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem style={{width: 100}} className="ml-4 px-3 d-flex align-items-center justify-content-center">
-                  
                     {profile &&
                     profile.profilprofile &&
                     profile.profilprofile.profileImage.url && 
@@ -128,7 +127,7 @@ const TheHeader = ({ auth, logout, fixed, shadow, bgColor }) => {
                       </div>
                     }
                   
-                  {auth.userInfo && auth.userInfo.username}
+                  {auth.userInfo && ('Hi, ' + auth.userInfo.username)}
                 </CHeaderNavItem>
               </CHeaderNav>
               <CDropdown
