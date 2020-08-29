@@ -24,10 +24,10 @@ import { Formik } from "formik"
 
 import { TIMEZONES } from "constants/common"
 
-import Loader from "components/loader"
-import MSelect from "components/materialSelect"
+import Loader from "components/Loader"
+import MSelect from "components/MaterialSelect"
 
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
 import { CERTIFICATES } from "constants/common"
 
@@ -35,7 +35,7 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 import array from "yup/lib/array"
 
-import "../member/profile/style.scss"
+// import "../member/profile/style.scss"
 import logoWhite from "assets/img/logo-white.svg"
 
 import AccountModal from "./AccountModal"

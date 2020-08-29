@@ -21,15 +21,17 @@ import CIcon from "@coreui/icons-react"
 import { Input } from "antd"
 import { Formik } from "formik"
 
-import Loader from "components/loader"
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
 
+import Logo from 'components/Logo'
+import Loader from "components/Loader"
+
 import "./style.scss"
-import logoWhite from "assets/img/logo-white.svg"
+
 
 const Yup = {
   object,
@@ -46,6 +48,7 @@ const initialValues = {
 
 const Login = (props) => {
   const dispatch = useDispatch()
+
   const toggleModal = useSelector((state) => state.auth.toggleLoginModal)
 
   const [loading, setLoading] = useState(false)
@@ -71,19 +74,19 @@ const Login = (props) => {
         },
       })
     )
-      .then((res) => {
-        if (remember) rememberUser(values)
+    .then((res) => {
+      if (remember) rememberUser(values)
 
-        dispatch(AuthActions.getCurrentUser())
-        setLoading(false)
-        closeModal()
+      dispatch(AuthActions.getCurrentUser())
+      setLoading(false)
+      closeModal()
+    })
+    .catch((err) => {
+      setLoading(false)
+      toast.error(filterErrorMsg(err.data.errors), {
+        position: toast.POSITION.TOP_RIGHT,
       })
-      .catch((err) => {
-        setLoading(false)
-        toast.error(filterErrorMsg(err.data.errors), {
-          position: toast.POSITION.TOP_RIGHT,
-        })
-      })
+    })
   }
 
   const validationSchema = Yup.object().shape({
@@ -117,7 +120,7 @@ const Login = (props) => {
                 className="mx-auto d-block"
                 style={{ width: "fit-content" }}
               >
-                <img src={logoWhite} width="200" height="120" />
+                <Logo white width={150}/>
               </CLink>
               <CFormGroup>
                 <CLabel className="text-bold text-white">Email</CLabel>

@@ -1,0 +1,31 @@
+.search-page {
+	.filter-dropdown .filter-button{
+		color: #909090 !important;
+		text-align: left;
+		// width: 100%;
+		min-width: 350px;
+		padding: 7px 10px !important;
+		height: 45px !important;
+		background: white;
+		box-shadow: 0 3px 8px 0px rgba(0,0,0,0.2);
+
+		.caret-icon {
+			position: absolute;
+		    right: 20px;
+		    top: 18px;
+		}
+
+		span {
+			font-size: 12px;
+		}
+	}
+
+	.filter-dropdown .dropdown-menu {
+		background-color: white !important;
+
+		.Calendar {
+			margin: 0 auto;
+			box-shadow: none;
+		}
+	}
+}

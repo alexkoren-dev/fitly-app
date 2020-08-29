@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import React, { useState, useEffect } from "react"
 import moment from "moment"
 import { CButton, CCardHeader, CCard, CCardBody } from "@coreui/react"
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import CIcon from "@coreui/icons-react"
 import { Table } from "antd"
 

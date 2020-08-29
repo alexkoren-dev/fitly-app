@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import Loader from "components/loader"
 import { CButton } from "@coreui/react"
-import { confirmAlert } from "react-confirm-alert" // Import
+import { confirmAlert } from "react-confirm-alert"
 import "react-confirm-alert/src/react-confirm-alert.css"
+
+import Loader from "components/Loader"
 
 const CConfirmAlert = (dispatch, action, title) => {
   confirmAlert({

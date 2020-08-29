@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="208.406" height="81" viewBox="0 0 208.406 81">
+  <g id="fitly-logo-white-blue" transform="translate(-13.1 -7.424)">
+    <rect id="Rectangle_390" data-name="Rectangle 390" width="143.878" height="51.8" transform="translate(77.628 23.663)" fill="none"/>
+    <text id="FITLY" transform="translate(77.618 73.424)" fill="#fff" font-size="61" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">FITLY</tspan></text>
+    <g id="Group_834" data-name="Group 834" transform="translate(13.1 18.635)">
+      <g id="Group_833" data-name="Group 833">
+        <path id="Path_1595" data-name="Path 1595" d="M61.339,87.328H29.756A16.7,16.7,0,0,1,13.1,70.672V42.756A16.7,16.7,0,0,1,29.756,26.1H61.339A16.7,16.7,0,0,1,77.994,42.756V70.725A16.721,16.721,0,0,1,61.339,87.328Z" transform="translate(-13.1 -26.1)" fill="#4e65ef"/>
+      </g>
+      <path id="Path_1596" data-name="Path 1596" d="M70.679,78.646,29.563,88.388a5.147,5.147,0,0,1-6.18-4.033h0a5.41,5.41,0,0,1,3.876-6.442l41.116-9.742a5.147,5.147,0,0,1,6.18,4.033h0A5.368,5.368,0,0,1,70.679,78.646Z" transform="translate(-17.936 -46.068)" fill="#fff"/>
+      <path id="Path_1597" data-name="Path 1597" d="M78.137,46.946l-25.874,6.18a5.147,5.147,0,0,1-6.18-4.033h0a5.41,5.41,0,0,1,3.876-6.442l25.874-6.18a5.147,5.147,0,0,1,6.18,4.033h0A5.342,5.342,0,0,1,78.137,46.946Z" transform="translate(-28.746 -30.971)" fill="#fff"/>
+      <path id="Path_1598" data-name="Path 1598" d="M63.843,119.446l-10.58,2.514a5.147,5.147,0,0,1-6.18-4.033h0a5.41,5.41,0,0,1,3.876-6.442l10.58-2.514A5.147,5.147,0,0,1,67.719,113h0A5.41,5.41,0,0,1,63.843,119.446Z" transform="translate(-29.222 -65.498)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -21,12 +21,12 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
-import Loader from "components/loader"
-import MRadio from "components/materialRadio"
-import MInput from "components/materialInput"
-import MSelect from "components/materialSelect"
+import Loader from "components/Loader"
+import MRadio from "components/MaterialRadio"
+import MInput from "components/MaterialInput"
+import MSelect from "components/MaterialSelect"
 
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
 import { TIMEZONES } from "constants/common"
 
@@ -35,7 +35,7 @@ import string from "yup/lib/string"
 import array from "yup/lib/array"
 
 // import "./style.scss"
-import logoWhite from "assets/img/logo-white.svg"
+import Logo from 'components/Logo'
 
 const Yup = {
   object,
@@ -124,7 +124,7 @@ const AccountModal = ({ openModal, closeModal, profile }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
               <CLink href="/">
-                <img src={logoWhite} width="131" height="63" />
+                <Logo white width={130}/>
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol lg={5}>

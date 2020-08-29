@@ -6,7 +6,7 @@ import CIcon from "@coreui/icons-react"
 import { Table } from "antd"
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import _ from "lodash"
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import cardIcon from "assets/img/surface1.svg"
 import PaymentComplete from "assets/img/payment_complete.svg"
 

@@ -21,10 +21,7 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
-import Loader from "components/loader"
-import MPassword from "components/materialPassword"
-
-import { AuthActions } from "services/global"
+import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
 import { CERTIFICATES } from "constants/common"
 
@@ -32,8 +29,9 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 import array from "yup/lib/array"
 
-// import "./style.scss"
-import logoWhite from "assets/img/logo-white.svg"
+import Loader from "components/Loader"
+import MPassword from "components/MaterialPassword"
+import Logo from 'components/Logo'
 
 const Yup = {
   object,
@@ -100,7 +98,7 @@ const PasswordModal = ({ openModal, closeModal, profile }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
               <CLink href="/">
-                <img src={logoWhite} width="131" height="63" />
+                <Logo white width={130}/>
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol

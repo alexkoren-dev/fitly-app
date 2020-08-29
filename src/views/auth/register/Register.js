@@ -18,14 +18,16 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
-import Loader from "components/loader"
-import { AuthActions } from "services/global"
+import Loader from "components/Loader"
+import AuthActions from "services/auth"
 import { filterErrorMsg } from "utils/filter_factory"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
 
 import "./style.scss"
+
+import Logo from 'components/Logo'
 
 import SignupImg from "assets/img/signup.svg"
 
@@ -118,7 +120,7 @@ const Register = (props) => {
                   {({ handleSubmit, handleChange, values, errors, touched }) => (
                     <CForm onSubmit={handleSubmit}>
                       <CLink href="/">
-                        <CIcon name="logo" width="125" height="68" alt="Logo" />
+                        <Logo width={125}/>
                       </CLink>
                       <h2 className="text-darl text-bold mt-4 text-capitalize">
                         {props.location.state.type} Sign Up

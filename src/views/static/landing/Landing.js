@@ -17,7 +17,6 @@ import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
 import CarouselBackground3 from "assets/img/background-fitly-3.jpg"
 
-
 import fitType1 from "assets/img/findyourguru1.jpg"
 import fitType2 from "assets/img/findyourguru2.jpg"
 import fitType3 from "assets/img/findyourguru3.jpg"
@@ -232,8 +231,6 @@ const Landing = (props) => {
           </div>
         </div>
       </section>
-
-      <StripeModal {...props} />
     </div>
   )
 }

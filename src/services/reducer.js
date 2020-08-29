@@ -1,5 +1,7 @@
 import { combineReducers } from "redux"
-import { AuthReducer, StripeReducer, WorkoutReducer } from "./global"
+import AuthReducer from "./auth/reducer"
+import StripeReducer from "./stripe/reducer"
+import WorkoutReducer from "./workouts/reducer"
 
 const reducer = combineReducers({
   auth: AuthReducer,

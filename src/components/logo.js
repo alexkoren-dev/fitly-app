@@ -1,6 +1,8 @@
 import React from 'react'
-import LogoIcon from 'assets/img/fitly-small-logo.png'
+import LogoIcon from 'assets/logo-black.png'
+import WhiteLogo from 'assets/logo-white.svg'
 
-const Logo = () => <img src={LogoIcon} height="45"/>
+const Logo = ({white, width}) => 
+	<img src={white?WhiteLogo:LogoIcon} alt="logo" style={{width: '100%', maxWidth: (width || 120), minWidth: 100}}/>
 
 export default Logo

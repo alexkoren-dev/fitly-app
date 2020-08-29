@@ -17,10 +17,11 @@ import Select from "react-select"
 import CounterInput from "react-counter-input"
 import { DatePicker, Slider } from "antd"
 import moment from "moment"
-
-import { WorkoutActions } from "services/global"
-import Loader from "components/loader"
 import { Formik } from "formik"
+
+import WorkoutActions from "services/workouts"
+
+import Loader from "components/Loader"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"

@@ -23,9 +23,12 @@ import CIcon from "@coreui/icons-react"
 import { Input } from "antd"
 import { Formik } from "formik"
 
-import Loader from "components/loader"
+import Loader from "components/Loader"
+import Logo from 'components/Logo'
+
 import config from "constants/config"
-import { StripeActions } from "services/global"
+
+import StripeActions from "services/stripe"
 
 import {
   CardElement,
@@ -42,7 +45,7 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 
 import "./style.scss"
-import Logo from 'components/logo'
+
 import stripeLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)
@@ -156,7 +159,7 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
       </p>
       <CRow>
         <CCol lg={6}>
-          <div className="stripe-mark d-flex justify-content-center align-items-center mb-3">
+          <div className="stripe-mark d-flex justify-content-center align-items-center mb-3 d-sm-down-none">
             <p className="text-white mb-0">
               Powered By <strong>Stripe</strong>
             </p>
@@ -171,7 +174,7 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
             type="submit"
             className="px-4 btn-pill button-bg-dark mx-1 text-bold mb-3 d-flex align-items-center justify-content-center box-shadow"
             disabled={loading}
-            style={{ width: 130 }}
+            style={{ minWidth: 130 }}
           >
             {loading ? <Loader /> : "PAY"}
           </CButton>
@@ -181,7 +184,7 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
             type="button"
             className="px-4 btn-pill mx-1 text-bold mb-3 d-flex align-items-center justify-content-center box-shadow"
             disabled={loading}
-            style={{ width: 130 }}
+            style={{ minWidth: 130 }}
             onClick={() => closeModal()}
           >
             GO BACK
@@ -218,9 +221,9 @@ const StripeModal = ({ history }) => {
           className="d-block"
           style={{ width: "fit-content", marginTop: -10 }}
         >
-          <Logo/>
+          <Logo white/>
         </CLink>
-        <div className="text-center" style={{ marginTop: -70 }}>
+        <div className="text-center" style={{ marginTop: -40 }}>
           <div className="cart-bg d-flex align-items-center justify-content-center">
             <img src={stripeLogo} />
           </div>

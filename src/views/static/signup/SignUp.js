@@ -1,7 +1,8 @@
 import React, { lazy } from "react"
+import { Link } from "react-router-dom"
 import { CLink, CRow, CCol, CContainer } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
-import { Link } from "react-router-dom"
+
 import "./style.scss"
 
 const SignUp = () => {
@@ -20,7 +21,7 @@ const SignUp = () => {
               >
                 <div className="d-flex justify-content-between align-items-center">
                   <h2 className="text-dark">
-                    <strong>FITNESS ENTHUSIAST? SIGN UP HERE </strong>
+                    <strong>FITNESS ENTHUSIAST? <br/>SIGN UP HERE </strong>
                   </h2>
                   <span>
                     <CIcon name="cil-arrow-right" className="text-dark" width="40" />
@@ -39,7 +40,7 @@ const SignUp = () => {
               >
                 <div className="d-flex justify-content-between align-items-center">
                   <h2 className="text-dark">
-                    <strong>FITNESS TRAINER? SIGN UP HERE </strong>
+                    <strong>FITNESS TRAINER? <br/>SIGN UP HERE </strong>
                   </h2>
                   <span>
                     <CIcon name="cil-arrow-right" className="text-dark" width="40" />
