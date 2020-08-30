@@ -231,6 +231,8 @@ const Landing = (props) => {
           </div>
         </div>
       </section>
+
+      <StripeModal {...props} />
     </div>
   )
 }

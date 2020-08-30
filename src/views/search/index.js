@@ -4,6 +4,7 @@ import { List, Card, Empty } from 'antd'
 import FlipMove from "react-flip-move"
 import moment from 'moment'
 import CLoader from "components/CLoader"
+import StripeModal from "../static/landing/StripeModal"
 import {
   CCol,
   CButton
@@ -74,6 +75,7 @@ const SearchPage = (props) => {
 
 	return (
 		<div className="search-page p-4 mx-4 mt-4">
+			<StripeModal {...props} />
 			<FilterBar count={filteredWorkouts.length} onFilterChange = {(date, sort, trainers) => onFilterChange(date, sort, trainers)}/>
 			{
 				loading?
