@@ -24,7 +24,7 @@ import { Input } from "antd"
 import { Formik } from "formik"
 
 import CLoader from "components/CLoader"
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 import config from "constants/config"
 
@@ -46,7 +46,7 @@ import string from "yup/lib/string"
 
 import "./style.scss"
 
-import stripeLogo from "assets/img/stripe.svg"
+import stripeCLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)
 
@@ -221,11 +221,11 @@ const StripeModal = ({ history }) => {
           className="d-block"
           style={{ width: "fit-content", marginTop: -10 }}
         >
-          <Logo white/>
+          <CLogo white/>
         </CLink>
         <div className="text-center" style={{ marginTop: -40 }}>
           <div className="cart-bg d-flex align-items-center justify-content-center">
-            <img src={stripeLogo} />
+            <img src={stripeCLogo} />
           </div>
           <h3 className="text-white text-bold mt-3 mb-0">
             TOTAL: ${workout.perUserCharge}

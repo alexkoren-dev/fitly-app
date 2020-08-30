@@ -35,7 +35,7 @@ import string from "yup/lib/string"
 import array from "yup/lib/array"
 
 // import "./style.scss"
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 const Yup = {
   object,
@@ -124,7 +124,7 @@ const AccountModal = ({ openModal, closeModal, profile }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
               <CLink href="/">
-                <Logo white width={130}/>
+                <CLogo white width={130}/>
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol lg={5}>

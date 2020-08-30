@@ -18,7 +18,7 @@ import CLoader from "components/CLoader"
 import AuthActions from "services/auth"
 
 // import "./style.scss"
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 import CalenarIcon from 'assets/img/calendar.svg'
 import TelevisionIcon from 'assets/img/television.svg'
@@ -48,7 +48,7 @@ const JoinModal = ({ openModal, closeModal, session }) => {
       <CModalHeader closeButton></CModalHeader>
       <CModalBody className="pt-0 pb-4 pl-3 pr-3 pb-5 bg-primary">
         <Link className="ml-3" to="/">
-          <Logo white/>
+          <CLogo white/>
         </Link>
         {
           !session?<p className="text-center text-white mt-5">No Session Data</p>:

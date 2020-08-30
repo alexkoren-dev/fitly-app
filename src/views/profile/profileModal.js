@@ -25,7 +25,7 @@ import CLoader from "components/CLoader"
 import MRadio from "components/MaterialRadio"
 import MInput from "components/MaterialInput"
 import MSelect from "components/MaterialSelect"
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
@@ -135,7 +135,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
               <CLink href="/">
-                <Logo white width={150}/>
+                <CLogo white width={150}/>
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol lg={5}>

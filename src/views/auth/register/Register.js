@@ -27,7 +27,7 @@ import string from "yup/lib/string"
 
 import "./style.scss"
 
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 import SignupImg from "assets/img/signup.svg"
 
@@ -120,7 +120,7 @@ const Register = (props) => {
                   {({ handleSubmit, handleChange, values, errors, touched }) => (
                     <CForm onSubmit={handleSubmit}>
                       <CLink href="/">
-                        <Logo width={125}/>
+                        <CLogo width={125}/>
                       </CLink>
                       <h2 className="text-darl text-bold mt-4 text-capitalize">
                         {props.location.state.type} Sign Up

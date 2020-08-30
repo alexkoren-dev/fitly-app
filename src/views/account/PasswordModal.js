@@ -31,7 +31,7 @@ import array from "yup/lib/array"
 
 import CLoader from "components/CLoader"
 import MPassword from "components/MaterialPassword"
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 const Yup = {
   object,
@@ -98,7 +98,7 @@ const PasswordModal = ({ openModal, closeModal, profile }) => {
           {({ handleSubmit, handleChange, values, errors, touched }) => (
             <CForm onSubmit={handleSubmit} className="profile-form mx-auto">
               <CLink href="/">
-                <Logo white width={130}/>
+                <CLogo white width={130}/>
               </CLink>
               <CFormGroup className="mt-3" row>
                 <CCol

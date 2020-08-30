@@ -21,7 +21,7 @@ import { AUTH } from "constants/types"
 import config from "constants/config"
 import AuthActions from "services/auth"
 
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 import uploadPicture from "assets/img/picture.svg"
 
 const UploadModal = ({ openModal, closeModal, profile, uploadField }) => {
@@ -105,7 +105,7 @@ const UploadModal = ({ openModal, closeModal, profile, uploadField }) => {
       <CModalHeader closeButton></CModalHeader>
       <CModalBody className="pt-0 pb-4 pl-5 pr-5 bg-primary">
         <CLink href="/">
-          <Logo white width={130}/>
+          <CLogo white width={130}/>
         </CLink>
 
         <p className="text-white mt-2">
