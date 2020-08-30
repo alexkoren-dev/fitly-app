@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { CContainer, CFade } from "@coreui/react"
 
 import { TheFooter, TheHeader } from "./comps"
-import FixedWelcomeUser from 'components/FixedWelcomeUser'
 
 
 const AppLayout = ({ children }) => {
@@ -15,7 +14,6 @@ const AppLayout = ({ children }) => {
           shadow={true}
           bgColor="white"
         />
-        <FixedWelcomeUser/>
         <div className="c-body">
           <main className="c-main pt-0">
             <CContainer fluid className="p-0">

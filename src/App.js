@@ -12,9 +12,10 @@ import Routes from "./Routes"
 // Pre Components
 import Auth from "./components/Auth"
 import ScrollReset from "./components/ScrollReset"
+import FixedWelcomeUser from 'components/FixedWelcomeUser'
 
 // Login Modal
-import LoginModal from "views/auth/login/Login"
+import LoginModal from "./views/auth/login/Login"
 
 const history = createBrowserHistory()
 
@@ -26,7 +27,8 @@ class App extends Component {
         <Auth>
           <LoginModal history={history}/>
           <ScrollReset />
-          <ToastContainer />
+          <ToastContainer />  
+          <FixedWelcomeUser/>
 
           <Routes />
         </Auth>

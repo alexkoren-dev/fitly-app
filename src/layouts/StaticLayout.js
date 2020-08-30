@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { CContainer, CFade } from "@coreui/react"
 
 import { TheFooter, TheHeader } from "./comps"
-import FixedWelcomeUser from 'components/FixedWelcomeUser'
 
 
 const StaticLayout = ({ children }) => {
@@ -11,7 +10,6 @@ const StaticLayout = ({ children }) => {
     <div className="c-app c-default-layout">
       <div className="c-wrapper">
         <TheHeader/>
-        <FixedWelcomeUser/>
         <div className="c-body">
           <main className="c-main pt-0">
             <CContainer fluid className="p-0">

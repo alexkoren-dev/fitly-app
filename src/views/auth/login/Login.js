@@ -27,7 +27,7 @@ import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
 import object from "yup/lib/object"
 import string from "yup/lib/string"
 
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 import CLoader from "components/CLoader"
 
 import "./style.scss"
