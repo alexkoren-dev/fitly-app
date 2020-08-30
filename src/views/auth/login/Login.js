@@ -120,7 +120,7 @@ const Login = (props) => {
                 className="mx-auto d-block"
                 style={{ width: "fit-content" }}
               >
-                <Logo white width={150}/>
+                <CLogo white width={150}/>
               </CLink>
               <CFormGroup>
                 <CLabel className="text-bold text-white">Email</CLabel>

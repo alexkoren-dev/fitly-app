@@ -7,7 +7,7 @@ import twitterIcon from "assets/img/TWITTER.png"
 import linkedinIcon from "assets/img/linkedin.png"
 import youtubeIcon from "assets/img/youtube.png"
 
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 
 const TheFooter = () => {
   return (
@@ -53,7 +53,7 @@ const TheFooter = () => {
         <CCol lg={2} md={3} sm={5}>
           <div className="text-center mx-auto">
             <CLink href="/">
-              <Logo white/>
+              <CLogo white/>
             </CLink>
             <p className="">Sweat in your own space </p>
             <ul className="mt-4 d-flex justify-content-center c-header-nav">

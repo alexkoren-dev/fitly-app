@@ -31,7 +31,7 @@ import ProfileIcon from 'assets/img/person.svg'
 import Account from 'assets/img/gear.svg'
 import LogoutIcon from 'assets/img/exit.svg'
 
-import Logo from 'components/Logo'
+import CLogo from 'components/CLogo'
 import SearchInput from 'components/SearchInput'
 
 const TheHeader = ({ fixed, shadow, bgColor, history }) => {
@@ -57,7 +57,7 @@ const TheHeader = ({ fixed, shadow, bgColor, history }) => {
     >
       <div className="d-flex justify-content-between w-100">
         <CHeaderBrand className="mx-2" to="/">
-          <Logo/>
+          <CLogo/>
         </CHeaderBrand>
 
         <CHeaderNav className="d-sm-down-none" style={{flex: 1}}>
