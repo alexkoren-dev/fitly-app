@@ -29,7 +29,7 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 import array from "yup/lib/array"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import MPassword from "components/MaterialPassword"
 import Logo from 'components/Logo'
 
@@ -183,7 +183,7 @@ const PasswordModal = ({ openModal, closeModal, profile }) => {
                   disabled={loading}
                   style={{ width: 130, height: 40 }}
                 >
-                  {loading ? <Loader /> : "SUBMIT"}
+                  {loading ? <CLoader /> : "SUBMIT"}
                 </CButton>
 
                 <CButton

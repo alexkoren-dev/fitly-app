@@ -24,7 +24,7 @@ import { Formik } from "formik"
 
 import { TIMEZONES } from "constants/common"
 
-import Loader from "components/Loader"
+import Loader from "components/CLoader"
 import MSelect from "components/MaterialSelect"
 
 import AuthActions from "services/auth"

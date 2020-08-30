@@ -23,7 +23,7 @@ import CIcon from "@coreui/icons-react"
 import { Input } from "antd"
 import { Formik } from "formik"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import Logo from 'components/Logo'
 
 import config from "constants/config"
@@ -176,7 +176,7 @@ const SplitForm = ({ closeModal, workout, user, dispatch, history }) => {
             disabled={loading}
             style={{ minWidth: 130 }}
           >
-            {loading ? <Loader /> : "PAY"}
+            {loading ? <CLoader /> : "PAY"}
           </CButton>
 
           <CButton

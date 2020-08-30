@@ -21,7 +21,7 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import MRadio from "components/MaterialRadio"
 import MInput from "components/MaterialInput"
 import MSelect from "components/MaterialSelect"
@@ -314,7 +314,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                   disabled={loading}
                   style={{ width: 130, height: 40 }}
                 >
-                  {loading ? <Loader /> : "SUBMIT"}
+                  {loading ? <CLoader /> : "SUBMIT"}
                 </CButton>
 
                 <CButton

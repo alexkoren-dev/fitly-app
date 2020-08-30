@@ -6,7 +6,7 @@ import CIcon from "@coreui/icons-react"
 import { Link } from "react-router-dom"
 import AuthActions from "services/auth"
 import WorkoutActions from "services/workouts"
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import { CERTIFICATES, TIMEZONES } from "constants/common"
 
 import AvatarUploader from "./AvatarUploader"
@@ -42,7 +42,7 @@ const Profile = ({ props }) => {
         className="d-flex justify-content-center align-items-center"
         style={{ height: 500 }}
       >
-        <Loader color="#5063EE" width="50" height="50" type="TailSpin" />
+        <CLoader color="#5063EE" width="50" height="50" type="TailSpin" />
       </div>
     )
 

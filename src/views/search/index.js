@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { List, Card, Empty } from 'antd'
 import FlipMove from "react-flip-move"
 import moment from 'moment'
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import {
   CCol,
   CButton
@@ -81,7 +81,7 @@ const SearchPage = (props) => {
 		        className="d-flex justify-content-center align-items-center"
 		        style={{ height: 500 }}
 		      >
-		        <Loader color="#5063EE" width="50" height="50" type="TailSpin" />
+		        <CLoader color="#5063EE" width="50" height="50" type="TailSpin" />
 		      </div>
 		      :
 					<FlipMove className={"d-flex flex-wrap w-100"} duration={300}>

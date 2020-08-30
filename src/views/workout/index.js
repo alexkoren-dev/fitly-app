@@ -21,7 +21,7 @@ import { Formik } from "formik"
 
 import WorkoutActions from "services/workouts"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
@@ -197,7 +197,7 @@ const WorkoutPage = (props) => {
         className="d-flex justify-content-center align-items-center"
         style={{ height: 500 }}
       >
-        <Loader color="#5063EE" width="50" height="50" type="TailSpin" />
+        <CLoader color="#5063EE" width="50" height="50" type="TailSpin" />
       </div>
     )
 
@@ -376,7 +376,7 @@ const WorkoutPage = (props) => {
                     style={{ width: 170, height: 40 }}
                   >
                     {saving ? (
-                      <Loader />
+                      <CLoader />
                     ) : workoutId ? (
                       "UPDATE SESSION"
                     ) : (

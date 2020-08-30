@@ -16,7 +16,7 @@ import {
 } from "@coreui/react"
 import { Upload, Progress } from "antd"
 import CIcon from "@coreui/icons-react"
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import { AUTH } from "constants/types"
 import config from "constants/config"
 import AuthActions from "services/auth"
@@ -144,7 +144,7 @@ const UploadModal = ({ openModal, closeModal, profile, uploadField }) => {
             style={{ width: 130, height: 40 }}
             onClick={() => handleUpload()}
           >
-            {loading ? <Loader /> : "SUBMIT"}
+            {loading ? <CLoader /> : "SUBMIT"}
           </CButton>
 
           <CButton

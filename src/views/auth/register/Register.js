@@ -18,7 +18,7 @@ import {
 import CIcon from "@coreui/icons-react"
 import { Formik } from "formik"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import AuthActions from "services/auth"
 import { filterErrorMsg } from "utils/filter_factory"
 
@@ -227,7 +227,7 @@ const Register = (props) => {
                             className="px-4 btn-pill text-bold mt-4"
                             disabled={loading}
                           >
-                            {loading ? <Loader /> : "SIGN UP"}
+                            {loading ? <CLoader /> : "SIGN UP"}
                           </CButton>
                         </CCol>
                       </CRow>

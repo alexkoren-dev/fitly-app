@@ -13,7 +13,7 @@ import {
 } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 
 import AuthActions from "services/auth"
 
@@ -85,7 +85,7 @@ const JoinModal = ({ openModal, closeModal, session }) => {
                   </div>
                   <CButton color="success" className="btn-pill join-btn px-3" onClick={() => joinRoom()}>
                     {joining ? (
-                        <Loader />
+                        <CLoader />
                       ):'Join'
                     }
                   </CButton>

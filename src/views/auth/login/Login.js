@@ -28,7 +28,7 @@ import object from "yup/lib/object"
 import string from "yup/lib/string"
 
 import Logo from 'components/Logo'
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 
 import "./style.scss"
 
@@ -172,7 +172,7 @@ const Login = (props) => {
                     style={{ width: 130 }}
                   >
                     {loading ? (
-                      <Loader />
+                      <CLoader />
                     ) : (
                       <>
                         <CIcon

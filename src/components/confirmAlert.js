@@ -3,7 +3,7 @@ import { CButton } from "@coreui/react"
 import { confirmAlert } from "react-confirm-alert"
 import "react-confirm-alert/src/react-confirm-alert.css"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 
 const CConfirmAlert = (dispatch, action, title) => {
   confirmAlert({

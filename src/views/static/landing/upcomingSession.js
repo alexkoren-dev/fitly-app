@@ -8,7 +8,7 @@ import "react-alice-carousel/lib/alice-carousel.css"
 import { CButton, CLink, CCol, CCardBody, CCard, CRow } from "@coreui/react"
 import CIcon from "@coreui/icons-react"
 
-import Loader from "components/Loader"
+import CLoader from "components/CLoader"
 import WorkoutItem from "components/WorkoutItem"
 
 
@@ -42,7 +42,7 @@ const UpcomingSession = () => {
         className="d-flex align-items-center justify-content-center"
         style={{ height: 200 }}
       >
-        <Loader color="#5063EE" />
+        <CLoader color="#5063EE" />
       </div>
     )
 
