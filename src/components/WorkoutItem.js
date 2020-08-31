@@ -104,7 +104,7 @@ const WorkoutItem = ({ workout }) => {
 	              ? workout.trainerDetails.profileImage.url
 	              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
 	          }
-	          className="c-avatar-img"
+	          className="c-avatar-img mx-auto"
 	          width="93"
 	          height="93"
 	        />

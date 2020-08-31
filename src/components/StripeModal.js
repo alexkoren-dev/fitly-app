@@ -44,8 +44,6 @@ import { loadStripe } from "@stripe/stripe-js"
 import object from "yup/lib/object"
 import string from "yup/lib/string"
 
-import "./style.scss"
-
 import stripeCLogo from "assets/img/stripe.svg"
 
 const stripePromise = loadStripe(config.STRIPE_API_KEY)

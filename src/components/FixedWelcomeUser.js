@@ -8,17 +8,22 @@ const FixedWelcomeUser = () => {
   const user_type = (auth.userInfo || {}).userType
 
   useEffect(() => {
-	  const timer = setTimeout(() => {
-	    setOpen(true)
+  	if(auth.is_authed) {
+		  const timer = setTimeout(() => {
+		    setOpen(true)
 
-	    setTimeout(() => {
-		    setOpen(false)
-		  }, 4000);
+		    setTimeout(() => {
+			    setOpen(false)
+			  }, 4000);
 
-	  }, 1000);
+		  }, 1000);
 
-	  return () => clearTimeout(timer);
-	}, []);
+		  return () => clearTimeout(timer);
+		}
+	}, [auth.is_authed]);
+
+  if(!auth.is_authed)
+  	return null
 
 	return (
 		<div 

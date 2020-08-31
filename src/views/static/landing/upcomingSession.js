@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import WorkoutActions from "services/workouts"
 import StripeActions from "services/stripe"
 import moment from "moment"
+import Slider from "react-slick";
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import { CButton, CLink, CCol, CCardBody, CCard, CRow } from "@coreui/react"
@@ -12,11 +13,43 @@ import CLoader from "components/CLoader"
 import WorkoutItem from "components/WorkoutItem"
 
 
-const responsive = {
-  0: { items: 1 },
-  768: { items: 2 },
-  1024: { items: 4 },
-}
+var carouselSettings = {
+  dots: true,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+        arrows: false
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false
+      }
+    }
+  ]
+};
+
 
 const UpcomingSession = () => {
   const [loading, setLoading] = useState(false)
@@ -47,23 +80,18 @@ const UpcomingSession = () => {
     )
 
   return (
-    <AliceCarousel
-      responsive={responsive}
-      fadeOutAnimation={true}
-      startIndex={0}
-      autoPlay={true}
-      autoPlayInterval={3000}
-      mouseTrackingEnabled
-      buttonsDisabled={true}
-    >
-      {workouts.map((wo, key) => (
-        <WorkoutItem
-          key={key}
-          onDragStart={handleOnDragStart}
-          workout={wo}
-        />
-      ))}
-    </AliceCarousel>
+    <div style={{margin: '0 1%'}}>
+      <Slider {...carouselSettings}>
+        {workouts.map((wo, key) => (
+          <div className="px-2" key={key}>
+            <WorkoutItem
+              onDragStart={handleOnDragStart}
+              workout={wo}
+            />
+          </div>
+        ))}
+      </Slider>
+    </div>
   )
 }
 

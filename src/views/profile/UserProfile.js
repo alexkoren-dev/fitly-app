@@ -27,18 +27,13 @@ const Profile = (props) => {
 
   useEffect(() => {
     setLoading(true)
-    getUserProfile()
-  }, [])
-
-  const getUserProfile = () => {
-    setLoading(true)
     AuthActions.getUserProfile(userId).then((res) => {
       setProfile(res.profile)
       dispatch(WorkoutActions.getWorkOutSessions(res.profile.userId)).finally(() => {
         setLoading(false)
       })
     })
-  }
+  }, [])
 
   if (loading)
     return (
@@ -126,7 +121,7 @@ const Profile = (props) => {
             <SessionTable workouts={workouts} mode="user"/>
           </CCol>
         </CRow>
-        <CRow className="mt-5">
+        <CRow className="mt-4">
           <CCol lg={12}>
             <Gallery
               gallery={profile && profile.gallery}
@@ -134,7 +129,6 @@ const Profile = (props) => {
               userId={userId}
               profileId={profile && profile.id}
               username={profile && profile.firstName}
-              getUserProfile={getUserProfile}
             />
           </CCol>
         </CRow>

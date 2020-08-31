@@ -26,15 +26,13 @@ const Profile = ({ props }) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!profile) {
+    if(profile) {
       setLoading(true)
-      dispatch(AuthActions.getOwnerProfile())
-    } else {
       dispatch(WorkoutActions.getWorkOutSessions(profile.userId)).finally(() => {
         setLoading(false)
       })
     }
-  }, [profile])
+  }, [])
 
   if (loading)
     return (

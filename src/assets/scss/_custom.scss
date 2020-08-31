@@ -31,6 +31,10 @@
   .static-header button {
     margin-top: 0 !important;
   }
+
+  .slick-next, .slick-prev {
+    display: none !important;
+  }
 }
 
 @media (max-width: 500px) {
@@ -629,7 +633,7 @@ table td, th {
 .fixed-welcome-wrapper {
   position: fixed;
   left: -300px;
-  bottom: 20%;
+  bottom: 10px;
   z-index: 999;
   transition: 0.3s;
 }
@@ -640,4 +644,18 @@ table td, th {
 
 .fixed-welcome-wrapper.close {
   left: -300px;
+}
+
+.slick-list {
+  margin: 0 10px;
+}
+
+.slick-next, .slick-prev {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.slick-next:before, .slick-prev:before {
+  color: #5063EE !important;
+  font-size: 30px;
 }

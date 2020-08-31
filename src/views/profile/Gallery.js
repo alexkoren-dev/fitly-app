@@ -2,19 +2,51 @@ import React, { useState, useEffect } from "react"
 import { CCard, CCardBody, CButton } from "@coreui/react"
 import { useDispatch, useSelector } from "react-redux"
 import CIcon from "@coreui/icons-react"
-import AuthActions from "services/auth"
-import AliceCarousel from "react-alice-carousel"
-import "react-alice-carousel/lib/alice-carousel.css"
-import CConfirmAlert from "components/ConfirmAlert"
-import LikeOrDislike from "./likeOrDislike"
+import Slider from "react-slick"
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css'
 
+import AuthActions from "services/auth"
+import CConfirmAlert from "components/ConfirmAlert"
+
+import LikeOrDislike from "./likeOrDislike"
 import UploadModal from "./UploadModal"
 
-const responsive = {
-  0: { items: 1 },
-  768: { items: 2 },
-  1024: { items: 4 },
-}
+var carouselSettings = {
+  dots: true,
+  arrows: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  initialSlide: 0,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      }
+    }
+  ]
+};
 
 const CardItem = ({
   onDragStart,
@@ -24,13 +56,14 @@ const CardItem = ({
   likeOrDislikeImage,
   owner,
   ownerProfile,
+  openImage
 }) => (
   <div className="gallery-card" onDragStart={onDragStart}>
-    <img src={data.url} style={{ width: "100%", borderRadius: 20 }} />
+    <img src={data.url} style={{ width: "100%", borderRadius: 20 }} onClick={() => openImage()}/>
 
     <div className="d-flex justify-content-between pt-1 pb-2 px-3 gallery-bar">
       <p className="mb-0">
-        <i
+        {owner ? (<i
           className="fa fa-trash d-flex justify-content-center align-items-center"
           style={{
             color: "#373535",
@@ -40,7 +73,9 @@ const CardItem = ({
             borderRadius: "50%",
           }}
           onClick={() => (!owner ? false : deleteGalleryImage(data.imageId))}
-        />
+        />)
+        : <span/>
+      }
       </p>
       <p className="d-flex align-items-center justify-content-center mb-0">
         {owner ? (
@@ -66,9 +101,12 @@ const CardItem = ({
   </div>
 )
 
-const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
+const Gallery = ({ gallery, owner, username, profileId }) => {
   const dispatch = useDispatch()
   const [toggleUpload, setToggleUpload] = useState(false)
+  const [isOpen, setOpen] = useState(false)
+  const [photoIndex, setPhotoIndex] = useState(0)
+
   const ownerProfile = useSelector((state) => state.auth.profile)
 
   const handleOnDragStart = (e) => e.preventDefault()
@@ -94,15 +132,13 @@ const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
 
   const likeOrDislikeImage = (imageId, isLiked) => {
     if (isLiked) {
-      dispatch(AuthActions.dislikeProfileImage(profileId, imageId)).then((res) => {
-        getUserProfile()
-      })
+      dispatch(AuthActions.dislikeProfileImage(profileId, imageId))
     } else {
-      dispatch(AuthActions.likeProfileImage(profileId, imageId)).then((res) => {
-        getUserProfile()
-      })
+      dispatch(AuthActions.likeProfileImage(profileId, imageId))
     }
   }
+
+  const images = (gallery || []).map(g => g.url)
 
   return (
     <CCard className="shadow">
@@ -142,26 +178,43 @@ const Gallery = ({ gallery, owner, username, profileId, getUserProfile }) => {
             {owner && <UploadButton />}
           </>
         ) : (
-          <AliceCarousel
-            responsive={responsive}
-            fadeOutAnimation={true}
-            mouseTrackingEnabled
-            buttonsDisabled={true}
-            key={owner ? gallery : ownerProfile}
-          >
-            {gallery.map((img, key) => (
-              <CardItem
-                key={key}
-                onDragStart={handleOnDragStart}
-                data={img}
-                owner={owner}
-                deleteGalleryImage={deleteGalleryImage}
-                likeOrDislikeImage={likeOrDislikeImage}
-                ownerProfile={ownerProfile}
-              />
-            ))}
-          </AliceCarousel>
+          <div className="mb-4">
+            <Slider {...carouselSettings}>
+              {gallery.map((img, key) => (
+                <div className="px-2" key={key}>
+                  <CardItem
+                    onDragStart={handleOnDragStart}
+                    data={img}
+                    owner={owner}
+                    deleteGalleryImage={deleteGalleryImage}
+                    likeOrDislikeImage={likeOrDislikeImage}
+                    ownerProfile={ownerProfile}
+                    openImage={() => {
+                      setPhotoIndex(key)
+                      setOpen(true)
+                    }}
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
         )}
+
+        {isOpen && (
+          <Lightbox
+            mainSrc={images[photoIndex]}
+            nextSrc={images[(photoIndex + 1) % images.length]}
+            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            onCloseRequest={() => setOpen(false)}
+            onMovePrevRequest={() =>
+              setPhotoIndex((photoIndex + images.length - 1) % images.length)
+            }
+            onMoveNextRequest={() =>
+              setPhotoIndex((photoIndex + 1) % images.length)
+            }
+          />
+        )}
+
       </CCardBody>
     </CCard>
   )

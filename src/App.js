@@ -12,10 +12,13 @@ import Routes from "./Routes"
 // Pre Components
 import Auth from "./components/Auth"
 import ScrollReset from "./components/ScrollReset"
-import FixedWelcomeUser from 'components/FixedWelcomeUser'
+import FixedWelcomeUser from './components/FixedWelcomeUser'
 
 // Login Modal
 import LoginModal from "./views/auth/login/Login"
+
+// Stripe Modal
+import StripeModal from "./components/StripeModal"
 
 const history = createBrowserHistory()
 
@@ -26,6 +29,7 @@ class App extends Component {
       <Router history={history}>
         <Auth>
           <LoginModal history={history}/>
+          <StripeModal history={history}/>
           <ScrollReset />
           <ToastContainer />  
           <FixedWelcomeUser/>

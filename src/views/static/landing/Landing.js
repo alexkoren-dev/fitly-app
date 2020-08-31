@@ -11,7 +11,6 @@ import {
 
 import "./style.scss"
 import UpcomingSession from "./upcomingSession"
-import StripeModal from "./StripeModal"
 
 import CarouselBackground1 from "assets/img/background-fitly-1.jpg"
 import CarouselBackground2 from "assets/img/background-fitly-2.jpg"
@@ -231,8 +230,6 @@ const Landing = (props) => {
           </div>
         </div>
       </section>
-
-      <StripeModal {...props} />
     </div>
   )
 }

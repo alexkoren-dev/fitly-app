@@ -134,7 +134,7 @@ const SessionTable = ({ workouts, mode }) => {
             <Table
               columns={columns}
               key="_id"
-              dataSource={workouts}
+              dataSource={workouts.map((workout, index) => ({key:index, ...workout}))}
               loading={loading}
               className="session-table"
               scroll={{ x: 700 }}

@@ -82,6 +82,13 @@ const routesConfig = [
     component: lazy(() => import("views/search"))
   },
 
+  {
+    path: "/room/:URLRoomName",
+    exact: true,
+    guard: AuthGuard,
+    component: lazy(() => import("views/video"))
+  },
+
   // Static Routes
 
   {
