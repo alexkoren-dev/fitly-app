@@ -316,7 +316,8 @@ const WorkoutPage = (props) => {
                       disabledDate={disabledDate}
                       defaultValue={moment(new Date(values.scheduledTime))}
                       onChange={(date) => {
-                        handleChange("scheduledTime")(date.format("x"))
+                        console.log(date)
+                        handleChange("scheduledTime")(date?date.format("x"):'')
                       }}
                       showTime={{ defaultValue: moment("00:00:00", "HH:mm:ss") }}
                     />

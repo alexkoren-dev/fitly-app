@@ -104,7 +104,7 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
         validationSchema={validationSchema}
       >
         {({ handleSubmit, handleChange, values, errors, touched }) => (
-          <CForm onSubmit={handleSubmit} className="mx-auto p-3">
+          <CForm onSubmit={handleSubmit} className="mx-auto p-3 account-form">
             {!profile && (
               <Alert
                 message='Profile is not complete. To update profile click "Edit Account"'
@@ -115,7 +115,7 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
             )}
 
             <CFormGroup className="mt-3" row>
-              <CCol lg={6}>
+              <CCol lg={6} className="mb-3">
                 <CLabel className="text-bold text-primary">First Name</CLabel>
                 <p className="border-bottom py-2">{initialValues.firstName}</p>
               </CCol>
@@ -125,7 +125,7 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
               </CCol>
             </CFormGroup>
             <CFormGroup row>
-              <CCol lg={6}>
+              <CCol lg={6} className="mb-3">
                 <CLabel className="text-bold text-primary">Phone Number</CLabel>
                 <p className="border-bottom py-2">{initialValues.phoneNumber}</p>
               </CCol>
@@ -135,7 +135,7 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
               </CCol>
             </CFormGroup>
             <CFormGroup row>
-              <CCol lg={6}>
+              <CCol lg={6} className="mb-3">
                 <CLabel className="text-bold text-primary">Password</CLabel>
                 <div className="d-flex align-items-center justify-content-start w-100">
                   <p className="border-bottom py-2" style={{flex:1}}>.............</p>
@@ -162,11 +162,11 @@ const AccountForm = ({ openModal, closeModal, profile, user }) => {
               </CCol>
             </CFormGroup>
             <CFormGroup row>
-              <CCol lg={4}>
+              <CCol lg={4} className="mb-3">
                 <CLabel className="text-bold text-primary">City/ County</CLabel>
                 <p className="border-bottom py-2">{initialValues.city}</p>
               </CCol>
-              <CCol lg={4}>
+              <CCol lg={4} className="mb-3">
                 <CLabel className="text-bold text-primary">State</CLabel>
                 <p className="border-bottom py-2">{initialValues.state}</p>
               </CCol>

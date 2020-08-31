@@ -77,38 +77,41 @@ const Profile = (props) => {
                 </div>
               </CCol>
               <CCol lg={9}>
-                <div className="d-flex align-items-center">
-                  <p className="d-flex align-items-center justify-content-center">
-                    <CIcon
-                      name="cu-sports"
-                      width="30"
-                      height="30"
-                      className="mr-2"
-                    />{" "}
-                    {profile && profile.totalSessionCompleted
-                      ? profile.totalSessionCompleted
-                      : 0}{" "}
-                    Sessions Hosted
-                  </p>
-                  <div className="v-divider" />
-                  <p className="d-flex align-items-center justify-content-center">
-                    <CIcon name="cu-star" width="30" height="25" className="mr-2" />
-                    <span className="pt-1">
-                      {profile && profile.overAllRating
-                        ? `${profile.overAllRating} Stars`
-                        : "No Ratings"}
-                    </span>
-                  </p>
-                  <div className="v-divider" />
-                  <p className="d-flex align-items-center justify-content-center">
-                    <CIcon
-                      name="cu-certificate"
-                      width="25"
-                      height="25"
-                      className="mr-2"
-                    />
-                    <span className="pt-1">ACSM Certified Personal Trainer</span>
-                  </p>
+                <div className="d-flex justify-content-between flex-column h-100">
+                  <p>{profile && profile.aboutme}</p>
+                  <div className="d-flex align-items-center">
+                    <p className="d-flex align-items-center justify-content-center my-1">
+                      <CIcon
+                        name="cu-sports"
+                        width="30"
+                        height="30"
+                        className="mr-2"
+                      />{" "}
+                      {profile && profile.totalSessionCompleted
+                        ? profile.totalSessionCompleted
+                        : 0}{" "}
+                      Sessions Hosted
+                    </p>
+                    <div className="v-divider" />
+                    <p className="d-flex align-items-center justify-content-center my-1">
+                      <CIcon name="cu-star" width="30" height="25" className="mr-2" />
+                      <span className="pt-1">
+                        {profile && profile.overAllRating
+                          ? `${profile.overAllRating} Stars`
+                          : "No Ratings"}
+                      </span>
+                    </p>
+                    <div className="v-divider" />
+                    <p className="d-flex align-items-center justify-content-center my-1">
+                      <CIcon
+                        name="cu-certificate"
+                        width="25"
+                        height="25"
+                        className="mr-2"
+                      />
+                      <span className="pt-1">ACSM Certified Personal Trainer</span>
+                    </p>
+                  </div>
                 </div>
               </CCol>
             </CRow>

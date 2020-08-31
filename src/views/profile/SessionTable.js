@@ -146,7 +146,9 @@ const SessionTable = ({ workouts, mode }) => {
               You have not scheduled any live Training sessions. <br/>
               Create a session and help people LOrem Ispusm 
             </p>
-            <CButton color="primary" className="btn-pill mb-4">CREATE SESSION</CButton>
+            <Link to={"/user/workout/create"}>
+              <CButton color="primary" className="btn-pill mb-4">CREATE SESSION</CButton>
+            </Link>
           </div>
         }
       </CCardBody>

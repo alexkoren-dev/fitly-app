@@ -1,16 +1,6 @@
 // Variable overrides
 
-@font-face {
-    font-family: CenturyGothic;
-    src: url('../fonts/century-gothic/CenturyGothic.ttf');
-}
-
-@font-face {
-    font-family: PoorRichard;
-    src: url('../fonts/poor-richard/POORICH.TTF');
-}
-
-$font-family-base: CenturyGothic !important;
+$font-family-base: "hero-new" !important;
 
 $white:  #fff !default;
 $black:  #000015 !default;

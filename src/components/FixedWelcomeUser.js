@@ -34,20 +34,20 @@ const FixedWelcomeUser = () => {
 			<div 
 				className="fixed-welcome bg-primary d-flex align-items-center justify-content-center">
 				{profile &&
-	        profile.profilprofile &&
-	        profile.profilprofile.profileImage.url && 
-	          <div className="c-avatar mr-2">
+	        profile.profileImage &&
+	        profile.profileImage.url && 
+	          <div className="img-round mr-2">
 	            <img
 	              src={profile.profileImage.url}
-	              width="40"
-	              height="40"
+	              width="50"
+	              height="50"
 	              style={{ borderRadius: "50%" }}
 	            />
 	          </div>
 	      }
 
 	      <div>
-	      	<p className="text-white mb-0"><i>{auth.userInfo && ('Hey there, ' + auth.userInfo.username)}</i></p>
+	      	<p className="text-white mb-0"><i>{profile && profile.firstName && ('Hey there, ' + profile.firstName)}</i></p>
 	      	<h5 className="text-white mb-0"><strong>WELCOME TO FITLY</strong></h5>
 	      </div>
 			</div>

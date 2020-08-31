@@ -29,7 +29,7 @@ import CLogo from 'components/CLogo'
 
 import AuthActions from "services/auth"
 import { filterErrorMsg, encryptWithAES } from "utils/filter_factory"
-import { CERTIFICATES, TRAININGS, TIMEZONES } from "constants/common"
+import { CERTIFICATES, TRAININGS, TIMEZONES, STATES } from "constants/common"
 
 import object from "yup/lib/object"
 import string from "yup/lib/string"
@@ -138,7 +138,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                 <CLogo white width={150}/>
               </CLink>
               <CFormGroup className="mt-3" row>
-                <CCol lg={5}>
+                <CCol lg={5} className="mb-3">
                   <MInput
                     id="standard-basic"
                     name="firstName"
@@ -149,7 +149,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                   />
                 </CCol>
                 <CCol lg={2} />
-                <CCol lg={5}>
+                <CCol lg={5} className="mb-2">
                   <MInput
                     id="standard-basic"
                     name="lastName"
@@ -173,7 +173,7 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                 </CCol>
               </CFormGroup>
               <CFormGroup row>
-                <CCol lg={5}>
+                <CCol lg={5} className="mb-3">
                   <MInput
                     id="standard-basic"
                     name="city"
@@ -184,14 +184,17 @@ const ProfileModal = ({ openModal, closeModal, profile }) => {
                   />
                 </CCol>
                 <CCol lg={2} />
-                <CCol lg={5}>
-                  <MInput
-                    id="standard-basic"
-                    name="state"
-                    label="State"
-                    value={values.state}
-                    fullWidth
-                    onChange={handleChange}
+                <CCol lg={5} className="mb-3">
+                  <MSelect
+                    options={STATES}
+                    value={getSelectedOptions(STATES, values.state)}
+                    onChange={(option) => {
+                      handleChange("state")(
+                        option ? option.value : ""
+                      )
+                    }}
+                    className="m-select mt-2"
+                    placeholder="State"
                   />
                 </CCol>
               </CFormGroup>
