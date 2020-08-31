@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import config from "constants/config"
-import { api, authApi, formData } from "utils"
+import { api, authApi, formData } from "../../../utils"
 import { RoomType } from '../types';
 import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settings/settingsReducer';
+
+const API_ROOT_URL = "http://ec2-18-219-119-244.us-east-2.compute.amazonaws.com:3000/api"
 
 export interface StateContextType {
   error: TwilioError | null;
@@ -54,10 +55,10 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     ...contextValue,
     getToken: async (identity, roomName) => {
       const headers = new window.Headers();
-      const endpoint = `${config.API_ROOT_URL}/workouts/join`;
+      const endpoint = `${API_ROOT_URL}/workouts/join`;
       const params = new window.URLSearchParams({ identity, roomName });
 
-      return authApi(`${endpoint}?${params}`, { headers }).then(res => res.token);
+      return authApi(`${endpoint}?${params}`, { headers }).then((res:any) => res.token);
     },
   };
 

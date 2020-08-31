@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,aACI,0BAA2B","file":"22.a27258df.chunk.css","sourcesContent":[".signup-page {\r\n    height: calc(100vh - 200px);\r\n}"]}

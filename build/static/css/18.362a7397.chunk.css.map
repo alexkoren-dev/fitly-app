@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA,8BAEE,kBAAmB,CACnB,4BAKA,WAAY","file":"18.362a7397.chunk.css","sourcesContent":[".billings-page {\r\n\t.border-radius {\r\n\t\tborder-radius: 20px;\r\n\t}\r\n}\r\n\r\n.account-form {\r\n\t.form-group p {\r\n\t\theight: 40px;\r\n\t}\r\n}"]}
