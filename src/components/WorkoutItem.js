@@ -85,6 +85,7 @@ const WorkoutItem = ({ workout }) => {
 	          src={WORKOUT_TYPES[workout && workout.typeDetails]}
 	          width={40}
 	          height={50}
+	          className="mx-auto"
 	        />
 	        <p className="fit-title text-grey" style={{ textTransform: "capitalize" }}>
 	          {workout && workout.typeDetails}

@@ -31,12 +31,6 @@ const JoinModal = ({ openModal, closeModal, session }) => {
   const [password, setPassword] = useState("")
   const [token, setToken] = useState(null)
 
-  const joinRoom = () => {
-    setJoining(true)
-    setToken('11111111')
-    setJoining(false)
-  }
-
   return (
     <CModal
       show={openModal}
@@ -83,12 +77,14 @@ const JoinModal = ({ openModal, closeModal, session }) => {
                       Meet.zoom.com/urm-shebfbkfklf-jdhydbdnmfm
                     </p>
                   </div>
-                  <CButton color="success" className="btn-pill join-btn px-3" onClick={() => joinRoom()}>
-                    {joining ? (
-                        <CLoader />
-                      ):'Join'
-                    }
-                  </CButton>
+                  <Link to={`/room/${session._id}`}>
+                    <CButton color="success" className="btn-pill join-btn px-3">
+                      {joining ? (
+                          <CLoader />
+                        ):'Join'
+                      }
+                    </CButton>
+                  </Link>
                 </div>
               </div>
               <div className="d-flex align-items-center border-bottom-white pb-2 px-3">

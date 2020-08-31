@@ -42,7 +42,7 @@ const TheFooter = () => {
                     <CLink>Workout Enthusiasts </CLink>
                   </li>
                   <li>
-                    <CLink>How it works</CLink>
+                    <CLink to="/how-it-works">How it works</CLink>
                   </li>
                 </ul>
               </div>

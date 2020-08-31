@@ -374,7 +374,7 @@ const WorkoutPage = (props) => {
                     color="primary"
                     type="submit"
                     className="px-4 mx-2 btn-pill button-bg-dark text-bold mt-3 d-flex align-items-center justify-content-center box-shadow"
-                    style={{ width: 170, height: 40 }}
+                    style={{ width: 180, height: 40 }}
                   >
                     {saving ? (
                       <CLoader />
@@ -391,7 +391,7 @@ const WorkoutPage = (props) => {
                       type="button"
                       className="ml-2 px-4 btn-pill text-bold mt-3 d-flex align-items-center justify-content-center box-shadow"
                       disabled={loading}
-                      style={{ width: 170, height: 40 }}
+                      style={{ width: 180, height: 40 }}
                     >
                       × CANCEL
                     </CButton>

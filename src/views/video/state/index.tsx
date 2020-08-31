@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import config from "constants/config"
+import { api, authApi, formData } from "utils"
 import { RoomType } from '../types';
 import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settings/settingsReducer';
@@ -52,10 +54,10 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
     ...contextValue,
     getToken: async (identity, roomName) => {
       const headers = new window.Headers();
-      const endpoint = 'http://localhost:8081/token';
+      const endpoint = `${config.API_ROOT_URL}/workouts/join`;
       const params = new window.URLSearchParams({ identity, roomName });
 
-      return fetch(`${endpoint}?${params}`, { headers }).then(res => res.text());
+      return authApi(`${endpoint}?${params}`, { headers }).then(res => res.token);
     },
   };
 
@@ -68,7 +70,7 @@ export default function AppStateProvider(props: React.PropsWithChildren<{}>) {
         return res;
       })
       .catch(err => {
-        setError(err);
+        setError(err.data.errors);
         setIsFetching(false);
         return Promise.reject(err);
       });

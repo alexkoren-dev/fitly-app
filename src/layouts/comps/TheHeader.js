@@ -113,8 +113,8 @@ const TheHeader = ({ fixed, shadow, bgColor, history }) => {
                 <CDropdownToggle className="c-header-nav-link p-0" caret={true}>
                   <div className="c-avatar mr-2">
                     {profile &&
-                    profile.profilprofile &&
-                    profile.profilprofile.profileImage.url && 
+                    profile.profileImage &&
+                    profile.profileImage.url && 
                       <img
                         src={profile.profileImage.url}
                         width="40"

@@ -108,7 +108,13 @@ const routesConfig = [
     layout: StaticLayout,
     guard: GuestGuard,
     component: lazy(() => import("views/static/signup/SignUp"))
-  }
+  },
+  {
+    exact: true,
+    path: "/how-it-works",
+    layout: AppLayout,
+    component: lazy(() => import("views/static/how/HowWork"))
+  },
 ]
 
 const renderRoutes = (routes) =>
