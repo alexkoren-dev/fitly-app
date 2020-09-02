@@ -47,7 +47,7 @@ const PasswordModal = ({ openModal, closeModal, profile }) => {
 
   const handleSubmit = (values) => {
     setLoading(true)
-    dispatch(AuthActions.changePassword({ password: values.new_password }))
+    dispatch(AuthActions.changePassword({ currentPwd: values.current_password, password: values.new_password }))
       .then((res) => {
         setLoading(false)
         toast.success("Password is changed successfully!")

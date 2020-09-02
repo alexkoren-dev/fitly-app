@@ -21,7 +21,8 @@ import LocalAudioLevelIndicator from './DeviceSelector/LocalAudioLevelIndicator/
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: 'transparent',
+      boxShadow: 'none'
     },
     toolbar: {
       [theme.breakpoints.down('xs')]: {
@@ -111,7 +112,6 @@ export default function MenuBar() {
         )}
         <div className={classes.rightButtonContainer}>
           <FlipCameraButton />
-          <LocalAudioLevelIndicator />
           <ToggleFullscreenButton />
           <Menu />
         </div>

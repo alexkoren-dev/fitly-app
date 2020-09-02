@@ -21,7 +21,7 @@ export const createOrSaveWorkout = (workout, id) => {
   return (dispatch) => {
     let data = {
       method: id ? "put" : "post",
-      url: `/workouts`,
+      url: `/workouts${id?('?workoutId='+id):''}`,
       data: workout,
     }
     return authApi(data)

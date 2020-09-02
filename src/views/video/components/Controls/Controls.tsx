@@ -13,11 +13,15 @@ import useRoomState from '../../hooks/useRoomState/useRoomState';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     container: {
+      background: '#7070709e',
       display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
       position: 'absolute',
-      right: '50%',
-      transform: 'translate(50%, 30px)',
-      bottom: '50px',
+      justifyContent: 'space-between',
+      left: '0px',
+      top: '0px',
+      padding: '20px 5px',
       zIndex: 1,
       transition: 'opacity 1.2s, transform 1.2s, visibility 0s 1.2s',
       opacity: 0,
@@ -27,11 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
         transition: 'opacity 0.6s, transform 0.6s, visibility 0s',
         opacity: 1,
         visibility: 'visible',
-        transform: 'translate(50%, 0px)',
-      },
-      [theme.breakpoints.down('xs')]: {
-        bottom: `${theme.sidebarMobileHeight + 3}px`,
-      },
+      }
     },
   })
 );
@@ -45,14 +45,17 @@ export default function Controls() {
 
   return (
     <div className={clsx(classes.container, { showControls })}>
-      <ToggleAudioButton disabled={isReconnecting} />
-      <ToggleVideoButton disabled={isReconnecting} />
-      {roomState !== 'disconnected' && (
-        <>
-          <ToggleScreenShareButton disabled={isReconnecting} />
-          <EndCallButton />
-        </>
-      )}
+      <div className="">asdf</div>
+      <div className="d-flex align-items-center justify-content-center flex-column">
+        <ToggleAudioButton disabled={isReconnecting} />
+        <ToggleVideoButton disabled={isReconnecting} />
+        {roomState !== 'disconnected' && (
+          <>
+            <ToggleScreenShareButton disabled={isReconnecting} />
+            <EndCallButton />
+          </>
+        )}
+      </div>
     </div>
   );
 }
